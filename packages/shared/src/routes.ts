@@ -1,5 +1,5 @@
 /**
- * Shared route definitions for TanStack Router
+ * Shared route definitions for TanStack and Vue routers
  * Single source of truth for all frontend routes
  */
 
