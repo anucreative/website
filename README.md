@@ -52,14 +52,14 @@ Build a working CV page at `/cv` with hardcoded data. Data types and structure d
   - [x] Create `src/browser.ts` - Browser worker setup
   - [x] Create `src/index.ts` - Export all handlers
 
-- [ ] **2.3 Create TanStack Start App**
-  - [ ] Initialize `apps/start/` with TanStack Start
-  - [ ] Set up TypeScript configuration
-  - [ ] Create root layout (`/src/routes/__root.tsx`)
-  - [ ] Create `/src/routes/cv.tsx` page
-  - [ ] Fetch data from MSW (mocked JSON)
-  - [ ] Implement basic styling with CSS variables
-  - [ ] Set up `.env.example`
+- [x] **2.3 Create TanStack Start App**
+  - [x] Initialize `apps/react/` with TanStack Start
+  - [x] Set up TypeScript configuration
+  - [x] Create root layout (`/src/routes/__root.tsx`)
+  - [x] Create `/src/routes/cv.tsx` page
+  - [x] Fetch data from MSW (mocked JSON)
+  - [x] Implement basic styling with CSS variables
+  - [x] Set up `.env.example`
 
 - [ ] **2.4 Test & Verify Locally**
   - [ ] Start dev server and verify `/cv` loads
@@ -74,7 +74,7 @@ Get the app live on Netlify with automatic deployments.
   - [ ] Create Netlify site
   - [ ] Connect GitHub repo
   - [ ] Configure build command: `yarn build`
-  - [ ] Configure publish directory: `apps/start/.output/public`
+  - [ ] Configure publish directory: `apps/react/.output/public`
 
 - [ ] **3.2 Configure Deployment**
   - [ ] Set up `netlify.toml` in root

@@ -1,0 +1,4 @@
+.output
+.tanstack
+.env.local
+.env.*.local

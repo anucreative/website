@@ -138,7 +138,7 @@ When creating a new app/package:
 4. Declare dependencies on `@monorepo/shared` if needed
 5. Update root `turbo.json` if adding new task types
 
-**Build dependency example:** If `apps/start` depends on `packages/shared`, the build order is automatic via `turbo.json` pipeline: `"build": { "dependsOn": ["^build"] }`.
+**Build dependency example:** If `apps/react` depends on `packages/shared`, the build order is automatic via `turbo.json` pipeline: `"build": { "dependsOn": ["^build"] }`.
 
 ## Project Phases & Status
 
@@ -149,7 +149,7 @@ When creating a new app/package:
 
 **Phase 2: TanStack Start CV Page** 🚀 In Progress
 
-- Create `apps/start/` with TanStack Start
+- Create `apps/react/` with TanStack Start
 - Integrate MSW for mocked CV data
 - Implement `/cv` and `/cv/alan` routes
 
@@ -160,7 +160,7 @@ When creating a new app/package:
 ### Creating a New Route
 
 1. Add to `ROUTES` in `packages/shared/src/routes.ts`
-2. Create corresponding page component in app (e.g., `apps/start/src/routes/new-page.tsx`)
+2. Create corresponding page component in app (e.g., `apps/react/src/routes/new-page.tsx`)
 3. Both frameworks automatically pick up route via shared constants
 
 ### Adding a New Environment Variable
@@ -193,5 +193,5 @@ Run `yarn install-deps` before starting development.
 ## Git & Deployment
 
 - **Repository:** Configured with `.gitignore` for monorepo (excludes `node_modules`, `dist`, `.turbo`, `*.db`)
-- **Deployment:** Netlify (Phase 3) – build command: `yarn build`, publish: `apps/start/.output/public`
+- **Deployment:** Netlify (Phase 3) – build command: `yarn build`, publish: `apps/react/.output/public`
 - **Cache:** Turborepo caching enabled for `build`, `test`, `lint`, `type-check` tasks
