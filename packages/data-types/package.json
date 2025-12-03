@@ -9,10 +9,11 @@
     ".": {
       "import": "./dist/index.js",
       "types": "./dist/index.d.ts"
-    }
+    },
+    "./sample.json": "./dist/sample.json"
   },
   "scripts": {
-    "build": "tsc --emitDeclarationOnly",
+    "build": "tsc --emitDeclarationOnly && cp sample.json dist/sample.json",
     "type-check": "tsc --noEmit",
     "clean": "rm -rf dist"
   },

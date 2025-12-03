@@ -1,35 +1,124 @@
+import defaultTheme from './themes/default.json'
+import alanTheme from './themes/alan.json'
+import { merge } from 'es-toolkit'
+
 /**
  * Theme type definitions
- * Supports a generic theme and alan theme
  */
-
 export type ThemeType = 'default' | 'alan'
 
-export interface ThemeConfig {
-  name: ThemeType
-  primaryColor: string
-  secondaryColor: string
-  accentColor: string
+export interface ThemeColors {
+  primary: string
+  secondary: string
+  accent: string
+  text?: string
+  background?: string
+  border?: string
+  [key: string]: string | undefined
 }
 
-export const THEME_CONFIGS: Record<ThemeType, ThemeConfig> = {
-  default: {
-    name: 'default',
-    primaryColor: '#333333',
-    secondaryColor: '#f5f5f5',
-    accentColor: '#0066cc',
-  },
-  alan: {
-    name: 'alan',
-    primaryColor: '#1a1a1a',
-    secondaryColor: '#ffffff',
-    accentColor: '#ff6b35',
-  },
+export interface ThemeTypography {
+  fontFamily?: string
+  fontSize?: string
+  lineHeight?: string
+  h1Size?: string
+  h1Weight?: string
+  h2Size?: string
+  h2Weight?: string
+  h3Size?: string
+  h3Weight?: string
+  h4Size?: string
+  h4Weight?: string
+  h2LineHeight?: string
+  [key: string]: string | undefined
+}
+
+export interface ThemeSpacing {
+  unit?: string
+  xs?: string
+  sm?: string
+  md?: string
+  lg?: string
+  xl?: string
+  '2xl'?: string
+  [key: string]: string | undefined
+}
+
+export interface Theme {
+  name: ThemeType
+  colors: ThemeColors
+  typography?: ThemeTypography
+  spacing?: ThemeSpacing
+  layout?: {
+    maxWidth?: string
+    [key: string]: string | undefined
+  }
+  [key: string]: unknown
 }
 
 /**
- * Get theme configuration by name
+ * Base themes
  */
-export const getThemeConfig = (theme: ThemeType): ThemeConfig => {
-  return THEME_CONFIGS[theme] ?? THEME_CONFIGS['default']
+const THEMES: Record<ThemeType, Theme> = {
+  default: defaultTheme as Theme,
+  alan: alanTheme as Theme,
+}
+
+/**
+ * Get theme by name (merges with default)
+ */
+export const getTheme = (theme: ThemeType): Theme => {
+  const defaultTheme = THEMES['default']
+  const selected = THEMES[theme] ?? defaultTheme
+
+  if (theme !== 'default') {
+    return merge(defaultTheme, selected)
+  }
+
+  return selected
+}
+
+/**
+ * Converts theme object properties to CSS custom properties (variables)
+ * e.g. toCSSVars({ primary: '#333333' }, 'color') returns: ['  --color-primary: #333333;']
+ */
+const toCSSVars = (
+  obj: Record<string, string | undefined> | undefined,
+  prefix: string
+): string[] => {
+  if (!obj) return []
+
+  return Object.entries(obj).reduce<string[]>((acc, [key, value]) => {
+    if (value) {
+      // Convert camelCase keys to kebab-case (e.g., fontSize -> font-size)
+      const kebabKey = key.replace(/([A-Z])/g, '-$1').toLowerCase()
+      acc.push(`  --${prefix}-${kebabKey}: ${value};`)
+    }
+
+    return acc
+  }, [])
+}
+
+/**
+ * Convert theme to CSS variable string
+ */
+export const themeToCSSVariables = (theme: Theme): string => {
+  const lines = [
+    ':root {',
+    ...toCSSVars(theme.colors, 'color'),
+    ...toCSSVars(theme.typography, 'font'),
+    ...toCSSVars(theme.spacing, 'spacing'),
+    ...toCSSVars(theme.layout, 'layout'),
+    '}',
+  ]
+
+  return lines.join('\n')
+}
+
+/**
+ * Get CSS string for a theme (for use in <style> tag)
+ */
+export const getThemeStyles = (theme: ThemeType): string => {
+  const selectedTheme = getTheme(theme)
+  return themeToCSSVariables(selectedTheme)
 }
