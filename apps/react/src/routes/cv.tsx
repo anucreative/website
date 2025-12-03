@@ -1,10 +1,9 @@
 import { createFileRoute } from '@tanstack/react-router'
-import { useEffect, useState } from 'react'
-import type { Resume } from '@monorepo/data-types'
-import { createServerFn } from '@tanstack/react-start'
+import { useQuery } from '@tanstack/react-query'
 import sampleResume from '@monorepo/data-types/sample.json'
+import { createServerFn } from '@tanstack/react-start'
 
-const getResume = createServerFn({ method: 'GET' }).handler(async () => {
+const fetchResume = createServerFn({ method: 'GET' }).handler(async () => {
   return sampleResume
 })
 
@@ -13,34 +12,23 @@ export const Route = createFileRoute('/cv')({
 })
 
 function CVPage() {
-  const [resume, setResume] = useState<Resume | null>(null)
-  const [loading, setLoading] = useState(true)
-  const [error, setError] = useState<string | null>(null)
+  const {
+    data: resume,
+    isLoading,
+    error,
+  } = useQuery({
+    queryKey: ['resume'],
+    queryFn: fetchResume,
+    staleTime: 1000 * 60 * 60, // Cache for 1 hour
+  })
 
-  useEffect(() => {
-    const fetchResume = async () => {
-      try {
-        setLoading(true)
-        const data = await getResume()
-        setResume(data)
-      } catch (err) {
-        const message = err instanceof Error ? err.message : 'Unknown error'
-        setError(message)
-        console.error('Error fetching resume:', err)
-      } finally {
-        setLoading(false)
-      }
-    }
-
-    fetchResume()
-  }, [])
-
-  if (loading) {
+  if (isLoading) {
     return <div className="container">Loading resume...</div>
   }
 
   if (error) {
-    return <div className="container error">Error: {error}</div>
+    const message = error instanceof Error ? error.message : 'Unknown error'
+    return <div className="container error">Error: {message}</div>
   }
 
   if (!resume) {
@@ -111,7 +99,6 @@ function CVPage() {
                 <p className="date">
                   {edu.startDate} {edu.endDate ? `— ${edu.endDate}` : ''}
                 </p>
-                {edu.score && <p className="score">Grade: {edu.score}</p>}
               </div>
             ))}
           </div>
