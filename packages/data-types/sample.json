@@ -1,0 +1,174 @@
+{
+  "basics": {
+    "name": "Robert Douglas",
+    "label": "Senior Frontend Developer & Design Engineer",
+    "image": "https://gravatar.com/avatar/0657b90b945d2fbc5d47da5f1ef480ee32c7dc10afaafc8e19b7efff7bcd468f?v=1522820361000&size=256&d=initials",
+    "email": "rob@anucreative.com",
+    "phone": "+33 7 50 97 71 72",
+    "url": "https://anucreative.com",
+    "summary": "Developer / designer with 20+ years experience in web and mobile, I currently work as a Senior Front-end Developer at Welcome to the Jungle. Previously, I spent four years leading the Design & UX team at Rightmove (UK’s largest property website) followed by six years as a 'multidisciplinaire' at ribot (mobile design studio). After moving to France I led a cross-functional team at a VR startup remotely before joining Welcome to the Jungle six years ago.",
+    "location": {
+      "address": "Marseille",
+      "city": "Marseille",
+      "countryCode": "FR",
+      "region": "Provence-Alpes-Côte d'Azur"
+    },
+    "profiles": [
+      {
+        "network": "GitHub",
+        "username": "anucreative",
+        "url": "https://github.com/anucreative"
+      },
+      {
+        "network": "Linkedin",
+        "username": "anucreative",
+        "url": "https://linkedin.com/in/anucreative"
+      }
+    ]
+  },
+  "work": [
+    {
+      "name": "Welcome to the Jungle",
+      "position": "Senior Frontend Developer",
+      "url": "https://welcometothejungle.co",
+      "startDate": "2018-04-01",
+      "summary": "Lead frontend development for the B2C job search platform. Focus on new features, performance optimization, and component library development.",
+      "highlights": [
+        "Implemented new features and evolutions of B2C site with React / Vite / react-testing-library and Cypress",
+        "Led performance improvements: TTFB -70%, LCP -50%, CLS 0.02s",
+        "Implemented Cloudfront CDN strategy reducing latency globally",
+        "Established site performance (CRUX) and tracking best practices",
+        "Built internal tools and maintained component library",
+        "Increased code coverage and mentored junior developers"
+      ]
+    },
+    {
+      "name": "Pupil",
+      "position": "Lead Frontend Developer",
+      "startDate": "2016-09-01",
+      "endDate": "2018-04-01",
+      "summary": "Led frontend development team managing tech stack and code consistency.",
+      "highlights": [
+        "Managed frontend developers and maintained tech stack decisions",
+        "Delivered and iterated on React/Redux application",
+        "Ensured code consistency and quality across team"
+      ]
+    },
+    {
+      "name": "ribot",
+      "position": "Senior User Experience Designer & Developer",
+      "url": "https://ribot.co.uk",
+      "startDate": "2010-06-01",
+      "endDate": "2016-09-01",
+      "summary": "Multidisciplinary role at award-winning mobile design studio. Contributed across research, design, development, and project management.",
+      "highlights": [
+        "User research, design, development, and project management",
+        "Led design and frontend development for Tesco's first mobile apps (Nokia, iPhone, iPad, Windows Phone, Chrome)",
+        "Designed and developed Intel proof-of-concepts and prototypes",
+        "Developed mobile and web prototypes for diverse client base",
+        "Mentored team members in professional development"
+      ]
+    }
+  ],
+  "education": [
+    {
+      "institution": "The University of Auckland",
+      "url": "https://www.auckland.ac.nz",
+      "area": "Computer Science",
+      "studyType": "Bachelor of Science",
+      "startDate": "1993-03-01",
+      "endDate": "1996-06-30"
+    }
+  ],
+  "skills": [
+    {
+      "name": "Frontend Development",
+      "level": "Expert",
+      "keywords": ["React", "TypeScript", "Vite", "Next.js", "Vue.js", "TanStack", "Webpack"]
+    },
+    {
+      "name": "Performance Optimization",
+      "level": "Expert",
+      "keywords": [
+        "Core Web Vitals",
+        "Lighthouse",
+        "Code Splitting",
+        "Tree Shaking",
+        "Caching Strategies"
+      ]
+    },
+    {
+      "name": "UI/UX Design",
+      "level": "Advanced",
+      "keywords": [
+        "Design Systems",
+        "Component Design",
+        "Accessibility (a11y)",
+        "Responsive Design",
+        "User Research"
+      ]
+    },
+    {
+      "name": "Testing",
+      "level": "Advanced",
+      "keywords": ["Jest", "React Testing Library", "Cypress", "Playwright", "Test Coverage"]
+    },
+    {
+      "name": "Backend Development",
+      "level": "Intermediate",
+      "keywords": ["Node.js", "Express", "PostgreSQL", "MongoDB", "REST APIs"]
+    },
+    {
+      "name": "DevOps & Deployment",
+      "level": "Intermediate",
+      "keywords": ["GitHub Actions", "Netlify", "Docker", "CDN Optimization", "CI/CD Pipelines"]
+    }
+  ],
+  "languages": [
+    {
+      "language": "English",
+      "fluency": "Native speaker"
+    },
+    {
+      "language": "French",
+      "fluency": "Professional working proficiency"
+    }
+  ],
+  "volunteer": [
+    {
+      "organization": "Coding Bootcamp Mentor",
+      "position": "Technical Mentor",
+      "startDate": "2015-06-01",
+      "summary": "Mentored aspiring developers transitioning into tech careers.",
+      "highlights": [
+        "Provided code reviews and pair programming sessions",
+        "Guided students through projects and best practices"
+      ]
+    }
+  ],
+  "projects": [
+    {
+      "name": "anucreative Website",
+      "startDate": "2024-01-01",
+      "description": "Personal portfolio and CV website built with React, TanStack Router, and deployed on Netlify.",
+      "highlights": [
+        "Multi-theme support with CSS variables",
+        "JSON Resume schema integration",
+        "Performance optimized (100 Lighthouse score)",
+        "Open source monorepo structure"
+      ],
+      "url": "https://anucreative.com",
+      "keywords": ["React", "TypeScript", "TanStack", "JSON Resume", "Monorepo"]
+    }
+  ],
+  "interests": [
+    {
+      "name": "Climbing",
+      "keywords": ["Lead", "Bouldering", "Sport climbing"]
+    },
+    {
+      "name": "Trail running",
+      "keywords": ["Mountain trails", "Endurance", "Navigation"]
+    }
+  ]
+}
