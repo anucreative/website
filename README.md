@@ -39,23 +39,22 @@ This project follows a "release early, release often" philosophy:
 
 Build a working CV page at `/cv` with hardcoded data. Data types and structure defined upfront for future API integration.
 
-- [ ] **2.1 Create Shared Packages**
-  - [ ] `packages/shared/` - Routes, themes, constants (already started)
-  - [ ] `packages/data-types/` - TypeScript interfaces for CV data (shape matches future API)
-  - [ ] Create `src/data-types.ts` with CV data interface
-  - [ ] Create sample JSON for development
+- [x] **2.1 Create Shared Packages**
+  - [x] `packages/shared/` - Routes, themes, constants (already started)
+  - [x] `packages/data-types/` - TypeScript interfaces for CV data (shape matches future API)
+  - [x] Create `src/data-types.ts` with CV data interface
+  - [x] Create sample JSON for development
 
-- [ ] **2.2 Create `packages/msw/` - Mock Service Worker**
-  - [ ] Initialize with `package.json`
-  - [ ] Create `src/handlers.ts` - MSW handlers using JSON data
-  - [ ] Create `src/server.ts` - Node.js worker setup
-  - [ ] Create `src/browser.ts` - Browser worker setup
-  - [ ] Create `src/index.ts` - Export all handlers
+- [x] **2.2 Create `packages/msw/` - Mock Service Worker**
+  - [x] Initialize with `package.json`
+  - [x] Create `src/handlers.ts` - MSW handlers using JSON data
+  - [x] Create `src/server.ts` - Node.js worker setup
+  - [x] Create `src/browser.ts` - Browser worker setup
+  - [x] Create `src/index.ts` - Export all handlers
 
 - [ ] **2.3 Create TanStack Start App**
   - [ ] Initialize `apps/start/` with TanStack Start
   - [ ] Set up TypeScript configuration
-  - [ ] Create `/src/data.json` with hardcoded CV data
   - [ ] Create root layout (`/src/routes/__root.tsx`)
   - [ ] Create `/src/routes/cv.tsx` page
   - [ ] Fetch data from MSW (mocked JSON)
