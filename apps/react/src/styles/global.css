@@ -1,13 +1,6 @@
 /* CSS Variables from theme system (injected at runtime) */
 /* See packages/shared/src/themes/ for theme definitions */
 
-/* Dark theme override */
-[data-theme='alan'] {
-  --color-primary: #1a1a1a;
-  --color-secondary: #ffffff;
-  --color-accent: #ff6b35;
-}
-
 /* Reset */
 *,
 *::before,

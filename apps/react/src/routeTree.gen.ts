@@ -10,33 +10,42 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as CvRouteImport } from './routes/cv'
+import { Route as CvCompanyRouteImport } from './routes/cv/$company'
 
 const CvRoute = CvRouteImport.update({
   id: '/cv',
   path: '/cv',
   getParentRoute: () => rootRouteImport,
 } as any)
+const CvCompanyRoute = CvCompanyRouteImport.update({
+  id: '/$company',
+  path: '/$company',
+  getParentRoute: () => CvRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
-  '/cv': typeof CvRoute
+  '/cv': typeof CvRouteWithChildren
+  '/cv/$company': typeof CvCompanyRoute
 }
 export interface FileRoutesByTo {
-  '/cv': typeof CvRoute
+  '/cv': typeof CvRouteWithChildren
+  '/cv/$company': typeof CvCompanyRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
-  '/cv': typeof CvRoute
+  '/cv': typeof CvRouteWithChildren
+  '/cv/$company': typeof CvCompanyRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/cv'
+  fullPaths: '/cv' | '/cv/$company'
   fileRoutesByTo: FileRoutesByTo
-  to: '/cv'
-  id: '__root__' | '/cv'
+  to: '/cv' | '/cv/$company'
+  id: '__root__' | '/cv' | '/cv/$company'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
-  CvRoute: typeof CvRoute
+  CvRoute: typeof CvRouteWithChildren
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +57,28 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CvRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/cv/$company': {
+      id: '/cv/$company'
+      path: '/$company'
+      fullPath: '/cv/$company'
+      preLoaderRoute: typeof CvCompanyRouteImport
+      parentRoute: typeof CvRoute
+    }
   }
 }
 
+interface CvRouteChildren {
+  CvCompanyRoute: typeof CvCompanyRoute
+}
+
+const CvRouteChildren: CvRouteChildren = {
+  CvCompanyRoute: CvCompanyRoute,
+}
+
+const CvRouteWithChildren = CvRoute._addFileChildren(CvRouteChildren)
+
 const rootRouteChildren: RootRouteChildren = {
-  CvRoute: CvRoute,
+  CvRoute: CvRouteWithChildren,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

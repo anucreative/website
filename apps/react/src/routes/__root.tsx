@@ -44,7 +44,7 @@ function RootComponent() {
       <html>
         <head>
           <HeadContent />
-          <style dangerouslySetInnerHTML={{ __html: themeStyles }} />
+          <style key={`theme-${theme}`} dangerouslySetInnerHTML={{ __html: themeStyles }} />
         </head>
         <body>
           <Outlet />

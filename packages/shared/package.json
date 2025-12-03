@@ -1,7 +1,7 @@
 {
   "name": "@monorepo/shared",
   "version": "1.0.0",
-  "description": "Shared constants, types, and route definitions",
+  "description": "Shared constants, types, and theme definitions",
   "private": true,
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
@@ -9,10 +9,6 @@
     ".": {
       "import": "./dist/index.js",
       "types": "./dist/index.d.ts"
-    },
-    "./routes": {
-      "import": "./dist/routes.js",
-      "types": "./dist/routes.d.ts"
     },
     "./themes": {
       "import": "./dist/themes.js",

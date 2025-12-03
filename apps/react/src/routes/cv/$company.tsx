@@ -1,12 +1,14 @@
 import { createFileRoute } from '@tanstack/react-router'
-import { CV } from '../components/CV'
-import { useResume } from '../hooks/useResume'
+import { CV } from '../../components/CV'
+import { useResume } from '../../hooks/useResume'
 
-export const Route = createFileRoute('/cv')({
-  component: CVPage,
+export const Route = createFileRoute('/cv/$company')({
+  component: RouteComponent,
 })
 
-function CVPage() {
+function RouteComponent() {
+  // Theme is determined from the pathname in __root.tsx
+  // The $company parameter just allows dynamic routing
   const { data: resume, isLoading, error } = useResume()
 
   if (isLoading) {
