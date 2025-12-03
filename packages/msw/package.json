@@ -13,10 +13,6 @@
     "./handlers": {
       "import": "./dist/handlers.js",
       "types": "./dist/handlers.d.ts"
-    },
-    "./browser": {
-      "import": "./dist/browser.js",
-      "types": "./dist/browser.d.ts"
     }
   },
   "scripts": {

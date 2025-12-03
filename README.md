@@ -61,10 +61,10 @@ Build a working CV page at `/cv` with hardcoded data. Data types and structure d
   - [x] Implement basic styling with CSS variables
   - [x] Set up `.env.example`
 
-- [ ] **2.4 Test & Verify Locally**
-  - [ ] Start dev server and verify `/cv` loads
-  - [ ] Verify data displays correctly
-  - [ ] Verify TypeScript types work
+- [x] **2.4 Test & Verify Locally**
+  - [x] Start dev server and verify `/cv` loads
+  - [x] Verify data displays correctly
+  - [x] Verify TypeScript types work
 
 ### Phase 3: Deployment Pipeline (Live 🌐)
 

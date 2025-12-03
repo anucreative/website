@@ -11,5 +11,5 @@
     }
   },
   "include": ["src/**/*.ts", "src/**/*.tsx"],
-  "exclude": ["dist", "build", ".output", "node_modules"]
+  "exclude": ["dist", "build", ".output", "node_modules", "**/*.test.ts", "**/*.test.tsx"]
 }
