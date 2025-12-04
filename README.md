@@ -68,31 +68,34 @@ Build a working CV page at `/cv` with hardcoded data. Data types and structure d
 
 ### Phase 3: Deployment Pipeline (Live 🌐)
 
-Get the app live on Netlify with automatic deployments.
+Get the app live on Render with automatic deployments.
 
-- [ ] **3.1 Set up Netlify**
-  - [ ] Create Netlify site
-  - [ ] Connect GitHub repo
-  - [ ] Configure build command: `yarn build`
-  - [ ] Configure publish directory: `apps/react/.output/public`
+- [x] **3.1 Set up Render**
+  - [x] Create Render account
+  - [x] Create Web Service
+  - [x] Configure build command: `yarn && yarn build`
+  - [x] Configure start command: `yarn start`
 
-- [ ] **3.2 Configure Deployment**
-  - [ ] Set up `netlify.toml` in root
-  - [ ] Configure environment variables
-  - [ ] Test deployment pipeline
+- [x] **3.2 Configure Deployment**
+  - [x] Set up `render.yaml` in root for infrastructure as code
+  - [x] Configure environment variables (NODE_ENV, VITE_API_URL, etc.)
+  - [x] Scripts configured in package.json
 
 - [ ] **3.3 Go Live**
-  - [ ] Deploy to Netlify
-  - [ ] Verify site is live at custom domain
+  - [x] Push to GitHub (main branch)
+  - [x] Deploy to Render
+  - [x] Verify site is live at Render domain
+  - [x] Set up custom domain if needed
 
 ### First Release Checklist (Phase 3)
 
-- [ ] Phase 2 complete - /cv page loads with data
-- [ ] Netlify site created and configured
-- [ ] GitHub repo connected
-- [ ] Deployment pipeline tested
-- [ ] Custom domain set up
-- [ ] /cv and /cv/alan (once Phase 5 done) live and working
+- [x] Phase 2 complete - /cv page loads with data
+- [x] Build system working (`yarn build` successful)
+- [x] Tests passing (16/16 tests ✅)
+- [x] Render Web Service ready (render.yaml + scripts configured)
+- [x] GitHub repo connected for auto-deployment
+- [x] Deployment tested on Render
+- [x] /cv and /cv/alan (once Phase 5 done) live and working
 
 ### Phase 4: Component Library (Reusable UI 🎨)
 
@@ -138,7 +141,7 @@ Add ALAN theme variant at `/cv/alan` using CSS variables from the UI library.
 
 - [ ] **5.3 Deploy**
   - [ ] Push to GitHub
-  - [ ] Verify automatic deployment to Netlify
+  - [ ] Verify automatic deployment to Render
   - [ ] Test both `/cv` and `/cv/alan` routes
 
 ### Phase 6: Backend - Database & API (Type-Safe API 🔌)
@@ -198,7 +201,7 @@ Build Vue 3 version consuming the same data from the backend.
   - [ ] Verify all themes work
 
 - [ ] **8.4 Deploy**
-  - [ ] Deploy Vue app separately (or same Netlify site under subdomain)
+  - [ ] Deploy Vue app separately (or same Render service under subdomain)
   - [ ] Verify routes and data fetching work
 
 ### Phase 9: FastAPI Backend (Optional Python Backend)
@@ -264,7 +267,7 @@ anucreative-website/
 - **Styling:** CSS variables + Style Dictionary
 - **Mocking:** MSW (Mock Service Worker)
 - **Backend:** TanStack Start server routes (Prisma) + FastAPI (optional)
-- **Deployment:** Netlify
+- **Deployment:** Render
 - **Database:** SQLite (dev) / Postgres (prod)
 
 ---
@@ -309,8 +312,56 @@ yarn type-check
 - [Prisma Documentation](https://www.prisma.io/docs)
 - [Vue 3 Documentation](https://vuejs.org/)
 - [FastAPI Documentation](https://fastapi.tiangolo.com)
-- [Netlify Docs](https://docs.netlify.com/)
+- [Render Docs](https://docs.render.com/)
 - [Yarn Workspaces](https://yarnpkg.com/features/workspaces)
+
+## Deployment to Render
+
+### Prerequisites
+
+- GitHub account with repository pushed to `main` branch
+- Render.com account (https://render.com)
+
+### Deployment Steps
+
+1. **Connect Repository**
+   - Go to https://dashboard.render.com
+   - Click "New +" → "Web Service"
+   - Select "Deploy an existing repository"
+   - Search for and select this repository
+   - Click "Connect"
+
+2. **Configure Service**
+   - **Name:** `anucreative-website` (or your preference)
+   - **Environment:** `Node`
+   - **Build Command:** `yarn install && yarn build`
+   - **Start Command:** `yarn start`
+   - **Instance Type:** Free or Paid (your choice)
+
+3. **Set Environment Variables**
+   - Add `NODE_ENV`: `production`
+   - Add `VITE_API_URL`: `http://localhost:3001` (or your API URL)
+
+4. **Deploy**
+   - Click "Create Web Service"
+   - Render will build and deploy automatically
+   - Wait for build to complete (~2-3 minutes)
+   - Access your site at the provided Render domain
+
+5. **Custom Domain (Optional)**
+   - In Render dashboard, go to Settings
+   - Add custom domain under "Custom Domain"
+   - Follow DNS instructions for your domain registrar
+
+### Automatic Deployments
+
+Render automatically redeploys when you push to `main` branch. To test:
+
+```bash
+git add .
+git commit -m "Phase 3: Deployment configuration"
+git push origin main
+```
 
 ---
 
