@@ -16,8 +16,8 @@ const meta = {
     <cv-header
       .name=${args.name}
       .label=${args.label}
+      .image=${args.image}
       .summary=${args.summary}
-      .profiles=${args.profiles}
     ></cv-header>
   `,
   argTypes: {
@@ -29,13 +29,13 @@ const meta = {
       control: 'text',
       description: 'Job title or label',
     },
+    image: {
+      control: 'text',
+      description: 'URL of the avatar image',
+    },
     summary: {
       control: 'text',
       description: 'Brief bio or summary',
-    },
-    profiles: {
-      control: 'object',
-      description: 'Array of social profile links',
     },
   },
 } satisfies Meta<CVHeaderElement>
@@ -48,7 +48,7 @@ export const Default: Story = {
     name: basics.name,
     label: basics.label,
     summary: basics.summary,
-    profiles: basics.profiles,
+    image: basics.image,
   },
 }
 
@@ -56,7 +56,7 @@ export const WithoutSummary: Story = {
   args: {
     name: basics.name,
     label: basics.label,
-    profiles: basics.profiles?.slice(0, 2),
+    image: basics.image,
   },
 }
 
@@ -72,7 +72,7 @@ export const AlanTheme: Story = {
     name: basics.name,
     label: basics.label,
     summary: basics.summary,
-    profiles: basics.profiles,
+    image: basics.image,
   },
   render: args => html`
     <style>
@@ -82,7 +82,7 @@ export const AlanTheme: Story = {
       .name=${args.name}
       .label=${args.label}
       .summary=${args.summary}
-      .profiles=${args.profiles}
+      .image=${args.image}
     ></cv-header>
   `,
 }
@@ -91,5 +91,5 @@ interface CVHeaderElement {
   name: string
   label: string
   summary?: string
-  profiles?: Array<{ network: string; url: string }>
+  image?: string
 }
