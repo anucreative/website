@@ -101,128 +101,140 @@ Get the app live on Render with automatic deployments.
 
 Extract components to a shared Lit web components library with theming support via CSS variables.
 
-- [ ] **4.1 Create `packages/ui/` - Lit Components**
-  - [ ] Initialize package with `package.json`
-  - [ ] Set up TypeScript configuration
-  - [ ] Create `src/components/` directory
-  - [ ] Create `src/themes/` directory for theme files
+- [x] **4.1 Create `packages/ui/` - Lit Components**
+  - [x] Initialize package with `package.json`
+  - [x] Set up TypeScript configuration
+  - [x] Create `src/components/` directory (CVHeader, CVCard, CVSection)
+  - [x] Create `src/themes/` directory for theme configuration
+  - [x] Create theme system with `applyTheme()` and `getThemeVariables()`
 
-- [ ] **4.2 Create Theme System**
-  - [ ] Create `src/themes/base.css` - CSS variables for default theme
-  - [ ] Create theme JSON files (default, alan)
-  - [ ] Set up Style Dictionary configuration to generate CSS from JSON
-  - [ ] Generate theme CSS files from JSON
-
-- [ ] **4.3 Create Example Components**
-  - [ ] Create `Card.ts` - Lit component for CV section
-  - [ ] Create `Header.ts` - Lit component for CV header
-  - [ ] Document component API
-
-- [ ] **4.4 Integrate into TanStack Start**
+- [ ] **4.2 Integrate into TanStack Start**
   - [ ] Import Lit components in TanStack Start
   - [ ] Replace hardcoded HTML with components
   - [ ] Verify theme CSS variables work
   - [ ] Test locally and redeploy
 
-### Phase 5: ALAN Theme (Multiple Themes 🎭)
+### Phase 5: Style Dictionary (Design Token Management 🎨)
 
-Add ALAN theme variant at `/cv/alan` using CSS variables from the UI library.
+Set up Style Dictionary to generate CSS from centralized theme JSON files.
 
-- [ ] **5.1 Create ALAN Theme**
-  - [ ] Define ALAN theme colors in JSON
-  - [ ] Generate ALAN theme CSS via Style Dictionary
-  - [ ] Add to `packages/ui/src/themes/alan.css`
+- [ ] **5.1 Create `packages/tokens/` - Design Tokens**
+  - [ ] Initialize package with `package.json`
+  - [ ] Create theme JSON files (`default.json`, `alan.json`)
+  - [ ] Define design tokens (colors, typography, spacing)
+  - [ ] Set up Style Dictionary configuration
 
-- [ ] **5.2 Implement Theme Switching**
+- [ ] **5.2 Generate Theme CSS**
+  - [ ] Configure Style Dictionary to generate CSS files
+  - [ ] Generate CSS custom properties from tokens
+  - [ ] Create build scripts in `packages/tokens`
+  - [ ] Output CSS to `packages/ui/src/themes/generated/`
+
+- [ ] **5.3 Integrate Generated Themes**
+  - [ ] Update `packages/ui` to use generated CSS
+  - [ ] Remove hardcoded theme variables from `src/themes/index.ts`
+  - [ ] Export theme CSS from UI package
+  - [ ] Verify all themes compile and work
+
+### Phase 6: ALAN Theme (Multiple Themes 🎭)
+
+Add ALAN theme variant at `/cv/alan` using CSS variables from generated themes.
+
+- [ ] **6.1 Verify ALAN Theme**
+  - [ ] Confirm `alan.json` tokens already in `packages/tokens`
+  - [ ] Verify ALAN CSS generated via Style Dictionary
+  - [ ] Ensure all ALAN theme tokens defined
+
+- [ ] **6.2 Implement Theme Switching**
   - [ ] Create theme context in TanStack Start
   - [ ] Update route `/cv/alan` to use ALAN theme
   - [ ] Apply theme CSS variables at root level
   - [ ] Verify theme switches correctly
 
-- [ ] **5.3 Deploy**
+- [ ] **6.3 Deploy**
   - [ ] Push to GitHub
   - [ ] Verify automatic deployment to Render
   - [ ] Test both `/cv` and `/cv/alan` routes
 
-### Phase 6: Backend - Database & API (Type-Safe API 🔌)
+### Phase 7: Backend - Database & API (Type-Safe API 🔌)
 
 Replace MSW with real backend using Prisma + TanStack Start server routes. Generate TypeScript types from Prisma.
 
-- [ ] **6.1 Set up Prisma**
+- [ ] **7.1 Set up Prisma**
   - [ ] Initialize Prisma in TanStack Start app
   - [ ] Create `prisma/schema.prisma` with CV data model
   - [ ] Set up SQLite for local dev (Postgres in production)
 
-- [ ] **6.2 Create Server Routes**
+- [ ] **7.2 Create Server Routes**
   - [ ] Create `/src/routes/api/cv.ts` - Server route returning CV data
   - [ ] Integrate Prisma client
   - [ ] Update TanStack Start to fetch from real API
 
-- [ ] **6.3 Generate API Types**
+- [ ] **7.3 Generate API Types**
   - [ ] Set up `@prisma/client` type generation
   - [ ] Create type guards and validators
   - [ ] Use generated types in frontend
 
-- [ ] **6.4 Database Setup**
+- [ ] **7.4 Database Setup**
   - [ ] Create database migrations
   - [ ] Seed database with sample data
   - [ ] Document database schema
 
-### Phase 7: More Themes (Extensibility 🌈)
+### Phase 8: More Themes (Extensibility 🌈)
 
 Add additional themes to demonstrate the theming system works well.
 
-- [ ] **7.1 Create Additional Themes**
-  - [ ] Define 2-3 new theme JSON files
+- [ ] **8.1 Create Additional Themes**
+  - [ ] Define 2-3 new theme JSON files in `packages/tokens`
   - [ ] Generate CSS via Style Dictionary
   - [ ] Create corresponding routes (`/cv/theme-name`)
 
-- [ ] **7.2 Create Theme Showcase**
+- [ ] **8.2 Create Theme Showcase**
   - [ ] Optional: Create `/themes` page showing all themes
   - [ ] Deploy and verify
 
-### Phase 8: Vue 3 Frontend (Alternative Framework 💚)
+### Phase 9: Vue 3 Frontend (Alternative Framework 💚)
 
 Build Vue 3 version consuming the same data from the backend.
 
-- [ ] **8.1 Create Vue App**
+- [ ] **9.1 Create Vue App**
   - [ ] Initialize `apps/web-vue/` with Vite + Vue 3
   - [ ] Set up TypeScript configuration
   - [ ] Install Vue Router
 
-- [ ] **8.2 Create Routes & Pages**
+- [ ] **9.2 Create Routes & Pages**
   - [ ] Create router configuration with shared routes
   - [ ] Create `/src/views/CVPage.vue`
   - [ ] Implement theme switching via composable
 
-- [ ] **8.3 Integrate UI Components**
+- [ ] **9.3 Integrate UI Components**
   - [ ] Import Lit components in Vue
-  - [ ] Apply theme CSS variables
+  - [ ] Apply theme CSS variables from `packages/ui`
   - [ ] Verify all themes work
 
-- [ ] **8.4 Deploy**
+- [ ] **9.4 Deploy**
   - [ ] Deploy Vue app separately (or same Render service under subdomain)
   - [ ] Verify routes and data fetching work
 
-### Phase 9: FastAPI Backend (Optional Python Backend)
+### Phase 10: FastAPI Backend (Optional Python Backend)
 
 Add Python FastAPI backend as alternative to TanStack Start server routes.
 
-- [ ] **9.1 Create FastAPI Service**
+- [ ] **10.1 Create FastAPI Service**
   - [ ] Initialize `services/api-python/` with FastAPI
   - [ ] Set up SQLAlchemy ORM
   - [ ] Create database models
   - [ ] Implement `/api/cv` endpoint
 
-- [ ] **9.2 API Documentation**
+- [ ] **10.2 API Documentation**
   - [ ] Generate OpenAPI schema
   - [ ] Set up Swagger UI
 
-- [ ] **9.3 Type Generation**
+- [ ] **10.3 Type Generation**
   - [ ] Generate TypeScript types from OpenAPI
   - [ ] Update frontends to use FastAPI backend (optional)
 
-### Phase 10: Optional Enhancements
+### Phase 11: Optional Enhancements
 
 - [ ] Set up E2E testing (Playwright/Cypress)
 - [ ] Add CI/CD workflows (GitHub Actions)
@@ -242,21 +254,22 @@ Add Python FastAPI backend as alternative to TanStack Start server routes.
 ```
 anucreative-website/
 ├── apps/
-│ ├── start/ # TanStack Start (React) full-stack app
-│ └── web-vue/ # Vue 3 frontend (Phase 8)
+│   ├── react/ # TanStack Start (React) full-stack app
+│   └── vue/ # Vue 3 frontend (Phase 9)
 ├── packages/
-│ ├── shared/ # Routes, themes, constants
-│ ├── data-types/ # TypeScript interfaces for CV data
-│ ├── ui/ # Lit web components library
-│ └── msw/ # Mock Service Worker setup
+│   ├── shared/ # Routes, themes, constants
+│   ├── data-types/ # TypeScript interfaces for CV data
+│   ├── ui/ # Lit web components library
+│   ├── tokens/ # Style Dictionary design tokens (Phase 5)
+│   └── msw/ # Mock Service Worker setup
 ├── services/
-│ └── api-python/ # FastAPI backend (Phase 9, optional)
+│   └── api-python/ # FastAPI backend (Phase 10, optional)
 └── ...config files
 ```
 
 ### Data Flow
 
-**Phase 2-3:** `data.json` → MSW handlers → Frontend (hardcoded) **Phase 4-5:** Components extracted, theme system via CSS variables **Phase 6+:** `Prisma/DB` → TanStack Start API routes → Frontend types from Prisma **Phase 8:** Vue app uses same backend and UI components **Phase 9:** FastAPI backend as alternative
+**Phase 2-3:** `data.json` → MSW handlers → Frontend (hardcoded) **Phase 4:** Components extracted (Lit web components) **Phase 5:** Design tokens centralized with Style Dictionary **Phase 6:** Theme system via generated CSS variables **Phase 7+:** `Prisma/DB` → TanStack Start API routes → Frontend types from Prisma **Phase 9:** Vue app uses same backend and UI components **Phase 10:** FastAPI backend as alternative
 
 ### Key Technologies
 
@@ -264,7 +277,8 @@ anucreative-website/
 - **Frontend (React):** TanStack Start
 - **Frontend (Vue):** Vite + Vue 3 + TanStack Router
 - **UI Components:** Lit web components
-- **Styling:** CSS variables + Style Dictionary
+- **Design Tokens:** Style Dictionary (centralized theme management)
+- **Styling:** CSS variables + generated from Style Dictionary
 - **Mocking:** MSW (Mock Service Worker)
 - **Backend:** TanStack Start server routes (Prisma) + FastAPI (optional)
 - **Deployment:** Render

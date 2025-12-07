@@ -3,6 +3,15 @@ node_modules/
 package-lock.json
 pnpm-lock.yaml
 
+# https://yarnpkg.com/getting-started/qa#which-files-should-be-gitignored
+.yarn/*
+!.yarn/cache
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/sdks
+!.yarn/versions
+
 # Build outputs
 dist/
 build/
