@@ -5,7 +5,7 @@
 
 import { http, HttpResponse } from 'msw'
 import type { Resume } from '@monorepo/data-types'
-import sampleResume from '@monorepo/data-types/sample.json' assert { type: 'json' }
+import sampleResume from '@monorepo/data-types/cv.json' assert { type: 'json' }
 
 /**
  * Mock API endpoints

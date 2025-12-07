@@ -10,10 +10,10 @@
       "import": "./dist/index.js",
       "types": "./dist/index.d.ts"
     },
-    "./sample.json": "./dist/sample.json"
+    "./cv.json": "./dist/cv.json"
   },
   "scripts": {
-    "build": "tsc --emitDeclarationOnly && cp sample.json dist/sample.json",
+    "build": "tsc --emitDeclarationOnly && cp cv.json dist/cv.json",
     "type-check": "tsc --noEmit",
     "clean": "rm -rf dist"
   },

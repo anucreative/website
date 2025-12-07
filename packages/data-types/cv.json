@@ -1,4 +1,10 @@
 {
+  "meta": {
+    "canonical": "https://raw.githubusercontent.com/anucreative/anucreative-website/main/packages/data-types/cv.json",
+    "version": "v1.0.0",
+    "lastModified": "2025-12",
+    "skipValidation": false
+  },
   "basics": {
     "name": "Robert Douglas",
     "label": "Senior Frontend Developer & Design Engineer",
@@ -8,7 +14,7 @@
     "url": "https://anucreative.com",
     "summary": "Developer / designer with 20+ years experience in web and mobile, I currently work as a Senior Front-end Developer at Welcome to the Jungle. Previously, I spent four years leading the Design & UX team at Rightmove (UK’s largest property website) followed by six years as a 'multidisciplinaire' at ribot (mobile design studio). After moving to France I led a cross-functional team at a VR startup remotely before joining Welcome to the Jungle six years ago.",
     "location": {
-      "address": "Marseille",
+      "address": "5 Avenue de la Campagne Berger",
       "city": "Marseille",
       "countryCode": "FR",
       "region": "Provence-Alpes-Côte d'Azur"
@@ -23,6 +29,10 @@
         "network": "Linkedin",
         "username": "anucreative",
         "url": "https://linkedin.com/in/anucreative"
+      },
+      {
+        "network": "Website",
+        "url": "https://anucreative.com"
       }
     ]
   },
@@ -31,8 +41,10 @@
       "name": "Welcome to the Jungle",
       "position": "Senior Frontend Developer",
       "url": "https://welcometothejungle.co",
+      "location": "Paris, France (Remote)",
+      "slug": "wttj",
       "startDate": "2018-04-01",
-      "summary": "Lead frontend development for the B2C job search platform. Focus on new features, performance optimization, and component library development.",
+      "summary": "Job board / media",
       "highlights": [
         "Implemented new features and evolutions of B2C site with React / Vite / react-testing-library and Cypress",
         "Led performance improvements: TTFB -70%, LCP -50%, CLS 0.02s",
@@ -45,9 +57,12 @@
     {
       "name": "Pupil",
       "position": "Lead Frontend Developer",
+      "url": "https://pupil.co",
+      "location": "London, UK (Remote)",
+      "slug": "pupil",
       "startDate": "2016-09-01",
       "endDate": "2018-04-01",
-      "summary": "Led frontend development team managing tech stack and code consistency.",
+      "summary": "VR startup",
       "highlights": [
         "Managed frontend developers and maintained tech stack decisions",
         "Delivered and iterated on React/Redux application",
@@ -58,16 +73,71 @@
       "name": "ribot",
       "position": "Senior User Experience Designer & Developer",
       "url": "https://ribot.co.uk",
+      "location": "Brighton, UK",
+      "slug": "ribot",
       "startDate": "2010-06-01",
       "endDate": "2016-09-01",
-      "summary": "Multidisciplinary role at award-winning mobile design studio. Contributed across research, design, development, and project management.",
+      "summary": "Mobile design studio",
       "highlights": [
-        "User research, design, development, and project management",
-        "Led design and frontend development for Tesco's first mobile apps (Nokia, iPhone, iPad, Windows Phone, Chrome)",
-        "Designed and developed Intel proof-of-concepts and prototypes",
+        "Pitches, user research, design, development and internal project management across many projects",
+        "Design (and some development) on Tesco's first mobile apps (Nokia, iPhone, iPad, Windows Phone, Chrome)",
+        "Designed and developed Intel proof-of-concepts and prototypes on IPad",
         "Developed mobile and web prototypes for diverse client base",
         "Mentored team members in professional development"
       ]
+    },
+    {
+      "name": "Rightmove",
+      "position": "Team Lead: Design, UX and Front-end Development",
+      "url": "https://rightmove.co.uk",
+      "location": "London, UK",
+      "slug": "rightmove",
+      "startDate": "2006-09-01",
+      "endDate": "2010-06-01",
+      "summary": "UK's number one property website",
+      "highlights": [
+        "Grew and led the Design & UX team ",
+        "Led the design and front-end development through a full redesign",
+        "Set up a User-Centred Design framework including usability testing and user research pool",
+        "Prototyped and user-tested various revenue-generating initiatives",
+        "Instigated and defined annual hack-days"
+      ]
+    },
+    {
+      "startDate": "2004",
+      "endDate": "2009-04-01",
+      "name": "Charity e-cards",
+      "summary": "Design and development of shopping site for digital charity greeting cards"
+    },
+    {
+      "startDate": "2004",
+      "endDate": "2006",
+      "name": "Touch Local",
+      "summary": "Design and front-end development"
+    },
+    {
+      "startDate": "2001",
+      "endDate": "2003",
+      "name": "Vodafone New Zealand",
+      "summary": "Design and front-end development"
+    },
+    {
+      "startDate": "2000",
+      "endDate": "2001",
+      "name": "Hit Studios",
+      "summary": "Design, full-stack development, print design, mobile development (!)"
+    },
+    {
+      "startDate": "1998",
+      "endDate": "2000",
+      "name": "Xtra (Telecom New Zealand)",
+      "summary": "Design and front-end development, editorial"
+    },
+    {
+      "startDate": "1996",
+      "endDate": "1998",
+      "name": "Business Internet Solutions",
+      "summary": "Design, full-stack development, IT support"
     }
   ],
   "education": [
@@ -82,12 +152,12 @@
   ],
   "skills": [
     {
-      "name": "Frontend Development",
+      "name": "Front-end",
       "level": "Expert",
       "keywords": ["React", "TypeScript", "Vite", "Next.js", "Vue.js", "TanStack", "Webpack"]
     },
     {
-      "name": "Performance Optimization",
+      "name": "Performance",
       "level": "Expert",
       "keywords": [
         "Core Web Vitals",
@@ -114,12 +184,12 @@
       "keywords": ["Jest", "React Testing Library", "Cypress", "Playwright", "Test Coverage"]
     },
     {
-      "name": "Backend Development",
+      "name": "Back-end",
       "level": "Intermediate",
       "keywords": ["Node.js", "Express", "PostgreSQL", "MongoDB", "REST APIs"]
     },
     {
-      "name": "DevOps & Deployment",
+      "name": "CI/CD/DevOps",
       "level": "Intermediate",
       "keywords": ["GitHub Actions", "Netlify", "Docker", "CDN Optimization", "CI/CD Pipelines"]
     }
@@ -136,19 +206,19 @@
   ],
   "volunteer": [
     {
-      "organization": "Coding Bootcamp Mentor",
-      "position": "Technical Mentor",
-      "startDate": "2015-06-01",
-      "summary": "Mentored aspiring developers transitioning into tech careers.",
+      "organization": "Student Partnerships Worldwide (Tanzania)",
+      "position": "Volunteer Teacher",
+      "startDate": "2003-01-01",
+      "endDate": "2004-09-01",
+      "summary": "Teaching, sexual health education and event management",
       "highlights": [
-        "Provided code reviews and pair programming sessions",
-        "Guided students through projects and best practices"
+        "Volunteer on the Sexual Health Education Program: teaching secondary school children (and the community) about HIV/AIDS and other STIs in Tanzania."
       ]
     }
   ],
   "projects": [
     {
-      "name": "anucreative Website",
+      "name": "anucreative website",
       "startDate": "2024-01-01",
       "description": "Personal portfolio and CV website built with React, TanStack Router, and deployed on Netlify.",
       "highlights": [
@@ -158,17 +228,17 @@
         "Open source monorepo structure"
       ],
       "url": "https://anucreative.com",
-      "keywords": ["React", "TypeScript", "TanStack", "JSON Resume", "Monorepo"]
+      "keywords": ["React", "TypeScript", "TanStack Start", "Monorepo", "Vue.js"]
     }
   ],
   "interests": [
     {
       "name": "Climbing",
-      "keywords": ["Lead", "Bouldering", "Sport climbing"]
+      "keywords": ["Lead (7A / 5.11c)", "Bouldering (Font 6C+ / V2/V3)"]
     },
     {
       "name": "Trail running",
-      "keywords": ["Mountain trails", "Endurance", "Navigation"]
+      "keywords": ["Mountain trails", "Les Calanques"]
     }
   ]
 }

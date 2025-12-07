@@ -1,6 +1,6 @@
 import { useQuery } from '@tanstack/react-query'
 import type { Resume } from '@monorepo/data-types'
-import sampleResume from '@monorepo/data-types/sample.json'
+import sampleResume from '@monorepo/data-types/cv.json'
 
 /**
  * Fetch resume data

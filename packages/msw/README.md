@@ -43,10 +43,10 @@ afterAll(() => server.close())
 
 ## Integration
 
-This package provides mock data from `@monorepo/data-types` sample.json, allowing:
+This package provides mock data from `@monorepo/data-types` cv.json, allowing:
 
 - Full frontend development without backend
 - Predictable test data
 - Easy transition to real API in Phase 6
 
-See `sample.json` in `@monorepo/data-types` for the mock data structure.
+See `cv.json` in `@monorepo/data-types` for the mock data structure.

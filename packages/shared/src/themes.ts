@@ -44,6 +44,11 @@ export interface ThemeSpacing {
   [key: string]: string | undefined
 }
 
+export interface ThemeFormat {
+  borderRadius?: string
+  [key: string]: string | undefined
+}
+
 export interface Theme {
   name: ThemeType
   colors: ThemeColors
@@ -53,6 +58,7 @@ export interface Theme {
     maxWidth?: string
     [key: string]: string | undefined
   }
+  format?: ThemeFormat
   [key: string]: unknown
 }
 
@@ -109,6 +115,7 @@ export const themeToCSSVariables = (theme: Theme): string => {
     ...toCSSVars(theme.typography, 'font'),
     ...toCSSVars(theme.spacing, 'spacing'),
     ...toCSSVars(theme.layout, 'layout'),
+    ...toCSSVars(theme.format, 'format'),
     '}',
   ]
 

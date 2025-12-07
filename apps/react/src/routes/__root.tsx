@@ -23,13 +23,23 @@ const getThemeFromPath = (pathname: string): 'default' | 'alan' => {
 }
 
 export const Route = createRootRoute({
-  head: () => ({
-    meta: [
-      { charSet: 'utf-8' },
-      { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { title: 'anucreative - CV' },
-    ],
-  }),
+  head: () => {
+    return {
+      links: [
+        { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
+        { rel: 'preconnect', href: 'https://fonts.gstatic.com', crossOrigin: 'anonymous' },
+        {
+          href: 'https://fonts.googleapis.com/css2?family=Lato:wght@400;500;600;900&display=swap&subset=latin',
+          rel: 'stylesheet',
+        },
+      ],
+      meta: [
+        { charSet: 'utf-8' },
+        { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+        { title: 'anucreative - CV' },
+      ],
+    }
+  },
   component: RootComponent,
 })
 
@@ -44,7 +54,7 @@ function RootComponent() {
       <html>
         <head>
           <HeadContent />
-          <style key={`theme-${theme}`} dangerouslySetInnerHTML={{ __html: themeStyles }} />
+          <style key={`theme-${theme}`}>{themeStyles}</style>
         </head>
         <body>
           <Outlet />

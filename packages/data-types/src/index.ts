@@ -49,6 +49,8 @@ export interface Work {
   name?: string
   position: string
   url?: string
+  location?: string
+  slug?: string
   startDate?: string // ISO 8601 format
   endDate?: string // ISO 8601 format
   summary?: string

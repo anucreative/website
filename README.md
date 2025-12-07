@@ -1,4 +1,4 @@
-# AnuCreative Monorepo
+# anucreative website
 
 A monorepo for building CV websites with multiple frontend frameworks (React/TanStack Start, Vue 3) sharing common UI components and data sources. Built with Turborepo, Yarn Workspaces, and designed for iterative delivery.
 
