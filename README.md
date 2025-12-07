@@ -108,7 +108,14 @@ Extract components to a shared Lit web components library with theming support v
   - [x] Create `src/themes/` directory for theme configuration
   - [x] Create theme system with `applyTheme()` and `getThemeVariables()`
 
-- [ ] **4.2 Integrate into TanStack Start**
+- [x] **4.2 Set up Storybook for Component Testing**
+  - [x] Install Storybook 10.1.4 with web-components-vite framework
+  - [x] Configure `.storybook/main.ts` and `.storybook/preview.ts`
+  - [x] Create story files for CVHeader, CVCard, CVSection
+  - [x] Add stories for both default and alan themes
+  - [x] Enable accessibility and docs addons
+
+- [ ] **4.3 Integrate into TanStack Start**
   - [ ] Import Lit components in TanStack Start
   - [ ] Replace hardcoded HTML with components
   - [ ] Verify theme CSS variables work

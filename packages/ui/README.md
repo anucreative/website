@@ -123,6 +123,22 @@ Themes are defined in `@monorepo/shared` with the following structure:
 yarn add @monorepo/ui
 ```
 
+### Development with Storybook
+
+To develop components interactively:
+
+```bash
+cd packages/ui
+yarn storybook
+```
+
+This opens Storybook at http://localhost:6006 where you can:
+
+- View all components with different prop combinations
+- Test theming (switch between default and alan themes)
+- Check accessibility compliance
+- See live code examples
+
 ## Usage
 
 Use components directly in React with JSX (React 19 supports web components):
@@ -174,9 +190,30 @@ yarn build
 # Type check
 yarn type-check
 
+# Run Storybook for interactive component testing
+yarn storybook
+
+# Build Storybook for static deployment
+yarn storybook:build
+
 # Clean output
 yarn clean
 ```
+
+### Storybook
+
+Storybook is set up for interactive component development and testing:
+
+1. **Run Storybook:** `yarn storybook` (opens at http://localhost:6006)
+2. **Browse Stories:** Navigate to "Components" section to see:
+   - CVHeader - with different theme examples
+   - CVCard - work experience, education, and other variants
+   - CVSection - section wrapper with multiple cards
+3. **Test Themes:** Each component has stories for both `default` and `alan` themes
+4. **Accessibility Testing:** Built-in accessibility panel checks for WCAG violations
+5. **Vitest Integration:** Run component tests within Storybook with the Vitest addon
+
+Story files are located in `src/components/*.stories.ts` and use Lit's `html` template syntax.
 
 ## Architecture
 
