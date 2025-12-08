@@ -1378,6 +1378,7 @@ __metadata:
     "@monorepo/data-types": "workspace:*"
     "@monorepo/msw": "workspace:*"
     "@monorepo/shared": "workspace:*"
+    "@monorepo/ui": "workspace:*"
     "@tanstack/react-query": "npm:^5.90.11"
     "@tanstack/react-router": "npm:^1.139.14"
     "@tanstack/react-start": "npm:^1.139.14"
@@ -1410,7 +1411,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@monorepo/ui@workspace:packages/ui":
+"@monorepo/ui@workspace:*, @monorepo/ui@workspace:packages/ui":
   version: 0.0.0-use.local
   resolution: "@monorepo/ui@workspace:packages/ui"
   dependencies:
