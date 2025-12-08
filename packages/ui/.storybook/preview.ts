@@ -1,6 +1,5 @@
 import type { Preview } from '@storybook/web-components-vite'
-import { html } from 'lit'
-import { getThemeStyles } from '@monorepo/shared/themes'
+import '@monorepo/tokens/default.css'
 import '../src/global.css'
 
 const preview: Preview = {
@@ -19,15 +18,6 @@ const preview: Preview = {
       test: 'todo',
     },
   },
-
-  decorators: [
-    story => html`
-      <style>
-        ${getThemeStyles('default')}
-      </style>
-      ${story()}
-    `,
-  ],
 }
 
 export default preview

@@ -7,7 +7,7 @@ export const sectionStyles = css`
 
   .title {
     @media (min-width: 768px) {
-      margin-left: calc(var(--format-column-width) + var(--spacing-md));
+      margin-left: calc(var(--layout-column-width) + var(--spacing-md));
     }
   }
 
@@ -25,16 +25,16 @@ export const sectionStyles = css`
   }
 
   .label {
-    font-size: var(--font-font-size);
-    font-weight: var(--font-h1-weight);
-    color: var(--color-text-light);
-    width: var(--format-column-width);
+    font-size: var(--typography-font-size-md);
+    font-weight: var(--typography-font-weight-semibold);
+    color: var(--color-secondary);
+    width: var(--layout-column-width);
     margin-bottom: var(--spacing-xs);
 
     @media (min-width: 768px) {
       text-align: right;
       margin-bottom: 0;
-      font-weight: var(--font-h4-weight);
+      font-weight: var(--typography-font-weight-normal);
 
       &:not(:empty):not(:has(img)):after {
         content: ':';

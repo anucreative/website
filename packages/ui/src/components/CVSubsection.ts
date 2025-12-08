@@ -2,7 +2,7 @@ import { LitElement, html } from 'lit'
 import { customElement, property } from 'lit/decorators.js'
 import { resetStyles } from '../shared/reset'
 import { sectionStyles } from '../shared/section'
-import { textStyles } from '../shared/text'
+import { typographyStyles } from '../shared/typography'
 
 /**
  * CVSubsection component - wraps CV subsection with label
@@ -12,7 +12,7 @@ import { textStyles } from '../shared/text'
 export class CVSubsection extends LitElement {
   @property({ type: String }) label: string = ''
 
-  static styles = [resetStyles, textStyles, sectionStyles]
+  static styles = [resetStyles, typographyStyles, sectionStyles]
 
   render() {
     return html`

@@ -2,7 +2,7 @@ import { LitElement, html, css } from 'lit'
 import { customElement, property } from 'lit/decorators.js'
 import { resetStyles } from '../shared/reset'
 import { sectionStyles } from '../shared/section'
-import { textStyles } from '../shared/text'
+import { typographyStyles } from '../shared/typography'
 
 /**
  * CVHeader component - displays CV header with name, title, and summary
@@ -17,7 +17,7 @@ export class CVHeader extends LitElement {
 
   static styles = [
     resetStyles,
-    textStyles,
+    typographyStyles,
     sectionStyles,
     css`
       .header {
@@ -25,14 +25,14 @@ export class CVHeader extends LitElement {
         margin-top: 0;
 
         .byline {
-          font-size: var(--font-h3-size);
-          font-weight: var(--font-h1-weight);
+          font-size: var(--typography-font-size-xl);
+          font-weight: var(--typography-font-weight-bold);
           color: var(--color-accent);
         }
 
         .intro {
-          font-size: var(--font-h3-size);
-          color: var(--color-text-light);
+          font-size: var(--typography-font-size-lg);
+          color: var(--color-secondary);
           max-width: 100%;
         }
 
