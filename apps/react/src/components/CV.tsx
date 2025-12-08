@@ -1,5 +1,6 @@
 import type { Resume } from '@monorepo/data-types'
 import { getDates } from 'src/utils/date'
+import '@monorepo/ui/components'
 
 interface CVProps {
   resume: Resume
@@ -10,29 +11,16 @@ export function CV({ resume }: CVProps) {
 
   return (
     <div className="container">
-      <header className="section header">
-        <div className="subsection">
-          <div className="label">
-            <img src={basics.image} alt={basics.name} className="avatar" />
-          </div>
-          <div className="content">
-            <h1>{basics.name}</h1>
-            {basics.label && <p className="byline">{basics.label}</p>}
-          </div>
-        </div>
-        {basics.summary && (
-          <div className="subsection">
-            <div className="label"></div>
-            <div className="content">
-              <p className="intro">{basics.summary}</p>
-            </div>
-          </div>
-        )}
-      </header>
+      <cv-header
+        name={basics.name}
+        label={basics.label}
+        summary={basics.summary}
+        image={basics.image}
+      ></cv-header>
 
-      <section className="section overview">
-        <div className="subsection">
-          <h3 className="label">Contact</h3>
+      <cv-section class="overview">
+        <cv-section-title>Contact</cv-section-title>
+        <cv-subsection label="Contact">
           <div className="content">
             <div className="entry">
               <a href={`mailto:${basics.email}`}>{basics.email}</a>
@@ -41,18 +29,16 @@ export function CV({ resume }: CVProps) {
               <a href={`tel:${basics.phone}`}>{basics.phone}</a>
             </div>
           </div>
-        </div>
-        <div className="subsection">
-          <h3 className="label">Address</h3>
+        </cv-subsection>
+        <cv-subsection label="Address">
           <div className="content">
             <div className="entry">
               {basics.location?.address}, {basics.location?.city}, {basics.location?.countryCode}
             </div>
           </div>
-        </div>
-        {languages && languages?.length > 0 && (
-          <div className="subsection">
-            <h3 className="label">Languages</h3>
+        </cv-subsection>
+        {languages && languages.length > 0 && (
+          <cv-subsection label="Languages">
             <div className="content">
               {languages.map(({ language, fluency }) => (
                 <div key={language} className="entry">
@@ -61,11 +47,10 @@ export function CV({ resume }: CVProps) {
                 </div>
               ))}
             </div>
-          </div>
+          </cv-subsection>
         )}
-        {basics.profiles && basics.profiles?.length > 0 && (
-          <div className="subsection">
-            <h3 className="label">Profiles</h3>
+        {basics.profiles && basics.profiles.length > 0 && (
+          <cv-subsection label="Profiles">
             <div className="content">
               {basics.profiles.map(({ network, url }) => (
                 <div className="entry">
@@ -75,17 +60,16 @@ export function CV({ resume }: CVProps) {
                 </div>
               ))}
             </div>
-          </div>
+          </cv-subsection>
         )}
-      </section>
+      </cv-section>
 
-      {skills && skills?.length > 0 && (
-        <section className="section skills">
-          <h2 className="title">Skills & tools</h2>
+      {skills && skills.length > 0 && (
+        <cv-section class="skills">
+          <cv-section-title>Skills & tools</cv-section-title>
           {skills.map(({ name, keywords }) => (
-            <div key={name} className="subsection">
-              <h3 className="label">{name}</h3>
-              {keywords && keywords?.length > 0 && (
+            <cv-subsection key={name} label={name}>
+              {keywords && keywords.length > 0 && (
                 <div className="content">
                   {keywords.map(keyword => (
                     <span key={keyword} className="entry">
@@ -94,20 +78,19 @@ export function CV({ resume }: CVProps) {
                   ))}
                 </div>
               )}
-            </div>
+            </cv-subsection>
           ))}
-        </section>
+        </cv-section>
       )}
 
-      {work && work?.length > 0 && (
-        <section className="section experience">
-          <h2 className="title">Experience</h2>
+      {work && work.length > 0 && (
+        <cv-section class="experience">
+          <cv-section-title>Experience</cv-section-title>
           {work.map(
             ({ name, position, startDate, endDate, location, summary, highlights, slug, url }) => {
               const dates = getDates({ startDate, endDate })
               return (
-                <div key={name} className="subsection">
-                  <p className="label">{dates}</p>
+                <cv-subsection key={name} label={dates}>
                   <div className={`content ${position ? 'has-position' : ''}`}>
                     <div className="intro">
                       {slug && (
@@ -126,7 +109,7 @@ export function CV({ resume }: CVProps) {
                         </p>
                       </div>
                     </div>
-                    {highlights && highlights?.length > 0 && (
+                    {highlights && highlights.length > 0 && (
                       <ul className="highlights">
                         {highlights.map(highlight => (
                           <li key={highlight}>{highlight}</li>
@@ -134,37 +117,35 @@ export function CV({ resume }: CVProps) {
                       </ul>
                     )}
                   </div>
-                </div>
+                </cv-subsection>
               )
             }
           )}
-        </section>
+        </cv-section>
       )}
 
-      {education && education?.length > 0 && (
-        <section className="section education">
-          <h2 className="title">Education</h2>
+      {education && education.length > 0 && (
+        <cv-section class="education">
+          <cv-section-title>Education</cv-section-title>
           {education.map(({ studyType, area, institution, startDate, endDate }) => (
-            <div key={institution} className="subsection">
-              <p className="label">{getDates({ startDate, endDate })}</p>
+            <cv-subsection key={institution} label={getDates({ startDate, endDate })}>
               <p>
                 {studyType} ({area}), {institution}
               </p>
-            </div>
+            </cv-subsection>
           ))}
-        </section>
+        </cv-section>
       )}
 
-      {interests && interests?.length > 0 && (
-        <section className="section interests">
-          <h2 className="title">Interests</h2>
+      {interests && interests.length > 0 && (
+        <cv-section class="interests">
+          <cv-section-title>Interests</cv-section-title>
           {interests.map(({ name, keywords }) => (
-            <div key={name} className="subsection">
-              <p className="label">{name}</p>
+            <cv-subsection key={name} label={name}>
               <p>{keywords?.join(', ')}</p>
-            </div>
+            </cv-subsection>
           ))}
-        </section>
+        </cv-section>
       )}
     </div>
   )
