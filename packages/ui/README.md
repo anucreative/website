@@ -12,17 +12,7 @@ Header component displaying name, title, summary, and profile links.
 import { CVHeader } from '@monorepo/ui/components'
 
 export function MyHeader() {
-  return (
-    <CVHeader
-      name="Your Name"
-      label="Software Engineer"
-      summary="Brief bio"
-      profiles={[
-        { network: 'GitHub', url: 'https://github.com/...' },
-        { network: 'LinkedIn', url: 'https://linkedin.com/...' },
-      ]}
-    />
-  )
+  return <cv-header name="Your Name" label="Software Engineer" summary="Brief bio"></cv-header>
 }
 ```
 
@@ -31,7 +21,7 @@ export function MyHeader() {
 - `name: string` - Full name
 - `label: string` - Job title/label
 - `summary: string` - Brief summary (optional)
-- `profiles: Array<{ network: string; url: string }>` - Social/profile links
+- `profiles: Array<{ network: string; url: string }>` - Social/profile links (set via property: `element.profiles = [...]`)
 
 **CSS Variables:**
 
@@ -40,72 +30,66 @@ export function MyHeader() {
 - `--font-xl` - Extra large font size
 - `--spacing-lg`, `--spacing-md`, `--spacing-sm` - Spacing utilities
 
-### CVCard
-
-Card component for CV entries (work experience, education, etc.).
-
-```tsx
-import { CVCard } from '@monorepo/ui/components'
-
-export function JobEntry() {
-  return (
-    <CVCard
-      title="Senior Engineer"
-      subtitle="Acme Corp"
-      date="Jan 2020 - Present"
-      description="Responsibilities and achievements..."
-    />
-  )
-}
-```
-
-**Properties:**
-
-- `title: string` - Entry title (e.g., job title)
-- `subtitle: string` - Subtitle (e.g., company name)
-- `date: string` - Date range
-- `description: string` - Entry description
-
-**CSS Variables:**
-
-- `--color-primary` - Primary text
-- `--color-secondary` - Secondary text
-- `--color-accent` - Border/highlight color
-- `--color-bg-secondary` - Card background
-- `--color-text-muted` - Muted text (date)
-- `--font-lg`, `--font-md`, `--font-sm` - Typography
-- `--spacing-md`, `--spacing-xs` - Spacing
-
 ### CVSection
 
 Wrapper component for CV sections with title header.
 
 ```tsx
-import { CVSection, CVCard } from '@monorepo/ui/components'
-
 export function WorkSection() {
-  return (
-    <CVSection title="Work Experience">
-      <CVCard
-        title="Senior Engineer"
-        subtitle="Acme Corp"
-        date="Jan 2020 - Present"
-        description="..."
-      />
-    </CVSection>
-  )
+  return <cv-section>Section content goes here</cv-section>
 }
 ```
-
-**Properties:**
-
-- `title: string` - Section title
 
 **CSS Variables:**
 
 - `--color-primary` - Title color
 - `--color-accent` - Title underline
 - `--spacing-lg`, `--spacing-md`, `--spacing-xs` - Spacing
+
+### CVSectionTitle
+
+Title component for section headers.
+
+```tsx
+export function SectionTitle() {
+  return <cv-section-title>Work Experience</cv-section-title>
+}
+```
+
+**Properties:**
+
+- Accepts text content via slot
+
+**CSS Variables:**
+
+- `--color-primary` - Title color
+- `--color-accent` - Title underline
+- `--font-lg` - Title font size
+- `--spacing-md`, `--spacing-sm` - Spacing
+
+### CVSubsection
+
+Subsection component for organizing content within sections.
+
+```tsx
+export function ExperienceSubsection() {
+  return (
+    <cv-subsection label="Technical Lead">
+      Subsection content like job details or accomplishments
+    </cv-subsection>
+  )
+}
+```
+
+**Properties:**
+
+- `label: string` - Subsection label
+
+**CSS Variables:**
+
+- `--color-primary` - Title color
+- `--font-lg` - Title font size
+- `--spacing-md`, `--spacing-sm` - Spacing utilities
 
 ## Themes
 
@@ -141,30 +125,34 @@ This opens Storybook at http://localhost:6006 where you can:
 
 ## Usage
 
-Use components directly in React with JSX (React 19 supports web components):
+Use components directly in React with standard HTML syntax. React 19 provides excellent support for web components:
 
 ```tsx
-import { CVHeader, CVCard, CVSection } from '@monorepo/ui/components'
-
 export function CV() {
   return (
     <>
-      <CVHeader
-        name="John Doe"
-        label="Full Stack Engineer"
-        profiles={[{ network: 'GitHub', url: 'https://github.com/...' }]}
-      />
-      <CVSection title="Experience">
-        <CVCard
-          title="Senior Engineer"
-          subtitle="Tech Company"
-          date="2020 - Present"
-          description="Built scalable systems..."
-        />
-      </CVSection>
+      <cv-header name="John Doe" label="Full Stack Engineer"></cv-header>
+      <cv-section title="Experience">Experience content goes here</cv-section>
     </>
   )
 }
+```
+
+**Note:** For complex data like arrays (e.g., `profiles` in CVHeader), set properties imperatively:
+
+```tsx
+const ref = useRef<HTMLElement>(null)
+
+useEffect(() => {
+  if (ref.current) {
+    ref.current.profiles = [
+      { network: 'GitHub', url: 'https://github.com/...' },
+      { network: 'LinkedIn', url: 'https://linkedin.com/...' },
+    ]
+  }
+}, [])
+
+return <cv-header ref={ref} name="John" label="Engineer"></cv-header>
 ```
 
 See `apps/react/src/routes/__root.tsx` for how themes are integrated in the root layout.
@@ -207,8 +195,9 @@ Storybook is set up for interactive component development and testing:
 1. **Run Storybook:** `yarn storybook` (opens at http://localhost:6006)
 2. **Browse Stories:** Navigate to "Components" section to see:
    - CVHeader - with different theme examples
-   - CVCard - work experience, education, and other variants
-   - CVSection - section wrapper with multiple cards
+   - CVSection - section wrapper component
+   - CVSectionTitle - section title component
+   - CVSubsection - subsection wrapper component
 3. **Test Themes:** Each component has stories for both `default` and `alan` themes
 4. **Accessibility Testing:** Built-in accessibility panel checks for WCAG violations
 5. **Vitest Integration:** Run component tests within Storybook with the Vitest addon

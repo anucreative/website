@@ -1,28 +1,27 @@
-import { LitElement, html, css } from 'lit'
+import { LitElement, html } from 'lit'
 import { customElement, property } from 'lit/decorators.js'
 import { resetStyles } from '../shared/reset'
 import { sectionStyles } from '../shared/section'
-import { textStyles } from '../shared/text'
 
 /**
- * CVSection component - wraps CV section with title header
+ * CVSectionTitle component - title for a CV section
  * Uses CSS variables from theme system for consistent styling
  */
-@customElement('cv-section')
-export class CVSection extends LitElement {
-  static styles = [resetStyles, textStyles, sectionStyles]
+@customElement('cv-section-title')
+export class CVSectionTitle extends LitElement {
+  static styles = [resetStyles, sectionStyles]
 
   render() {
     return html`
-      <div class="section">
+      <h2 class="title">
         <slot></slot>
-      </div>
+      </h2>
     `
   }
 }
 
 declare global {
   interface HTMLElementTagNameMap {
-    'cv-section': CVSection
+    'cv-section-title': CVSectionTitle
   }
 }

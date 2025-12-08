@@ -1,37 +1,37 @@
 import type { Meta, StoryObj } from '@storybook/web-components'
 import { html } from 'lit'
 import './CVSection'
-import './CVSectionTitle'
+import './CVSubsection'
 import resume from '@monorepo/data-types/cv.json'
 
 const { work, education, skills } = resume
+const job = work?.[0]
 
 const meta = {
-  title: 'Components/CVSection',
-  component: 'cv-section',
+  title: 'Components/CVSubsection',
+  component: 'cv-subsection',
   render: args => html`
     <cv-section>
-      <cv-section-title>${args.title}</cv-section-title>
-      Content goes here…
+      <cv-subsection label=${args.label}> Content goes here… </cv-subsection>
     </cv-section>
   `,
   argTypes: {
-    title: {
+    label: {
       control: 'text',
-      description: 'Section title with underline',
+      description: 'Subsection label',
     },
   },
-} satisfies Meta<CVSectionElement>
+} satisfies Meta<CVSubsectionElement>
 
 export default meta
-type Story = StoryObj<CVSectionElement>
+type Story = StoryObj<CVSubsectionElement>
 
 export const Default: Story = {
   args: {
-    title: 'Work experience',
+    label: 'Work Experience',
   },
 }
 
-interface CVSectionElement {
-  title: string
+interface CVSubsectionElement {
+  label: string
 }

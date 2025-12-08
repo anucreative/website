@@ -1,8 +1,8 @@
 import { LitElement, html, css } from 'lit'
 import { customElement, property } from 'lit/decorators.js'
-import { resetStyles } from '../shared/reset.js'
-import { sectionStyles } from '../shared/section.js'
-import { textStyles } from '../shared/text.js'
+import { resetStyles } from '../shared/reset'
+import { sectionStyles } from '../shared/section'
+import { textStyles } from '../shared/text'
 
 /**
  * CVHeader component - displays CV header with name, title, and summary
@@ -20,11 +20,6 @@ export class CVHeader extends LitElement {
     textStyles,
     sectionStyles,
     css`
-      :host {
-        display: block;
-        margin-bottom: var(--spacing-lg, 2rem);
-      }
-
       .header {
         margin-bottom: var(--spacing-2xl);
         margin-top: 0;

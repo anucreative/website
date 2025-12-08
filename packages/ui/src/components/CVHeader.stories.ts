@@ -1,7 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/web-components'
 import { html } from 'lit'
 import './CVHeader'
-import { getThemeStyles } from '@monorepo/shared/themes'
 import resume from '@monorepo/data-types/cv.json'
 
 const { basics } = resume
@@ -10,9 +9,6 @@ const meta = {
   title: 'Components/CVHeader',
   component: 'cv-header',
   render: args => html`
-    <style>
-      ${getThemeStyles('default')}
-    </style>
     <cv-header
       .name=${args.name}
       .label=${args.label}
@@ -65,26 +61,6 @@ export const MinimalHeader: Story = {
     name: basics.name,
     label: basics.label,
   },
-}
-
-export const AlanTheme: Story = {
-  args: {
-    name: basics.name,
-    label: basics.label,
-    summary: basics.summary,
-    image: basics.image,
-  },
-  render: args => html`
-    <style>
-      ${getThemeStyles('alan')}
-    </style>
-    <cv-header
-      .name=${args.name}
-      .label=${args.label}
-      .summary=${args.summary}
-      .image=${args.image}
-    ></cv-header>
-  `,
 }
 
 interface CVHeaderElement {

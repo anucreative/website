@@ -104,7 +104,7 @@ Extract components to a shared Lit web components library with theming support v
 - [x] **4.1 Create `packages/ui/` - Lit Components**
   - [x] Initialize package with `package.json`
   - [x] Set up TypeScript configuration
-  - [x] Create `src/components/` directory (CVHeader, CVCard, CVSection)
+  - [x] Create `src/components/` directory (CVHeader, CVSection, CVSectionTitle, CVSubsection)
   - [x] Create `src/themes/` directory for theme configuration
   - [x] Create theme system with `applyTheme()` and `getThemeVariables()`
 

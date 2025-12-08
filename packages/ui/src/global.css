@@ -65,7 +65,7 @@ a:hover {
 }
 
 /* Sections */
-/* .section {
+.section {
   margin-top: var(--spacing-2xl);
 
   .title {
@@ -108,7 +108,7 @@ a:hover {
       flex: 1;
     }
   }
-} */
+}
 
 /* Header */
 .header {
