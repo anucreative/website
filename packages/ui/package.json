@@ -1,0 +1,45 @@
+{
+  "name": "@monorepo/ui",
+  "version": "1.0.0",
+  "description": "Lit web components library with theming support",
+  "private": true,
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    },
+    "./components": {
+      "import": "./dist/components/index.js",
+      "types": "./dist/components/index.d.ts"
+    },
+    "./themes": {
+      "import": "./dist/themes/index.js",
+      "types": "./dist/themes/index.d.ts"
+    },
+    "./global.css": "./dist/global.css"
+  },
+  "scripts": {
+    "build": "tsc && cp src/global.css dist/global.css",
+    "type-check": "tsc --noEmit",
+    "clean": "rm -rf dist",
+    "storybook": "storybook dev -p 6006",
+    "storybook:build": "storybook build"
+  },
+  "dependencies": {
+    "lit": "^3.1.0"
+  },
+  "devDependencies": {
+    "@chromatic-com/storybook": "^4.1.3",
+    "@monorepo/shared": "workspace:*",
+    "@storybook/addon-a11y": "^10.1.4",
+    "@storybook/addon-docs": "^10.1.4",
+    "@storybook/addon-vitest": "^10.1.4",
+    "@storybook/web-components-vite": "^10.1.4",
+    "eslint-plugin-storybook": "^10.1.4",
+    "storybook": "^10.1.4",
+    "typescript": "^5.3.3"
+  }
+}

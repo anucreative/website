@@ -47,8 +47,6 @@ src/
 ├── routes/
 │   ├── __root.tsx      # Root layout with theme and MSW setup
 │   └── cv.tsx          # CV page component
-└── styles/
-    └── global.css      # Global styles with CSS variables
 ```
 
 ## Routes
