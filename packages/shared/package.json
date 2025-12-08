@@ -10,17 +10,13 @@
       "import": "./dist/index.js",
       "types": "./dist/index.d.ts"
     },
-    "./themes": {
-      "import": "./dist/themes.js",
-      "types": "./dist/themes.d.ts"
-    },
     "./constants": {
       "import": "./dist/constants.js",
       "types": "./dist/constants.d.ts"
     }
   },
   "scripts": {
-    "build": "tsc && mkdir -p dist/themes && cp src/themes/*.json dist/themes/",
+    "build": "tsc",
     "type-check": "tsc --noEmit",
     "test": "vitest",
     "test:watch": "vitest --watch",

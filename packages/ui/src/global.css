@@ -13,10 +13,10 @@
 /* Base styles */
 html,
 body {
-  font-family: var(--font-font-family);
-  color: var(--color-text);
+  font-family: var(--typography-font-family);
+  color: var(--color-primary);
   background-color: var(--color-background);
-  line-height: var(--font-line-height);
+  line-height: var(--typography-line-height-md);
   transition:
     color 0.3s ease,
     background-color 0.3s ease;
@@ -33,7 +33,7 @@ body {
 a {
   color: var(--color-accent);
   transition: opacity 0.2s ease;
-  font-weight: var(--font-h4-weight);
+  font-weight: var(--typography-font-weight-semibold);
 }
 
 a:hover {
@@ -50,14 +50,14 @@ a:hover {
 
       &:not(:last-child):after {
         content: '•';
-        color: var(--color-text-light);
+        color: var(--color-secondary);
         display: inline-block;
         margin: 0 var(--spacing-xs);
       }
     }
 
     .fluency {
-      color: var(--color-text-light);
+      color: var(--color-secondary);
       margin-left: var(--spacing-xs);
     }
   }
@@ -76,7 +76,7 @@ a:hover {
       width: 50px;
       height: 50px;
       margin-right: var(--spacing-sm);
-      border-radius: var(--format-border-radius);
+      border-radius: var(--border-radius-md);
       filter: grayscale(100%);
 
       &:hover {
@@ -89,18 +89,18 @@ a:hover {
     }
 
     .position {
-      font-size: var(--font-size);
-      font-weight: var(--font-h1-weight);
+      font-size: var(--typography-font-size-md);
+      font-weight: var(--typography-font-weight-bold);
       margin-bottom: var(--spacing-xs);
     }
 
     .summary {
-      color: var(--color-text-light);
+      color: var(--color-secondary);
       margin-left: var(--spacing-xs);
 
       &:not(:last-child):after {
         content: '•';
-        color: var(--color-text-light);
+        color: var(--color-secondary);
         display: inline-block;
         margin: 0 var(--spacing-xs);
       }
@@ -139,15 +139,8 @@ a:hover {
     display: inline-block;
     padding: var(--spacing-xs) var(--spacing-sm);
     background-color: var(--color-accent);
-    border-radius: var(--format-border-radius);
-    color: var(--color-secondary);
+    border-radius: var(--border-radius-md);
+    color: var(--color-light);
     font-size: 0.85rem;
   }
-}
-
-/* Error state */
-.error {
-  color: var(--color-error-light);
-  padding: var(--spacing-xl);
-  border-left: 4px solid var(--color-error-light);
 }

@@ -93,13 +93,20 @@ export function ExperienceSubsection() {
 
 ## Themes
 
-Themes are defined in `@monorepo/shared` with the following structure:
+Themes are defined in `@monorepo/tokens` and generated as CSS custom properties via Style Dictionary:
 
-- **Colors:** `primary`, `secondary`, `accent`, `text`, `background`, `border`, etc.
-- **Typography:** `fontFamily`, `fontSize`, `h1Size`, `h1Weight`, `h2Size`, etc.
+- **Source:** `packages/tokens/tokens/*.json` (default.json, alan.json)
+- **Generated:** CSS files with custom properties (default.css, alan.css)
+- **Usage:** Imported and injected into components via theme CSS
+
+**Token Categories:**
+
+- **Colors:** `primary`, `secondary`, `accent`, `text`, `background`, `border`, `link`
+- **Typography:** `fontFamily`, `fontSize` (xs, sm, base, lg, xl), `fontWeight` (normal, semibold, bold)
 - **Spacing:** `xs`, `sm`, `md`, `lg`, `xl`, `2xl`
 - **Layout:** `maxWidth`
-- **Format:** `borderRadius`, etc.
+
+See `@monorepo/tokens` README for details on defining and adding new tokens.
 
 ## Installation
 
@@ -208,8 +215,9 @@ Story files are located in `src/components/*.stories.ts` and use Lit's `html` te
 
 - **Lit 3.1.0** - Web components framework
 - **TypeScript** - Type safety with experimental decorators
-- **CSS Variables** - Theme system based on CSS custom properties
-- **Monorepo** - Integrated with Turborepo build pipeline
+- **CSS Variables** - Theme system based on CSS custom properties from `@monorepo/tokens`
+- **Style Dictionary** - Design token generation (tokens → CSS)
+- **Monorepo** - Integrated with Turborepo build pipeline (tokens build before ui)
 
 ## CSS Variable Mapping
 

@@ -4,11 +4,13 @@
 
 This is a **Turborepo monorepo** using Yarn Workspaces with three main spaces:
 
-- **`apps/`** – Frontend applications (currently empty, will include TanStack Start React app and Vue 3 app)
-- **`packages/shared/`** – Shared exports: routes, themes, constants, types
+- **`apps/`** – Frontend applications (currently TanStack Start React app)
+- **`packages/shared/`** – Shared exports: routes and constants
+- **`packages/tokens/`** – Design tokens (JSON) and generated theme CSS via Style Dictionary
+- **`packages/ui/`** – Lit web components library
 - **`services/`** – Backend services (optional FastAPI in future phases)
 
-**Key principle:** Single source of truth for routes (`packages/shared/routes.ts`), themes, and constants. All apps consume these to avoid duplication.
+**Key principle:** Single source of truth for routes (`packages/shared/routes.ts`), constants, and design tokens (`packages/tokens/tokens/*.json`). All apps consume these to avoid duplication.
 
 ## Development Workflow
 
@@ -49,7 +51,7 @@ yarn clean
 
 ### Shared Package (`packages/shared/`)
 
-The shared package exports four main modules (via `exports` in `package.json`):
+The shared package exports two main modules (via `exports` in `package.json`):
 
 1. **`./routes`** – Route definitions using `const ROUTES = { HOME, CV, CV_ALAN, ... }`
    - Export helper: `getAllRoutes()` returns non-wildcard routes
@@ -58,13 +60,9 @@ The shared package exports four main modules (via `exports` in `package.json`):
    - `API_ENDPOINTS` – Base URLs (supports `VITE_API_URL`, `VITE_NODE_API_URL`, `VITE_PYTHON_API_URL`)
    - `APP` – Version, name, environment
    - `CACHE` – TTL constants for MSW/client caching
-3. **`./themes`** – Theme configuration
-   - `ThemeType` type: `'default' | 'alan'`
-   - `THEME_CONFIGS` object with color schemes
-   - Helper: `getThemeConfig(theme)` returns theme by name
-4. **`./index`** – Re-exports all three modules
+3. **`./index`** – Re-exports routes and constants
 
-**Import pattern:** Apps should use `import { ROUTES, getThemeConfig } from '@monorepo/shared'` (path alias defined in root `tsconfig.json`).
+**Import pattern:** Apps should use `import { ROUTES } from '@monorepo/shared'` (path alias defined in root `tsconfig.json`).
 
 ### TypeScript Configuration
 
@@ -106,13 +104,21 @@ export const ROUTES = {
 
 This ensures both React (TanStack Start) and Vue routers stay in sync.
 
-### Theme System
+### Theme System (Design Tokens)
 
-Themes use CSS variables set at the root level. When implementing theme switching:
+Themes are now centralized in `packages/tokens/` using Style Dictionary:
 
-1. Define colors in `THEME_CONFIGS` in `packages/shared/src/themes.ts`
-2. Apply theme via CSS variables (Phase 4 will use Lit components for this)
-3. Routes like `/cv` use default theme; `/cv/alan` uses alan theme
+1. **Token definitions** – Colors, typography, spacing defined in `packages/tokens/tokens/*.json`
+   - `default.json` – Default theme tokens
+   - `alan.json` – ALAN theme tokens
+2. **CSS generation** – Style Dictionary builds JSON tokens into CSS custom properties
+   - `yarn build` in tokens package generates `dist/default.css` and `dist/alan.css`
+3. **Usage in apps** – Import generated CSS directly:
+   ```typescript
+   import defaultCSS from '@monorepo/tokens/dist/default.css?raw'
+   import alanCSS from '@monorepo/tokens/dist/alan.css?raw'
+   ```
+4. **Route-based theming** – Routes like `/cv` use default theme; `/cv/alan` uses alan theme
 
 ### API Integration
 
@@ -147,13 +153,30 @@ When creating a new app/package:
 - Turborepo + Yarn Workspaces set up
 - Shared package initialized with routes, themes, constants
 
-**Phase 2: TanStack Start CV Page** 🚀 In Progress
+**Phase 2: TanStack Start CV Page** ✓ Complete
 
-- Create `apps/react/` with TanStack Start
-- Integrate MSW for mocked CV data
-- Implement `/cv` and `/cv/alan` routes
+- Created `apps/react/` with TanStack Start
+- Integrated MSW for mocked CV data
+- Implemented `/cv` and `/cv/alan` routes
 
-**Phase 3-9:** See README.md for future phases
+**Phase 3: Deployment Pipeline** ✓ Complete
+
+- Set up Render deployment
+- Configured auto-deployment via GitHub
+
+**Phase 4: Component Library** ✓ Complete
+
+- Created `packages/ui/` with Lit web components
+- Set up Storybook for component testing
+- Integrated components into React app
+
+**Phase 5: Style Dictionary** 🚀 In Progress
+
+- Created `packages/tokens/` with design tokens
+- Set up Style Dictionary to generate CSS from JSON
+- Removed theme definitions from `packages/shared`
+
+**Phase 6-11:** See README.md for future phases
 
 ## Common Tasks for AI Agents
 
@@ -162,6 +185,19 @@ When creating a new app/package:
 1. Add to `ROUTES` in `packages/shared/src/routes.ts`
 2. Create corresponding page component in app (e.g., `apps/react/src/routes/new-page.tsx`)
 3. Both frameworks automatically pick up route via shared constants
+
+### Adding a New Theme
+
+1. Create `packages/tokens/tokens/theme-name.json` with token definitions (copy structure from `default.json`)
+2. Update `packages/tokens/config.json` to include the new theme in the Style Dictionary config
+3. Run `yarn build` in tokens package to generate `dist/theme-name.css`
+4. Import in apps: `import themeCss from '@monorepo/tokens/dist/theme-name.css?raw'`
+
+### Adding a New Token Type
+
+1. Add to all theme JSON files in `packages/tokens/tokens/`
+2. Run `yarn build` to regenerate CSS with new tokens
+3. Use CSS custom properties in components: `color: var(--color-new-token)`
 
 ### Adding a New Environment Variable
 

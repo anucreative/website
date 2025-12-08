@@ -1,0 +1,140 @@
+{
+  "color": {
+    "primary": {
+      "value": "#282830",
+      "type": "color"
+    },
+    "secondary": {
+      "value": "#656779",
+      "type": "color"
+    },
+    "accent": {
+      "value": "#5c59f3",
+      "type": "color"
+    },
+    "text": {
+      "value": "#1a3a52",
+      "type": "color"
+    },
+    "light": {
+      "value": "#f5f5f5",
+      "type": "color"
+    },
+    "background": {
+      "value": "#FFFCF5",
+      "type": "color"
+    },
+    "border": {
+      "value": "#c4b5a0",
+      "type": "color"
+    },
+    "link": {
+      "value": "#2e7bb4",
+      "type": "color"
+    }
+  },
+  "typography": {
+    "fontFamily": {
+      "value": "'Alan Sans', Roboto, 'Helvetica Neue', Arial, sans-serif",
+      "type": "fontFamily"
+    },
+    "fontSize": {
+      "xs": {
+        "value": "12px",
+        "type": "dimension"
+      },
+      "sm": {
+        "value": "14px",
+        "type": "dimension"
+      },
+      "md": {
+        "value": "16px",
+        "type": "dimension"
+      },
+      "lg": {
+        "value": "20px",
+        "type": "dimension"
+      },
+      "xl": {
+        "value": "28px",
+        "type": "dimension"
+      },
+      "2xl": {
+        "value": "40px",
+        "type": "dimension"
+      }
+    },
+    "fontWeight": {
+      "normal": {
+        "value": "400",
+        "type": "fontWeight"
+      },
+      "semibold": {
+        "value": "500",
+        "type": "fontWeight"
+      },
+      "bold": {
+        "value": "700",
+        "type": "fontWeight"
+      }
+    },
+    "lineHeight": {
+      "md": {
+        "value": "1.5"
+      },
+      "lg": {
+        "value": "1.7"
+      }
+    }
+  },
+  "spacing": {
+    "xs": {
+      "value": "4px",
+      "type": "dimension"
+    },
+    "sm": {
+      "value": "8px",
+      "type": "dimension"
+    },
+    "md": {
+      "value": "16px",
+      "type": "dimension"
+    },
+    "lg": {
+      "value": "24px",
+      "type": "dimension"
+    },
+    "xl": {
+      "value": "32px",
+      "type": "dimension"
+    },
+    "2xl": {
+      "value": "48px",
+      "type": "dimension"
+    }
+  },
+  "borderRadius": {
+    "sm": {
+      "value": "4px",
+      "type": "dimension"
+    },
+    "md": {
+      "value": "8px",
+      "type": "dimension"
+    },
+    "lg": {
+      "value": "16px",
+      "type": "dimension"
+    }
+  },
+  "layout": {
+    "maxWidth": {
+      "value": "1200px",
+      "type": "dimension"
+    },
+    "columnWidth": {
+      "value": "150px",
+      "type": "dimension"
+    }
+  }
+}

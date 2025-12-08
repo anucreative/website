@@ -1,7 +1,6 @@
 /**
  * @monorepo/shared
- * Central export point for shared types, themes, and constants
+ * Central export point for shared constants and types
  */
 
-export * from './themes'
 export * from './constants'
