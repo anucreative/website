@@ -1,6 +1,7 @@
 import type { Preview } from '@storybook/web-components-vite'
 import { html } from 'lit'
 import { getThemeStyles } from '@monorepo/shared/themes'
+import '../src/global.css'
 
 const preview: Preview = {
   parameters: {

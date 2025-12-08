@@ -18,10 +18,11 @@
     "./themes": {
       "import": "./dist/themes/index.js",
       "types": "./dist/themes/index.d.ts"
-    }
+    },
+    "./global.css": "./dist/global.css"
   },
   "scripts": {
-    "build": "tsc",
+    "build": "tsc && cp src/global.css dist/global.css",
     "type-check": "tsc --noEmit",
     "clean": "rm -rf dist",
     "storybook": "storybook dev -p 6006",

@@ -2,7 +2,7 @@
 import { Outlet, createRootRoute, HeadContent, Scripts, useLocation } from '@tanstack/react-router'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { getThemeStyles } from '@monorepo/shared'
-import '../styles/global.css'
+import '@monorepo/ui/global.css'
 
 // Create a client for the app to use
 const queryClient = new QueryClient({
