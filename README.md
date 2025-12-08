@@ -125,23 +125,24 @@ Extract components to a shared Lit web components library with theming support v
 
 Set up Style Dictionary to generate CSS from centralized theme JSON files.
 
-- [ ] **5.1 Create `packages/tokens/` - Design Tokens**
-  - [ ] Initialize package with `package.json`
-  - [ ] Create theme JSON files (`default.json`, `alan.json`)
-  - [ ] Define design tokens (colors, typography, spacing)
-  - [ ] Set up Style Dictionary configuration
+- [ ] **5.1 Create `packages/tokens/` - Design Tokens** ✓
+  - [x] Initialize package with `package.json`
+  - [x] Create theme JSON files (`default.json`, `alan.json`)
+  - [x] Define design tokens (colors, typography, spacing)
+  - [x] Set up Style Dictionary configuration (`config.json`)
+  - [x] Generate CSS files in `dist/default.css` and `dist/alan.css`
 
 - [ ] **5.2 Generate Theme CSS**
-  - [ ] Configure Style Dictionary to generate CSS files
-  - [ ] Generate CSS custom properties from tokens
-  - [ ] Create build scripts in `packages/tokens`
-  - [ ] Output CSS to `packages/ui/src/themes/generated/`
+  - [ ] Verify CSS files are generated from token definitions
+  - [ ] Update `packages/ui` to import generated CSS files
+  - [ ] Replace hardcoded theme variables with generated CSS
+  - [ ] Verify all themes compile and apply correctly
 
-- [ ] **5.3 Integrate Generated Themes**
-  - [ ] Update `packages/ui` to use generated CSS
-  - [ ] Remove hardcoded theme variables from `src/themes/index.ts`
-  - [ ] Export theme CSS from UI package
-  - [ ] Verify all themes compile and work
+- [ ] **5.3 Integrate Generated Themes into UI Package**
+  - [ ] Update `packages/ui` imports to use `packages/tokens` CSS
+  - [ ] Remove duplicate theme definitions from `src/themes/`
+  - [ ] Export theme CSS from UI package for consumption
+  - [ ] Verify all components render with generated token values
 
 ### Phase 6: ALAN Theme (Multiple Themes 🎭)
 
@@ -274,10 +275,6 @@ anucreative-website/
 └── ...config files
 ```
 
-### Data Flow
-
-**Phase 2-3:** `data.json` → MSW handlers → Frontend (hardcoded) **Phase 4:** Components extracted (Lit web components) **Phase 5:** Design tokens centralized with Style Dictionary **Phase 6:** Theme system via generated CSS variables **Phase 7+:** `Prisma/DB` → TanStack Start API routes → Frontend types from Prisma **Phase 9:** Vue app uses same backend and UI components **Phase 10:** FastAPI backend as alternative
-
 ### Key Technologies
 
 - **Monorepo:** Turborepo + Yarn Workspaces
@@ -297,7 +294,7 @@ anucreative-website/
 
 ### Prerequisites
 
-- Node.js 18+
+- Node.js 24+
 - Yarn 4.9.4
 
 ### Installation
