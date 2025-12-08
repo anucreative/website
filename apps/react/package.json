@@ -19,6 +19,7 @@
     "@monorepo/data-types": "workspace:*",
     "@monorepo/msw": "workspace:*",
     "@monorepo/shared": "workspace:*",
+    "@monorepo/tokens": "workspace:*",
     "@monorepo/ui": "workspace:*",
     "@tanstack/react-query": "^5.90.11",
     "@tanstack/react-router": "^1.139.14",

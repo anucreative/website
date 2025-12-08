@@ -1,8 +1,9 @@
 /// <reference types="vite/client" />
 import { Outlet, createRootRoute, HeadContent, Scripts, useLocation } from '@tanstack/react-router'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
-import { getThemeStyles } from '@monorepo/shared'
 import '@monorepo/ui/global.css'
+import defaultCSS from '@monorepo/tokens/default.css?raw'
+import alanCSS from '@monorepo/tokens/alan.css?raw'
 
 // Create a client for the app to use
 const queryClient = new QueryClient({
@@ -23,13 +24,13 @@ const getThemeFromPath = (pathname: string): 'default' | 'alan' => {
 }
 
 export const Route = createRootRoute({
-  head: () => {
+  head: ctx => {
     return {
       links: [
         { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
         { rel: 'preconnect', href: 'https://fonts.gstatic.com', crossOrigin: 'anonymous' },
         {
-          href: 'https://fonts.googleapis.com/css2?family=Lato:wght@400;500;600;900&display=swap&subset=latin',
+          href: 'https://fonts.googleapis.com/css2?family=Alan+Sans:wght@400;500;600;700&family=Lato:wght@400;500;600;900&display=swap&subset=latin',
           rel: 'stylesheet',
         },
       ],
@@ -47,7 +48,7 @@ function RootComponent() {
   const location = useLocation()
 
   const theme = getThemeFromPath(location.pathname)
-  const themeStyles = getThemeStyles(theme)
+  const themeStyles = theme === 'alan' ? alanCSS : defaultCSS
 
   return (
     <QueryClientProvider client={queryClient}>
