@@ -32,12 +32,18 @@ body {
 /* Links */
 a {
   color: var(--color-accent);
-  transition: opacity 0.2s ease;
+  text-decoration: none;
+  border-bottom: 3px solid var(--color-accent);
+  transition: all 0.1s ease-in-out;
   font-weight: var(--typography-font-weight-semibold);
+
+  &:has(img) {
+    border-bottom: 0px solid var(--color-accent);
+  }
 }
 
 a:hover {
-  opacity: 0.8;
+  border-bottom: 0px solid var(--color-accent);
 }
 
 /* Overview */
@@ -138,9 +144,8 @@ a:hover {
   .entry {
     display: inline-block;
     padding: var(--spacing-xs) var(--spacing-sm);
-    background-color: var(--color-accent);
+    background-color: rgba(0, 0, 0, 0.05);
     border-radius: var(--border-radius-md);
-    color: var(--color-light);
     font-size: 0.85rem;
   }
 }

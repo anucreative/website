@@ -1,8 +1,6 @@
 import { LitElement, html, css } from 'lit'
-import { customElement, property } from 'lit/decorators.js'
-import { resetStyles } from '../shared/reset'
+import { customElement } from 'lit/decorators.js'
 import { sectionStyles } from '../shared/section'
-import { typographyStyles } from '../shared/typography'
 
 /**
  * CVHeader component - displays CV header with name, title, and summary
@@ -10,37 +8,36 @@ import { typographyStyles } from '../shared/typography'
  */
 @customElement('cv-header')
 export class CVHeader extends LitElement {
-  @property({ type: String }) name: string = ''
-  @property({ type: String }) image: string = ''
-  @property({ type: String }) label: string = ''
-  @property({ type: String }) summary: string = ''
-
   static styles = [
-    resetStyles,
-    typographyStyles,
     sectionStyles,
     css`
       .header {
         margin-bottom: var(--spacing-2xl);
         margin-top: 0;
 
-        .byline {
+        ::slotted([slot='title']) {
+          font-size: var(--typography-font-size-2xl);
+          font-weight: var(--typography-font-weight-bold);
+        }
+
+        ::slotted([slot='byline']) {
           font-size: var(--typography-font-size-xl);
           font-weight: var(--typography-font-weight-bold);
           color: var(--color-accent);
         }
 
-        .intro {
+        ::slotted([slot='summary']) {
           font-size: var(--typography-font-size-lg);
           color: var(--color-secondary);
           max-width: 100%;
         }
 
-        .avatar {
+        ::slotted([slot='image']) {
           width: 100px;
           height: 100px;
           border-radius: 50%;
           border: 2px solid var(--color-border);
+          object-fit: cover;
         }
       }
     `,
@@ -50,22 +47,20 @@ export class CVHeader extends LitElement {
     return html`
       <header class="section header">
         <div class="subsection">
-          <div class="label">
-            ${this.image ? html`<img src="${this.image}" alt="${this.name}" class="avatar" />` : ''}
+          <div class="sidebar">
+            <slot name="image" class="avatar"></slot>
           </div>
           <div class="content">
-            <h1>${this.name}</h1>
-            ${this.label ? html`<p class="byline">${this.label}</p>` : ''}
+            <slot name="title"></slot>
+            <slot name="byline"></slot>
           </div>
         </div>
-        ${this.summary
-          ? html` <div class="subsection">
-              <div class="label"></div>
-              <div class="content">
-                <p class="intro">${this.summary}</p>
-              </div>
-            </div>`
-          : ''}
+        <div class="subsection">
+          <div class="sidebar"></div>
+          <div class="content">
+            <slot name="summary"></slot>
+          </div>
+        </div>
       </header>
     `
   }

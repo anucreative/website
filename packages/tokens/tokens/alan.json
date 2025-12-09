@@ -9,15 +9,15 @@
       "type": "color"
     },
     "accent": {
-      "value": "#5c59f3",
+      "value": "#5C59F3",
       "type": "color"
     },
     "text": {
-      "value": "#1a3a52",
+      "value": "#1A3A52",
       "type": "color"
     },
     "light": {
-      "value": "#f5f5f5",
+      "value": "#F5F5F5",
       "type": "color"
     },
     "background": {
@@ -25,11 +25,11 @@
       "type": "color"
     },
     "border": {
-      "value": "#c4b5a0",
+      "value": "#C4B5A0",
       "type": "color"
     },
     "link": {
-      "value": "#2e7bb4",
+      "value": "#2E7BB4",
       "type": "color"
     }
   },
@@ -129,7 +129,7 @@
   },
   "layout": {
     "maxWidth": {
-      "value": "1200px",
+      "value": "1000px",
       "type": "dimension"
     },
     "columnWidth": {

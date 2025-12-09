@@ -1,8 +1,5 @@
-import { LitElement, html } from 'lit'
-import { customElement, property } from 'lit/decorators.js'
-import { resetStyles } from '../shared/reset'
-import { sectionStyles } from '../shared/section'
-import { typographyStyles } from '../shared/typography'
+import { LitElement, css, html } from 'lit'
+import { customElement } from 'lit/decorators.js'
 
 /**
  * CVSectionTitle component - title for a CV section
@@ -10,14 +7,19 @@ import { typographyStyles } from '../shared/typography'
  */
 @customElement('cv-section-title')
 export class CVSectionTitle extends LitElement {
-  static styles = [resetStyles, sectionStyles, typographyStyles]
+  static styles = [
+    css`
+      .content {
+        @media (min-width: 768px) {
+          margin-left: calc(var(--layout-column-width) + var(--spacing-md));
+          margin-bottom: var(--spacing-sm);
+        }
+      }
+    `,
+  ]
 
   render() {
-    return html`
-      <h2 class="title">
-        <slot></slot>
-      </h2>
-    `
+    return html`<div class="content"><slot></slot></div>`
   }
 }
 

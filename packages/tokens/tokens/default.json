@@ -1,7 +1,7 @@
 {
   "color": {
     "primary": {
-      "value": "#1a1a1a",
+      "value": "#1A1A1A",
       "type": "color"
     },
     "secondary": {
@@ -9,7 +9,7 @@
       "type": "color"
     },
     "accent": {
-      "value": "#ff4c4f",
+      "value": "#FF4C4F",
       "type": "color"
     },
     "text": {
@@ -17,19 +17,19 @@
       "type": "color"
     },
     "light": {
-      "value": "#f5f5f5",
+      "value": "#F5F5F5",
       "type": "color"
     },
     "background": {
-      "value": "#f9f9f9",
+      "value": "#F9F9F9",
       "type": "color"
     },
     "border": {
-      "value": "#e0e0e0",
+      "value": "#E0E0E0",
       "type": "color"
     },
     "link": {
-      "value": "#0066cc",
+      "value": "#0066CC",
       "type": "color"
     }
   },
@@ -129,7 +129,7 @@
   },
   "layout": {
     "maxWidth": {
-      "value": "1200px",
+      "value": "1000px",
       "type": "dimension"
     },
     "columnWidth": {

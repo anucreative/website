@@ -1,16 +1,6 @@
 import { css } from 'lit'
 
 export const sectionStyles = css`
-  .section {
-    margin-top: var(--spacing-2xl);
-  }
-
-  .title {
-    @media (min-width: 768px) {
-      margin-left: calc(var(--layout-column-width) + var(--spacing-md));
-    }
-  }
-
   .subsection {
     display: flex;
     flex-direction: column;
@@ -24,21 +14,13 @@ export const sectionStyles = css`
     }
   }
 
-  .label {
-    font-size: var(--typography-font-size-md);
-    font-weight: var(--typography-font-weight-semibold);
-    color: var(--color-secondary);
-    width: var(--layout-column-width);
+  .sidebar {
     margin-bottom: var(--spacing-xs);
 
     @media (min-width: 768px) {
-      text-align: right;
+      width: 150px;
       margin-bottom: 0;
-      font-weight: var(--typography-font-weight-normal);
-
-      &:not(:empty):not(:has(img)):after {
-        content: ':';
-      }
+      text-align: right;
     }
   }
 

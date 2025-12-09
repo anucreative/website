@@ -1,8 +1,6 @@
-import { LitElement, html } from 'lit'
-import { customElement, property } from 'lit/decorators.js'
-import { resetStyles } from '../shared/reset'
+import { LitElement, css, html } from 'lit'
+import { customElement } from 'lit/decorators.js'
 import { sectionStyles } from '../shared/section'
-import { typographyStyles } from '../shared/typography'
 
 /**
  * CVSubsection component - wraps CV subsection with label
@@ -10,14 +8,27 @@ import { typographyStyles } from '../shared/typography'
  */
 @customElement('cv-subsection')
 export class CVSubsection extends LitElement {
-  @property({ type: String }) label: string = ''
+  static styles = [
+    sectionStyles,
+    css`
+      ::slotted([slot='title']) {
+        font-size: var(--typography-font-size-md);
+        font-weight: var(--typography-font-weight-semibold);
+        color: var(--color-secondary);
 
-  static styles = [resetStyles, typographyStyles, sectionStyles]
+        @media (min-width: 768px) {
+          font-weight: var(--typography-font-weight-normal);
+        }
+      }
+    `,
+  ]
 
   render() {
     return html`
       <div class="subsection">
-        ${this.label ? html`<h3 class="label">${this.label}</h3>` : ''}
+        <div class="sidebar">
+          <slot name="title"></slot>
+        </div>
         <div class="content">
           <slot></slot>
         </div>

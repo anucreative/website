@@ -11,8 +11,8 @@ const meta = {
   component: 'cv-section',
   render: args => html`
     <cv-section>
-      <cv-section-title>${args.title}</cv-section-title>
-      Content goes here…
+      <cv-section-title><h2>${args.title}</h2></cv-section-title>
+      <p>Content goes here…</p>
     </cv-section>
   `,
   argTypes: {
@@ -21,17 +21,13 @@ const meta = {
       description: 'Section title with underline',
     },
   },
-} satisfies Meta<CVSectionElement>
+} satisfies Meta
 
 export default meta
-type Story = StoryObj<CVSectionElement>
+type Story = StoryObj
 
 export const Default: Story = {
   args: {
     title: 'Work experience',
   },
-}
-
-interface CVSectionElement {
-  title: string
 }

@@ -1,8 +1,5 @@
 import { LitElement, html, css } from 'lit'
-import { customElement, property } from 'lit/decorators.js'
-import { resetStyles } from '../shared/reset'
-import { sectionStyles } from '../shared/section'
-import { typographyStyles } from '../shared/typography'
+import { customElement } from 'lit/decorators.js'
 
 /**
  * CVSection component - wraps CV section with title header
@@ -10,7 +7,13 @@ import { typographyStyles } from '../shared/typography'
  */
 @customElement('cv-section')
 export class CVSection extends LitElement {
-  static styles = [resetStyles, typographyStyles, sectionStyles]
+  static styles = [
+    css`
+      .section {
+        margin-top: var(--spacing-2xl);
+      }
+    `,
+  ]
 
   render() {
     return html`

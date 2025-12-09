@@ -9,12 +9,12 @@ const meta = {
   title: 'Components/CVHeader',
   component: 'cv-header',
   render: args => html`
-    <cv-header
-      .name=${args.name}
-      .label=${args.label}
-      .image=${args.image}
-      .summary=${args.summary}
-    ></cv-header>
+    <cv-header>
+      ${args.image ? html`<img slot="image" src=${args.image} alt="Avatar" />` : ''}
+      <h1 slot="title">${args.name}</h1>
+      <p slot="byline">${args.label}</p>
+      ${args.summary ? html`<p slot="summary">${args.summary}</p>` : ''}
+    </cv-header>
   `,
   argTypes: {
     name: {
@@ -34,10 +34,10 @@ const meta = {
       description: 'Brief bio or summary',
     },
   },
-} satisfies Meta<CVHeaderElement>
+} satisfies Meta
 
 export default meta
-type Story = StoryObj<CVHeaderElement>
+type Story = StoryObj
 
 export const Default: Story = {
   args: {
@@ -61,11 +61,4 @@ export const MinimalHeader: Story = {
     name: basics.name,
     label: basics.label,
   },
-}
-
-interface CVHeaderElement {
-  name: string
-  label: string
-  summary?: string
-  image?: string
 }
