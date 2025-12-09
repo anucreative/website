@@ -18,6 +18,9 @@ export function CV({ resume }: CVProps) {
         <p slot="summary">{basics.summary}</p>
       </cv-header>
       <cv-section class="overview">
+        <cv-section-title>
+          <h2>Contact</h2>
+        </cv-section-title>
         <cv-subsection>
           <h3 slot="title">Contact</h3>
           <div className="content">

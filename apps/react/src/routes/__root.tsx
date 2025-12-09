@@ -18,6 +18,8 @@ const queryClient = new QueryClient({
 
 export const Route = createRootRoute({
   head: () => {
+    const title = 'Robert Douglas | anucreative'
+    const description = 'design and development for web and mobile'
     return {
       links: [
         { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
@@ -31,8 +33,11 @@ export const Route = createRootRoute({
       meta: [
         { charSet: 'utf-8' },
         { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-        { title: 'Robert Douglas | anucreative' },
-        { description: 'design and development for web and mobile' },
+        { title: title },
+        { name: 'description', content: description },
+        { name: 'og:title', content: title },
+        { name: 'og:description', content: description },
+        { name: 'og:site_name', content: 'anucreative' },
       ],
       styles: [{ children: `${defaultCSS} ${globalCSS}` }],
     }
@@ -47,7 +52,7 @@ function RootComponent() {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <html>
+      <html lang="en">
         <head>
           <HeadContent />
           <style key={`theme-${theme}`}>{themeStyles}</style>

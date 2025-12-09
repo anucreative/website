@@ -7,6 +7,19 @@ export const Route = createFileRoute('/cv/$company')({
   loader: async (): Promise<Resume> => {
     return fetchResume()
   },
+  head: ctx => {
+    const title = 'Robert Douglas | CV'
+    const description = ctx.loaderData?.basics.summary
+    return {
+      meta: [
+        { title: title },
+        { name: 'description', content: description },
+        { name: 'og:title', content: title },
+        { name: 'og:description', content: description },
+        { name: 'og:site_name', content: 'anucreative' },
+      ],
+    }
+  },
   component: RouteComponent,
   errorComponent: ErrorComponent,
 })
