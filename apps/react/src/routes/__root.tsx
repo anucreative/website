@@ -4,6 +4,7 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import globalCSS from '@website/ui/global.css?raw'
 import defaultCSS from '@website/tokens/default.css?raw'
 import alanCSS from '@website/tokens/alan.css?raw'
+import { getThemeFromCompany } from '../utils/theme-selector'
 
 // Create a client for the app to use
 const queryClient = new QueryClient({
@@ -14,14 +15,6 @@ const queryClient = new QueryClient({
     },
   },
 })
-
-// Determine theme based on company param
-const getThemeFromCompany = (company?: string): 'default' | 'alan' => {
-  if (company === 'alan') {
-    return 'alan'
-  }
-  return 'default'
-}
 
 export const Route = createRootRoute({
   head: () => {

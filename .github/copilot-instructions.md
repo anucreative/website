@@ -38,12 +38,22 @@ yarn lint
 # Format code (Prettier)
 yarn format
 
-# Run tests
-yarn test
+# Run tests - Root level (pass through to Turborepo)
+yarn test -- --run
 
+# Run tests - Individual app/package level (direct Vitest)
+yarn test --run
 # Clean all outputs (dist, build, node_modules)
 yarn clean
 ```
+
+**Testing approach:**
+
+- Tests use **Vitest** as the test runner
+- **MSW (Mock Service Worker)** intercepts HTTP requests for realistic mocking
+- **Real data** from `packages/data-types/cv.json` is used in tests
+- Tests are set up in `src/test/setup.ts` with MSW handlers pre-configured
+- Use `@testing-library/react` and `@testing-library/jest-dom` for component testing
 
 **Development pattern:** Turborepo uses the `turbo.json` pipeline to manage task dependencies. Build tasks (`^build`) depend on dependencies being built first. Development (`dev`) tasks have no dependencies and run in parallel.
 

@@ -11,9 +11,7 @@ export const Route = createFileRoute('/cv/$company')({
   errorComponent: ErrorComponent,
 })
 
-function RouteComponent() {
-  // Theme is determined from the pathname in __root.tsx
-  // The $company parameter just allows dynamic routing
+export function RouteComponent() {
   const resume = Route.useLoaderData()
 
   if (!resume) {
@@ -23,7 +21,7 @@ function RouteComponent() {
   return <CV resume={resume} />
 }
 
-function ErrorComponent({ error }: { error: Error }) {
+export function ErrorComponent({ error }: { error: Error }) {
   const message = error instanceof Error ? error.message : 'Unknown error'
   return (
     <div className="container error">
