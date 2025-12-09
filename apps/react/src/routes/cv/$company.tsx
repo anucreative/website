@@ -1,5 +1,5 @@
 import { createFileRoute } from '@tanstack/react-router'
-import type { Resume } from '@monorepo/data-types'
+import type { Resume } from '@website/data-types'
 import { CV } from '../../components/CV'
 import { fetchResume } from '../../api/resume'
 

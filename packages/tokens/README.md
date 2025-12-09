@@ -1,4 +1,4 @@
-# @monorepo/tokens
+# @website/tokens
 
 Design tokens and theme definitions for the anucreative monorepo. Uses Style Dictionary to generate CSS custom properties from centralized token files.
 
@@ -35,7 +35,7 @@ Import in other packages:
 
 ```tsx
 // In packages/ui or apps/react
-import '@monorepo/tokens/default.css'
+import '@website/tokens/default.css'
 ```
 
 CSS custom properties are automatically available:

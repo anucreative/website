@@ -1,5 +1,5 @@
 import type { Preview } from '@storybook/web-components-vite'
-import '@monorepo/tokens/default.css'
+import '@website/tokens/default.css'
 import '../src/global.css'
 
 const preview: Preview = {

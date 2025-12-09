@@ -1,5 +1,5 @@
 /**
- * @monorepo/data-types
+ * @website/data-types
  * TypeScript interfaces for CV data following JSON Resume schema
  * @see https://jsonresume.org/schema
  *

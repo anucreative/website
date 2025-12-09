@@ -1,4 +1,4 @@
-# @monorepo/data-types
+# @website/data-types
 
 TypeScript type definitions for CV/Resume data following the [JSON Resume schema](https://jsonresume.org/schema).
 
@@ -18,7 +18,7 @@ Based on the standardized JSON Resume format, supporting:
 ## Usage
 
 ```typescript
-import type { Resume } from '@monorepo/data-types'
+import type { Resume } from '@website/data-types'
 
 const resume: Resume = {
   basics: {

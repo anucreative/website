@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/web-components'
 import { html } from 'lit'
 import './CVSection'
 import './CVSubsection'
-import resume from '@monorepo/data-types/cv.json'
+import resume from '@website/data-types/cv.json'
 
 const { work, education, skills } = resume
 const job = work?.[0]

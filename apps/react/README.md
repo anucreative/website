@@ -1,4 +1,4 @@
-# @monorepo/react
+# @website/react
 
 TanStack Start full-stack React application for displaying CV/Resume pages.
 
@@ -8,7 +8,7 @@ TanStack Start full-stack React application for displaying CV/Resume pages.
 - Multiple CV pages (`/cv`, `/cv/alan` coming in Phase 5)
 - Theme support via CSS variables
 - MSW integration for API mocking in development
-- Type-safe data fetching with `@monorepo/data-types`
+- Type-safe data fetching with `@website/data-types`
 - Responsive design
 - Performance optimized
 
@@ -21,7 +21,7 @@ TanStack Start full-stack React application for displaying CV/Resume pages.
 yarn dev
 
 # Run specific app
-yarn dev:filter @monorepo/react
+yarn dev:filter @website/react
 ```
 
 The app will start with MSW intercepting API requests to `/api/resume`.
@@ -29,7 +29,7 @@ The app will start with MSW intercepting API requests to `/api/resume`.
 ### Build
 
 ```bash
-yarn build --filter @monorepo/start
+yarn build --filter @website/start
 ```
 
 ### Environment Variables
@@ -57,8 +57,8 @@ src/
 
 ## Integration Points
 
-- **Data:** Fetches from `@monorepo/data-types` sample via MSW
-- **Shared:** Uses routes, themes, constants from `@monorepo/shared`
+- **Data:** Fetches from `@website/data-types` sample via MSW
+- **Shared:** Uses routes, themes, constants from `@website/shared`
 - **MSW:** Intercepts `/api/resume` requests in development
 - **Theme:** CSS variables support (Phase 5 will add theme switcher)
 

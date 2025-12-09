@@ -1,4 +1,4 @@
-# @monorepo/ui
+# @website/ui
 
 Reusable Lit web components library for the anucreative monorepo. Provides CV/portfolio components with theme support.
 
@@ -9,7 +9,7 @@ Reusable Lit web components library for the anucreative monorepo. Provides CV/po
 Header component displaying name, title, summary, and profile links.
 
 ```tsx
-import { CVHeader } from '@monorepo/ui/components'
+import { CVHeader } from '@website/ui/components'
 
 export function MyHeader() {
   return <cv-header name="Your Name" label="Software Engineer" summary="Brief bio"></cv-header>
@@ -93,7 +93,7 @@ export function ExperienceSubsection() {
 
 ## Themes
 
-Themes are defined in `@monorepo/tokens` and generated as CSS custom properties via Style Dictionary:
+Themes are defined in `@website/tokens` and generated as CSS custom properties via Style Dictionary:
 
 - **Source:** `packages/tokens/tokens/*.json` (default.json, alan.json)
 - **Generated:** CSS files with custom properties (default.css, alan.css)
@@ -106,12 +106,12 @@ Themes are defined in `@monorepo/tokens` and generated as CSS custom properties 
 - **Spacing:** `xs`, `sm`, `md`, `lg`, `xl`, `2xl`
 - **Layout:** `maxWidth`
 
-See `@monorepo/tokens` README for details on defining and adding new tokens.
+See `@website/tokens` README for details on defining and adding new tokens.
 
 ## Installation
 
 ```bash
-yarn add @monorepo/ui
+yarn add @website/ui
 ```
 
 ### Development with Storybook
@@ -215,7 +215,7 @@ Story files are located in `src/components/*.stories.ts` and use Lit's `html` te
 
 - **Lit 3.1.0** - Web components framework
 - **TypeScript** - Type safety with experimental decorators
-- **CSS Variables** - Theme system based on CSS custom properties from `@monorepo/tokens`
+- **CSS Variables** - Theme system based on CSS custom properties from `@website/tokens`
 - **Style Dictionary** - Design token generation (tokens → CSS)
 - **Monorepo** - Integrated with Turborepo build pipeline (tokens build before ui)
 

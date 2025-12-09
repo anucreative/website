@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/web-components'
 import { html } from 'lit'
 import './CVHeader'
-import resume from '@monorepo/data-types/cv.json'
+import resume from '@website/data-types/cv.json'
 
 const { basics } = resume
 

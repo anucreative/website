@@ -1,5 +1,5 @@
-import type { Resume } from '@monorepo/data-types'
-import sampleResume from '@monorepo/data-types/cv.json'
+import type { Resume } from '@website/data-types'
+import sampleResume from '@website/data-types/cv.json'
 
 /**
  * Fetch resume data

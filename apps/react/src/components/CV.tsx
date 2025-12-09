@@ -1,6 +1,6 @@
-import type { Resume } from '@monorepo/data-types'
+import type { Resume } from '@website/data-types'
 import { getDates } from 'src/utils/date'
-import '@monorepo/ui/components'
+import '@website/ui/components'
 
 interface CVProps {
   resume: Resume

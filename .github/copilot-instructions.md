@@ -62,13 +62,13 @@ The shared package exports two main modules (via `exports` in `package.json`):
    - `CACHE` – TTL constants for MSW/client caching
 3. **`./index`** – Re-exports routes and constants
 
-**Import pattern:** Apps should use `import { ROUTES } from '@monorepo/shared'` (path alias defined in root `tsconfig.json`).
+**Import pattern:** Apps should use `import { ROUTES } from '@website/shared'` (path alias defined in root `tsconfig.json`).
 
 ### TypeScript Configuration
 
 - **Target:** ES2020 with bundler module resolution
 - **Strict mode:** Enabled globally
-- **Path alias:** `@monorepo/*` → `packages/*` (configured in root `tsconfig.json`)
+- **Path alias:** `@website/*` → `packages/*` (configured in root `tsconfig.json`)
 - **No emit from shared:** Uses `tsc` with `--noEmit` for type-checking
 
 ### Code Style (Prettier & ESLint)
@@ -115,8 +115,8 @@ Themes are now centralized in `packages/tokens/` using Style Dictionary:
    - `yarn build` in tokens package generates `dist/default.css` and `dist/alan.css`
 3. **Usage in apps** – Import generated CSS directly:
    ```typescript
-   import defaultCSS from '@monorepo/tokens/dist/default.css?raw'
-   import alanCSS from '@monorepo/tokens/dist/alan.css?raw'
+   import defaultCSS from '@website/tokens/dist/default.css?raw'
+   import alanCSS from '@website/tokens/dist/alan.css?raw'
    ```
 4. **Route-based theming** – Routes like `/cv` use default theme; `/cv/alan` uses alan theme
 
@@ -139,9 +139,9 @@ API endpoints are defined in `packages/shared/constants.ts`:
 When creating a new app/package:
 
 1. Add `package.json` with `"private": true` for internal packages
-2. Set name as `@monorepo/package-name`
+2. Set name as `@website/package-name`
 3. Configure scripts for `build`, `type-check`, `clean`
-4. Declare dependencies on `@monorepo/shared` if needed
+4. Declare dependencies on `@website/shared` if needed
 5. Update root `turbo.json` if adding new task types
 
 **Build dependency example:** If `apps/react` depends on `packages/shared`, the build order is automatic via `turbo.json` pipeline: `"build": { "dependsOn": ["^build"] }`.
@@ -191,7 +191,7 @@ When creating a new app/package:
 1. Create `packages/tokens/tokens/theme-name.json` with token definitions (copy structure from `default.json`)
 2. Update `packages/tokens/config.json` to include the new theme in the Style Dictionary config
 3. Run `yarn build` in tokens package to generate `dist/theme-name.css`
-4. Import in apps: `import themeCss from '@monorepo/tokens/dist/theme-name.css?raw'`
+4. Import in apps: `import themeCss from '@website/tokens/dist/theme-name.css?raw'`
 
 ### Adding a New Token Type
 

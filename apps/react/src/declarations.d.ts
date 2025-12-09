@@ -1,8 +1,8 @@
 import type { DOMAttributes } from 'react'
-import type { CVHeader } from '@monorepo/ui'
-import type { CVSection } from '@monorepo/ui'
-import type { CVSectionTitle } from '@monorepo/ui'
-import type { CVSubsection } from '@monorepo/ui'
+import type { CVHeader } from '@website/ui'
+import type { CVSection } from '@website/ui'
+import type { CVSectionTitle } from '@website/ui'
+import type { CVSubsection } from '@website/ui'
 
 type CustomElement<T> = Partial<
   T & DOMAttributes<T> & { children: any; class?: string; key?: string | number }

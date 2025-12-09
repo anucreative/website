@@ -1,5 +1,5 @@
 {
-  "name": "@monorepo/msw",
+  "name": "@website/msw",
   "version": "1.0.0",
   "description": "Mock Service Worker setup for API mocking in development",
   "private": true,
@@ -24,7 +24,7 @@
     "msw": "^2.0.0"
   },
   "devDependencies": {
-    "@monorepo/data-types": "workspace:*",
+    "@website/data-types": "workspace:*",
     "typescript": "^5.3.3"
   },
   "peerDependencies": {

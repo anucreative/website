@@ -17,7 +17,7 @@
     "experimentalDecorators": true,
     "useDefineForClassFields": false,
     "paths": {
-      "@monorepo/*": ["../../packages/*"]
+      "@website/*": ["../../packages/*"]
     }
   },
   "include": ["src/**/*.ts"],

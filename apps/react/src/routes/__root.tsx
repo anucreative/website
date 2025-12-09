@@ -1,9 +1,9 @@
 /// <reference types="vite/client" />
 import { Outlet, createRootRoute, HeadContent, Scripts, useParams } from '@tanstack/react-router'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
-import globalCSS from '@monorepo/ui/global.css?raw'
-import defaultCSS from '@monorepo/tokens/default.css?raw'
-import alanCSS from '@monorepo/tokens/alan.css?raw'
+import globalCSS from '@website/ui/global.css?raw'
+import defaultCSS from '@website/tokens/default.css?raw'
+import alanCSS from '@website/tokens/alan.css?raw'
 
 // Create a client for the app to use
 const queryClient = new QueryClient({
@@ -39,7 +39,7 @@ export const Route = createRootRoute({
         { name: 'viewport', content: 'width=device-width, initial-scale=1' },
         { title: 'anucreative - CV' },
       ],
-      styles: [{ children: globalCSS }],
+      styles: [{ children: `${defaultCSS} ${globalCSS}` }],
     }
   },
   component: RootComponent,
@@ -48,7 +48,7 @@ export const Route = createRootRoute({
 function RootComponent() {
   const params = useParams({ strict: false })
   const theme = getThemeFromCompany(params.company)
-  const themeStyles = theme === 'alan' ? alanCSS : defaultCSS
+  const themeStyles = theme === 'alan' ? alanCSS : ''
 
   return (
     <QueryClientProvider client={queryClient}>

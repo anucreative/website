@@ -1,5 +1,5 @@
 /**
- * @monorepo/ui
+ * @website/ui
  * Lit web components library with theming support via CSS variables
  */
 

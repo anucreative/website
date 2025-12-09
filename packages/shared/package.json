@@ -1,5 +1,5 @@
 {
-  "name": "@monorepo/shared",
+  "name": "@website/shared",
   "version": "1.0.0",
   "description": "Shared constants, types, and theme definitions",
   "private": true,

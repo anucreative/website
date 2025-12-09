@@ -1,4 +1,4 @@
-# @monorepo/msw
+# @website/msw
 
 Mock Service Worker setup for intercepting and mocking HTTP requests in development and tests.
 
@@ -13,7 +13,7 @@ Mock Service Worker setup for intercepting and mocking HTTP requests in developm
 
 ```typescript
 import { setupWorker } from 'msw/browser'
-import { handlers } from '@monorepo/msw'
+import { handlers } from '@website/msw'
 
 const worker = setupWorker(...handlers)
 
@@ -27,7 +27,7 @@ await worker.start({
 
 ```typescript
 import { setupServer } from 'msw/node'
-import { handlers } from '@monorepo/msw'
+import { handlers } from '@website/msw'
 
 const server = setupServer(...handlers)
 
@@ -38,15 +38,15 @@ afterAll(() => server.close())
 
 ## Mocked Endpoints
 
-- `GET /api/resume` – Returns CV data from `@monorepo/data-types` sample
+- `GET /api/resume` – Returns CV data from `@website/data-types` sample
 - `GET /api/resume/:id` – Returns specific resume by ID (currently returns sample)
 
 ## Integration
 
-This package provides mock data from `@monorepo/data-types` cv.json, allowing:
+This package provides mock data from `@website/data-types` cv.json, allowing:
 
 - Full frontend development without backend
 - Predictable test data
 - Easy transition to real API in Phase 6
 
-See `cv.json` in `@monorepo/data-types` for the mock data structure.
+See `cv.json` in `@website/data-types` for the mock data structure.

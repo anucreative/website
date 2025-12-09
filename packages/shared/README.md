@@ -1,4 +1,4 @@
-# @monorepo/shared
+# @website/shared
 
 Shared constants, types, route definitions, and theme configurations used across all frontend and backend applications.
 
@@ -14,7 +14,7 @@ Shared constants, types, route definitions, and theme configurations used across
 ## Usage
 
 ```typescript
-import { ROUTES, THEME_CONFIGS, API_ENDPOINTS } from '@monorepo/shared'
+import { ROUTES, THEME_CONFIGS, API_ENDPOINTS } from '@website/shared'
 ```
 
 ## Building

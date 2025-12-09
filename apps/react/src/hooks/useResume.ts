@@ -1,5 +1,4 @@
 import { useQuery } from '@tanstack/react-query'
-import type { Resume } from '@monorepo/data-types'
 import { fetchResume } from '../api/resume'
 
 /**

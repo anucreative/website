@@ -1,5 +1,5 @@
 import { setupServer } from 'msw/node'
-import { handlers } from '@monorepo/msw'
+import { handlers } from '@website/msw'
 import { beforeAll, afterEach, afterAll, vi } from 'vitest'
 
 // Create and start the MSW server for testing
