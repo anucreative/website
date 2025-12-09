@@ -26,6 +26,7 @@ export const Route = createRootRoute({
           href: 'https://fonts.googleapis.com/css2?family=Alan+Sans:wght@400;500;600;700&family=Lato:wght@400;500;600;900&display=swap&subset=latin',
           rel: 'stylesheet',
         },
+        { rel: 'icon', href: 'favicon.png', type: 'image/x-icon' },
       ],
       meta: [
         { charSet: 'utf-8' },

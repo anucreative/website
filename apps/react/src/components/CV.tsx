@@ -12,7 +12,7 @@ export function CV({ resume }: CVProps) {
   return (
     <div className="container">
       <cv-header>
-        <img slot="image" src={basics.image} alt={basics.name} />
+        <img slot="image" src={'/favicon.png'} alt={basics.name} />
         <h1 slot="title">{basics.name}</h1>
         <p slot="byline">{basics.label}</p>
         <p slot="summary">{basics.summary}</p>
