@@ -53,8 +53,8 @@ export function CV({ resume }: CVProps) {
           <cv-subsection label="Profiles">
             <div className="content">
               {basics.profiles.map(({ network, url }) => (
-                <div className="entry">
-                  <a key={network} href={url} target="_blank" rel="noopener noreferrer">
+                <div key={network} className="entry">
+                  <a href={url} target="_blank" rel="noopener noreferrer">
                     {network}
                   </a>
                 </div>

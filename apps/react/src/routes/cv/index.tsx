@@ -3,17 +3,15 @@ import type { Resume } from '@monorepo/data-types'
 import { CV } from '../../components/CV'
 import { fetchResume } from '../../api/resume'
 
-export const Route = createFileRoute('/cv/$company')({
+export const Route = createFileRoute('/cv/')({
   loader: async (): Promise<Resume> => {
     return fetchResume()
   },
-  component: RouteComponent,
+  component: CVPage,
   errorComponent: ErrorComponent,
 })
 
-function RouteComponent() {
-  // Theme is determined from the pathname in __root.tsx
-  // The $company parameter just allows dynamic routing
+function CVPage() {
   const resume = Route.useLoaderData()
 
   if (!resume) {

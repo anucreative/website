@@ -1,14 +1,6 @@
 import { useQuery } from '@tanstack/react-query'
 import type { Resume } from '@monorepo/data-types'
-import sampleResume from '@monorepo/data-types/cv.json'
-
-/**
- * Fetch resume data
- * In production, this would call a real API endpoint
- */
-const fetchResume = async (): Promise<Resume> => {
-  return sampleResume as Resume
-}
+import { fetchResume } from '../api/resume'
 
 /**
  * Hook to fetch and manage resume data with caching
