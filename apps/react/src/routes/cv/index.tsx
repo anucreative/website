@@ -9,6 +9,9 @@ export const Route = createFileRoute('/cv/')({
   },
   component: CVPage,
   errorComponent: ErrorComponent,
+  head: ctx => ({
+    meta: [{ title: 'Robert Douglas | CV', description: ctx.loaderData?.basics.summary }],
+  }),
 })
 
 function CVPage() {

@@ -37,7 +37,8 @@ export const Route = createRootRoute({
       meta: [
         { charSet: 'utf-8' },
         { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-        { title: 'anucreative - CV' },
+        { title: 'Robert Douglas | anucreative' },
+        { description: 'design and development for web and mobile' },
       ],
       styles: [{ children: `${defaultCSS} ${globalCSS}` }],
     }
