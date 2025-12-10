@@ -38,6 +38,7 @@ export interface Basics {
   phone?: string
   url?: string
   summary?: string
+  future?: string
   location?: Location
   profiles?: Profile[]
 }

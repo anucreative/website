@@ -7,12 +7,13 @@
   },
   "basics": {
     "name": "Robert Douglas",
-    "label": "Senior Frontend Developer & Design Engineer",
+    "label": "Senior Frontend Developer / Design Engineer",
     "image": "https://gravatar.com/avatar/0657b90b945d2fbc5d47da5f1ef480ee32c7dc10afaafc8e19b7efff7bcd468f?v=1522820361000&size=256&d=initials",
     "email": "rob@anucreative.com",
     "phone": "+33 7 50 97 71 72",
     "url": "https://anucreative.com",
-    "summary": "Developer / designer with 20+ years experience in web and mobile, I currently work as a Senior Front-end Developer at Welcome to the Jungle. Previously, I spent four years leading the Design & UX team at Rightmove (UK’s largest property website) followed by six years as a 'multidisciplinaire' at ribot (mobile design studio). After moving to France I led a cross-functional team at a VR startup remotely before joining Welcome to the Jungle six years ago.",
+    "summary": "Developer / designer with 20+ years experience in web and mobile, I combine my full-stack engineering and UX expertise to develop solid, user-centred product solutions. I'm known for being passionate, collaborative, supportive, and calm under pressure. I care deeply about product and people, quality and clarity.",
+    "future": "Prior to Welcome to the Jungle, I led the Design & UX team at Rightmove (UK's largest property website), was a 'multidisciplinaire' at ribot (mobile design studio), and (remotely) led a cross-functional team at a VR startup in London. I'm looking for a role where I can put my T-shaped skills to good use, working with great people on interesting problems.",
     "location": {
       "address": "5 Avenue de la Campagne Berger",
       "city": "Marseille",
@@ -46,19 +47,20 @@
       "startDate": "2018-04-01",
       "summary": "Job board / media",
       "highlights": [
-        "Implemented new features and evolutions of B2C site with React / Vite / react-testing-library and Cypress",
-        "Led performance improvements: TTFB -70%, LCP -50%, CLS 0.02s",
-        "Implemented Cloudfront CDN strategy reducing latency globally",
-        "Established site performance (CRUX) and tracking best practices",
-        "Built internal tools and maintained component library",
-        "Increased code coverage and mentored junior developers"
+        "Implemented new features and evolution of B2C site with React / Redux / Webpack / Cypress",
+        "Led Core Web Vitals monitoring and improvements (TTFB -70%, LCP -50%, CLS 0.02s)",
+        "Implemented Cloudfront caching to improve performance and cut server costs (~30% cache hit rate)",
+        "Led front-end code coverage initiatives, increasing coverage by ~25%",
+        "Collaborated closely with Data / QA / Support teams to standardise best practices",
+        "Improved and built on B2B apps with React / Typescript / Valtio / TanStack Query",
+        "Set up and key contributions to component library inc. codemod for styled-components to Tailwind migration"
       ]
     },
     {
       "name": "Pupil",
       "position": "Lead Frontend Developer",
       "url": "https://pupil.co",
-      "location": "London, UK (Remote)",
+      "location": "London, UK (Remote from France)",
       "slug": "pupil",
       "startDate": "2016-09-01",
       "endDate": "2018-04-01",
@@ -67,6 +69,20 @@
         "Managed frontend developers and maintained tech stack decisions",
         "Delivered and iterated on React/Redux application",
         "Ensured code consistency and quality across team"
+      ]
+    },
+    {
+      "name": "anu creative",
+      "position": "Freelance Fullstack Developer",
+      "url": "https://anucreative.com",
+      "location": "Remote from France",
+      "slug": "anucreative",
+      "startDate": "2016-09-01",
+      "endDate": "2018-04-01",
+      "summary": "Freelance designer / developer for web / mobile",
+      "highlights": [
+        "tutor house: Wireframing, visual design, front-end responsive build, analytics",
+        "Bastion: Development of cross-platform mobile app (React Native) and Ruby on Rails CMS"
       ]
     },
     {
@@ -81,7 +97,7 @@
       "highlights": [
         "Pitches, user research, design, development and internal project management across many projects",
         "Design (and some development) on Tesco's first mobile apps (Nokia, iPhone, iPad, Windows Phone, Chrome)",
-        "Designed and developed Intel proof-of-concepts and prototypes on IPad",
+        "Designed and developed Intel proof-of-concepts and prototypes on iPad",
         "Developed mobile and web prototypes for diverse client base",
         "Mentored team members in professional development"
       ]
@@ -97,7 +113,7 @@
       "summary": "UK's number one property website",
       "highlights": [
         "Grew and led the Design & UX team ",
-        "Led the design and front-end development through a full redesign",
+        "Led the design and front-end development through a full site redesign",
         "Set up a User-Centred Design framework including usability testing and user research pool",
         "Prototyped and user-tested various revenue-generating initiatives",
         "Instigated and defined annual hack-days"
@@ -154,44 +170,40 @@
     {
       "name": "Front-end",
       "level": "Expert",
-      "keywords": ["React", "TypeScript", "Vite", "Next.js", "Vue.js", "TanStack", "Webpack"]
+      "keywords": ["React", "TypeScript", "Vite", "Next.js", "Webpack", "Component libraries"]
     },
     {
       "name": "Performance",
       "level": "Expert",
-      "keywords": [
-        "Core Web Vitals",
-        "Lighthouse",
-        "Code Splitting",
-        "Tree Shaking",
-        "Caching Strategies"
-      ]
-    },
-    {
-      "name": "UI/UX Design",
-      "level": "Advanced",
-      "keywords": [
-        "Design Systems",
-        "Component Design",
-        "Accessibility (a11y)",
-        "Responsive Design",
-        "User Research"
-      ]
-    },
-    {
-      "name": "Testing",
-      "level": "Advanced",
-      "keywords": ["Jest", "React Testing Library", "Cypress", "Playwright", "Test Coverage"]
+      "keywords": ["Core Web Vitals", "Lighthouse", "Performance auditing"]
     },
     {
       "name": "Back-end",
       "level": "Intermediate",
-      "keywords": ["Node.js", "Express", "PostgreSQL", "MongoDB", "REST APIs"]
+      "keywords": [
+        "Node.js",
+        "Express",
+        "PostgreSQL",
+        "MongoDB",
+        "REST APIs",
+        "Ruby on Rails*",
+        "PHP*"
+      ]
+    },
+    {
+      "name": "UI/UX design",
+      "level": "Advanced",
+      "keywords": ["Responsive design", "User research", "Accessibility (a11y)"]
+    },
+    {
+      "name": "Testing",
+      "level": "Advanced",
+      "keywords": ["Vitest", "Jest", "React Testing Library", "Cypress", "Code coverage"]
     },
     {
       "name": "CI/CD/DevOps",
       "level": "Intermediate",
-      "keywords": ["GitHub Actions", "Netlify", "Docker", "CDN Optimization", "CI/CD Pipelines"]
+      "keywords": ["CircleCI", "Docker"]
     }
   ],
   "languages": [
@@ -209,7 +221,7 @@
       "organization": "Student Partnerships Worldwide (Tanzania)",
       "position": "Volunteer Teacher",
       "startDate": "2003-01-01",
-      "endDate": "2004-09-01",
+      "endDate": "2003-09-01",
       "summary": "Teaching, sexual health education and event management",
       "highlights": [
         "Volunteer on the Sexual Health Education Program: teaching secondary school children (and the community) about HIV/AIDS and other STIs in Tanzania."
