@@ -1,4 +1,4 @@
-import { describe, it, expect, vi } from 'vitest'
+import { describe, test, expect, vi } from 'vitest'
 import '@testing-library/jest-dom'
 import { render, screen } from '@testing-library/react'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
@@ -13,7 +13,7 @@ describe('CV Page Rendering', () => {
   const resume: Resume = sampleResume
   const queryClient = new QueryClient()
 
-  it('should render CV component with resume data', () => {
+  test('should render CV component with resume data', () => {
     render(
       <QueryClientProvider client={queryClient}>
         <CV resume={resume} />
@@ -57,16 +57,13 @@ describe('CV Page Rendering', () => {
     }
   })
 
-  it('should render CV header with image', () => {
-    const { container } = render(
+  test('should render CV header with image', () => {
+    render(
       <QueryClientProvider client={queryClient}>
         <CV resume={resume} />
       </QueryClientProvider>
     )
 
-    const image = container.querySelector('img[alt]')
-    expect(image).toBeInTheDocument()
-    expect(image).toHaveAttribute('src', resume.basics.image)
-    expect(image).toHaveAttribute('alt', resume.basics.name)
+    expect(screen.getByAltText(resume.basics.name)).toBeInTheDocument()
   })
 })

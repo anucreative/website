@@ -1,4 +1,4 @@
-import { describe, it, expect, vi, beforeEach } from 'vitest'
+import { describe, test, expect, vi, beforeEach } from 'vitest'
 import '@testing-library/jest-dom'
 import { act, render, screen } from '@testing-library/react'
 import type { Resume } from '@website/data-types'
@@ -47,7 +47,7 @@ describe('/cv/$company route components', () => {
   })
 
   describe('RouteComponent', () => {
-    it('should render CV component with resume data', async () => {
+    test('should render CV component with resume data', async () => {
       const router = setUpRouter({ path: '/cv', fetcher: fetchResume })
 
       act(() => {
@@ -62,7 +62,7 @@ describe('/cv/$company route components', () => {
   })
 
   describe('ErrorComponent', () => {
-    it('should render error component when fetch fails', () => {
+    test('should render error component when fetch fails', () => {
       const error = new Error('Failed to fetch resume')
 
       render(<ErrorComponent error={error} />)
@@ -71,7 +71,7 @@ describe('/cv/$company route components', () => {
       expect(screen.getByText('Failed to fetch resume')).toBeInTheDocument()
     })
 
-    it('should render error with unknown error message', () => {
+    test('should render error with unknown error message', () => {
       const error = { message: 'Network error' } as unknown as Error
 
       render(<ErrorComponent error={error} />)
