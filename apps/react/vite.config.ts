@@ -14,6 +14,6 @@ export default defineConfig({
     viteReact(),
   ],
   preview: {
-    allowedHosts: ['website-nszm.onrender.com'],
+    allowedHosts: ['website-nszm.onrender.com', 'anucreative.com'],
   },
 })
