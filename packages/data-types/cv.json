@@ -170,7 +170,15 @@
     {
       "name": "Front-end",
       "level": "Expert",
-      "keywords": ["React", "TypeScript", "Vite", "Next.js", "Webpack", "Component libraries"]
+      "keywords": [
+        "React",
+        "TypeScript",
+        "Vite",
+        "Next.js",
+        "Webpack",
+        "Component libraries",
+        "React Native"
+      ]
     },
     {
       "name": "Performance",

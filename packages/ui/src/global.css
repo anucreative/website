@@ -201,6 +201,10 @@ a:hover {
     border: 3px solid var(--color-accent);
     text-transform: uppercase;
     transition: var(--transition);
+    display: flex;
+    gap: var(--spacing-sm);
+    align-items: center;
+    justify-content: center;
 
     &:hover {
       background-color: transparent;
