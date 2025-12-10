@@ -176,7 +176,7 @@ a:hover {
   min-height: 100vh;
   min-width: 100vw;
   padding: var(--spacing-2xl) var(--spacing-sm);
-  background-image: url('../public/kitchen.webp');
+  background: var(--color-accent) url('/kitchen.webp');
   background-size: cover;
   background-position: center;
   color: var(--color-light);
