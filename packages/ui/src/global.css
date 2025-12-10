@@ -1,6 +1,18 @@
 /* CSS Variables from theme system (injected at runtime) */
 /* See packages/shared/src/themes/ for theme definitions */
 
+@keyframes drawPath {
+  0% {
+    stroke-dashoffset: 800;
+  }
+  50% {
+    stroke-dashoffset: 0;
+  }
+  100% {
+    stroke-dashoffset: -800;
+  }
+}
+
 /* Reset */
 *,
 *::before,
@@ -10,6 +22,10 @@
   box-sizing: border-box;
 }
 
+:root {
+  --transition: all 0.2s ease-in-out;
+}
+
 /* Base styles */
 html,
 body {
@@ -17,9 +33,7 @@ body {
   color: var(--color-primary);
   background-color: var(--color-background);
   line-height: var(--typography-line-height-md);
-  transition:
-    color 0.3s ease,
-    background-color 0.3s ease;
+  transition: var(--transition);
 }
 
 /* Container */
@@ -34,7 +48,7 @@ a {
   color: var(--color-accent);
   text-decoration: none;
   border-bottom: 3px solid var(--color-accent);
-  transition: all 0.1s ease-in-out;
+  transition: var(--transition);
   font-weight: var(--typography-font-weight-semibold);
 
   &:has(img) {
@@ -74,19 +88,22 @@ a:hover {
   .content {
     .intro {
       display: flex;
-      align-items: center;
+      align-items: flex-start;
       flex-direction: row-reverse;
+      gap: var(--spacing-sm);
     }
 
     .logo {
       width: 50px;
       height: 50px;
-      margin-right: var(--spacing-sm);
       border-radius: var(--border-radius-md);
       filter: grayscale(100%);
+      mix-blend-mode: multiply;
+      transition: var(--transition);
 
       &:hover {
         filter: none;
+        mix-blend-mode: normal;
       }
     }
 
@@ -147,5 +164,54 @@ a:hover {
     background-color: rgba(0, 0, 0, 0.05);
     border-radius: var(--border-radius-md);
     font-size: 0.85rem;
+  }
+}
+
+/* Splash */
+.splash {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  min-height: 100vh;
+  min-width: 100vw;
+  padding: var(--spacing-2xl) var(--spacing-sm);
+  background-image: url('../public/kitchen.webp');
+  background-size: cover;
+  background-position: center;
+  color: var(--color-light);
+  letter-spacing: 0.2rem;
+  text-align: center;
+
+  /* Button */
+  .button {
+    padding: var(--spacing-sm) var(--spacing-2xl);
+    margin-top: var(--spacing-2xl);
+    background-color: var(--color-accent);
+    color: var(--color-light);
+    border-radius: var(--border-radius-md);
+    border-bottom: 0 none;
+    border: 3px solid var(--color-accent);
+    text-transform: uppercase;
+    transition: var(--transition);
+
+    &:hover {
+      background-color: transparent;
+      border: 3px solid var(--color-accent);
+    }
+  }
+
+  /* SVG animation */
+  .svg-wrapper {
+    width: 100%;
+    max-width: 230px;
+    margin-bottom: var(--spacing-lg);
+  }
+
+  .anucreative {
+    stroke-dasharray: 800;
+    stroke-dashoffset: 800;
+    animation: drawPath 4s ease-out infinite;
+    mix-blend-mode: overlay;
   }
 }

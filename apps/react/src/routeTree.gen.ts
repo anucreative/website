@@ -9,9 +9,15 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as IndexRouteImport } from './routes/index'
 import { Route as CvIndexRouteImport } from './routes/cv/index'
 import { Route as CvCompanyRouteImport } from './routes/cv/$company'
 
+const IndexRoute = IndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const CvIndexRoute = CvIndexRouteImport.update({
   id: '/cv/',
   path: '/cv/',
@@ -24,33 +30,44 @@ const CvCompanyRoute = CvCompanyRouteImport.update({
 } as any)
 
 export interface FileRoutesByFullPath {
+  '/': typeof IndexRoute
   '/cv/$company': typeof CvCompanyRoute
   '/cv': typeof CvIndexRoute
 }
 export interface FileRoutesByTo {
+  '/': typeof IndexRoute
   '/cv/$company': typeof CvCompanyRoute
   '/cv': typeof CvIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
+  '/': typeof IndexRoute
   '/cv/$company': typeof CvCompanyRoute
   '/cv/': typeof CvIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/cv/$company' | '/cv'
+  fullPaths: '/' | '/cv/$company' | '/cv'
   fileRoutesByTo: FileRoutesByTo
-  to: '/cv/$company' | '/cv'
-  id: '__root__' | '/cv/$company' | '/cv/'
+  to: '/' | '/cv/$company' | '/cv'
+  id: '__root__' | '/' | '/cv/$company' | '/cv/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
+  IndexRoute: typeof IndexRoute
   CvCompanyRoute: typeof CvCompanyRoute
   CvIndexRoute: typeof CvIndexRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/': {
+      id: '/'
+      path: '/'
+      fullPath: '/'
+      preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/cv/': {
       id: '/cv/'
       path: '/cv'
@@ -69,6 +86,7 @@ declare module '@tanstack/react-router' {
 }
 
 const rootRouteChildren: RootRouteChildren = {
+  IndexRoute: IndexRoute,
   CvCompanyRoute: CvCompanyRoute,
   CvIndexRoute: CvIndexRoute,
 }

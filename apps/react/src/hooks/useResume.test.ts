@@ -1,4 +1,4 @@
-import { describe, it, expect, beforeEach } from 'vitest'
+import { describe, test, expect, beforeEach } from 'vitest'
 import { renderHook, waitFor } from '@testing-library/react'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import React from 'react'
@@ -20,7 +20,7 @@ describe('useResume', () => {
   const wrapper = ({ children }: { children: React.ReactNode }) =>
     React.createElement(QueryClientProvider, { client: queryClient }, children)
 
-  it('should fetch resume data successfully via MSW', async () => {
+  test('should fetch resume data successfully via MSW', async () => {
     const { result } = renderHook(() => useResume(), { wrapper })
 
     await waitFor(() => {
@@ -32,13 +32,13 @@ describe('useResume', () => {
     expect(result.current.data?.basics.name).toBe('Robert Douglas')
   })
 
-  it('should have isLoading true initially', () => {
+  test('should have isLoading true initially', () => {
     const { result } = renderHook(() => useResume(), { wrapper })
 
     expect(result.current.isLoading).toBe(true)
   })
 
-  it('should not have error on successful fetch', async () => {
+  test('should not have error on successful fetch', async () => {
     const { result } = renderHook(() => useResume(), { wrapper })
 
     await waitFor(() => {
@@ -48,7 +48,7 @@ describe('useResume', () => {
     expect(result.current.error).toBeNull()
   })
 
-  it('should use cache with 1 hour stale time', async () => {
+  test('should use cache with 1 hour stale time', async () => {
     const { result: result1 } = renderHook(() => useResume(), { wrapper })
 
     await waitFor(() => {
@@ -63,7 +63,7 @@ describe('useResume', () => {
     expect(result2.current.data).toBe(firstData)
   })
 
-  it('should have consistent queryKey for caching', async () => {
+  test('should have consistent queryKey for caching', async () => {
     const { result } = renderHook(() => useResume(), { wrapper })
 
     await waitFor(() => {
