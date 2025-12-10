@@ -50,14 +50,21 @@ a {
   border-bottom: 3px solid var(--color-accent);
   transition: var(--transition);
   font-weight: var(--typography-font-weight-semibold);
+  display: inline-block;
 
   &:has(img) {
-    border-bottom: 0px solid var(--color-accent);
+    border: 0 none;
   }
 }
 
 a:hover {
   border-bottom: 0px solid var(--color-accent);
+}
+
+/* Avatar */
+.avatar {
+  border: 3px solid var(--color-primary);
+  border-radius: 50%;
 }
 
 /* Overview */
@@ -202,7 +209,7 @@ a:hover {
   }
 
   /* SVG animation */
-  .svg-wrapper {
+  .logo-wrapper {
     width: 100%;
     max-width: 230px;
     margin-bottom: var(--spacing-lg);

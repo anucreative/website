@@ -30,6 +30,7 @@ export class CVHeader extends LitElement {
           font-size: var(--typography-font-size-lg);
           color: var(--color-secondary);
           max-width: 100%;
+          margin-top: var(--spacing-lg) !important;
         }
 
         ::slotted([slot='image']) {

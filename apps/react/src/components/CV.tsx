@@ -7,22 +7,25 @@ interface CVProps {
 }
 
 export function CV({ resume }: CVProps) {
-  const { basics, work, education, skills, languages, interests } = resume
+  const { basics, work, education, skills, languages, interests, volunteer } = resume
 
   return (
     <div className="container">
       <cv-header>
-        <img
-          slot="image"
-          src={'/favicon.png'}
-          alt={basics.name}
-          width={100}
-          height={100}
-          fetchPriority="high"
-        />
+        <a href="/" title="anucreative homepage" slot="image">
+          <img
+            src={'/favicon.png'}
+            alt={basics.name}
+            width={100}
+            height={100}
+            fetchPriority="high"
+            className="avatar"
+          />
+        </a>
         <h1 slot="title">{basics.name}</h1>
         <p slot="byline">{basics.label}</p>
         <p slot="summary">{basics.summary}</p>
+        <p slot="summary">{basics.future}</p>
       </cv-header>
       <cv-section class="overview">
         <cv-section-title>
@@ -143,6 +146,24 @@ export function CV({ resume }: CVProps) {
               )
             }
           )}
+        </cv-section>
+      )}
+
+      {volunteer && volunteer.length > 0 && (
+        <cv-section class="volunteer">
+          <cv-section-title>
+            <h2>Volunteering</h2>
+          </cv-section-title>
+          {volunteer.map(({ organization, position, startDate, endDate, summary }) => (
+            <cv-subsection key={organization}>
+              <p slot="title">{getDates({ startDate, endDate })}</p>
+              <p>
+                {position}, {organization}
+                <br />
+                {summary}
+              </p>
+            </cv-subsection>
+          ))}
         </cv-section>
       )}
 
