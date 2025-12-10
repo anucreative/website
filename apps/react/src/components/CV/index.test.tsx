@@ -4,7 +4,7 @@ import { render, screen } from '@testing-library/react'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import sampleResume from '@website/data-types/cv.json'
 import type { Resume } from '@website/data-types'
-import { CV } from './CV'
+import { CV } from '.'
 
 // Mock web components
 vi.mock('@website/ui/components', () => ({}))

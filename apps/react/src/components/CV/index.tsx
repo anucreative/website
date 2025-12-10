@@ -1,5 +1,5 @@
 import type { Resume } from '@website/data-types'
-import { getDates } from '../utils/date'
+import { getDates } from '../../utils/date'
 import '@website/ui/components'
 
 interface CVProps {
