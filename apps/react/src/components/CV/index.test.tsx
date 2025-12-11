@@ -3,14 +3,14 @@ import '@testing-library/jest-dom'
 import { render, screen } from '@testing-library/react'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import sampleResume from '@website/data-types/cv.json'
-import type { Resume } from '@website/data-types'
+import type { ResumeOutput } from '@website/data-types'
 import { CV } from '.'
 
 // Mock web components
 vi.mock('@website/ui/components', () => ({}))
 
 describe('CV Page Rendering', () => {
-  const resume: Resume = sampleResume
+  const resume: ResumeOutput = sampleResume
   const queryClient = new QueryClient()
 
   test('should render CV component with resume data', () => {

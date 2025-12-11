@@ -1,14 +1,14 @@
 import { describe, test, expect, vi, beforeEach } from 'vitest'
 import '@testing-library/jest-dom'
 import { act, render, screen } from '@testing-library/react'
-import type { Resume } from '@website/data-types'
+import type { ResumeOutput } from '@website/data-types'
 
 // Mock web components
 vi.mock('@website/ui/components', () => ({}))
 
 // Mock the CV component to simplify testing
 vi.mock('../../components/CV', () => ({
-  CV: ({ resume }: { resume: Resume }) => (
+  CV: ({ resume }: { resume: ResumeOutput }) => (
     <div data-testid="cv-component">{resume.basics.name}</div>
   ),
 }))

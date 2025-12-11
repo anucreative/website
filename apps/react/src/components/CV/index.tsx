@@ -1,9 +1,9 @@
-import type { Resume } from '@website/data-types'
+import type { ResumeOutput } from '@website/data-types'
 import { getDates } from '../../utils/date'
 import '@website/ui/components'
 
 interface CVProps {
-  resume: Resume
+  resume: ResumeOutput
 }
 
 export function CV({ resume }: CVProps) {
@@ -69,7 +69,7 @@ export function CV({ resume }: CVProps) {
             <div className="content">
               {basics.profiles.map(({ network, url }) => (
                 <div key={network} className="entry">
-                  <a href={url} target="_blank" rel="noopener noreferrer">
+                  <a href={url ?? ''} target="_blank" rel="noopener noreferrer">
                     {network}
                   </a>
                 </div>
@@ -108,14 +108,21 @@ export function CV({ resume }: CVProps) {
           </cv-section-title>
           {work.map(
             ({ name, position, startDate, endDate, location, summary, highlights, slug, url }) => {
-              const dates = getDates({ startDate, endDate })
+              const dates = getDates({
+                startDate: startDate ?? undefined,
+                endDate: endDate ?? undefined,
+              })
               return (
-                <cv-subsection key={name}>
+                <cv-subsection key={name ?? ''}>
                   <div className={`content ${position ? 'has-position' : ''}`}>
                     <div className="intro">
-                      {slug && (
+                      {slug && url && (
                         <a href={url} target="_blank" rel="noopener noreferrer">
-                          <img src={`/logos/${slug}.png`} alt={`${name} logo`} className="logo" />
+                          <img
+                            src={`/logos/${slug}.png`}
+                            alt={`${name ?? 'company'} logo`}
+                            className="logo"
+                          />
                         </a>
                       )}
                       <div className="position-company">
@@ -123,10 +130,10 @@ export function CV({ resume }: CVProps) {
                         <p className="company">
                           {url ? (
                             <a href={url} target="_blank" rel="noopener noreferrer">
-                              {name}
+                              {name ?? ''}
                             </a>
                           ) : (
-                            name
+                            (name ?? '')
                           )}
                           {summary && <span className="summary">{summary}</span>}
                           {location && <span className="summary">{location}</span>}
@@ -155,8 +162,10 @@ export function CV({ resume }: CVProps) {
             <h2>Volunteering</h2>
           </cv-section-title>
           {volunteer.map(({ organization, position, startDate, endDate, summary }) => (
-            <cv-subsection key={organization}>
-              <p slot="title">{getDates({ startDate, endDate })}</p>
+            <cv-subsection key={organization ?? ''}>
+              <p slot="title">
+                {getDates({ startDate: startDate ?? undefined, endDate: endDate ?? undefined })}
+              </p>
               <p>
                 {position}, {organization}
                 <br />
@@ -173,8 +182,10 @@ export function CV({ resume }: CVProps) {
             <h2>Education</h2>
           </cv-section-title>
           {education.map(({ studyType, area, institution, startDate, endDate }) => (
-            <cv-subsection key={institution}>
-              <p slot="title">{getDates({ startDate, endDate })}</p>
+            <cv-subsection key={institution ?? ''}>
+              <p slot="title">
+                {getDates({ startDate: startDate ?? undefined, endDate: endDate ?? undefined })}
+              </p>
               <p>
                 {studyType} ({area}), {institution}
               </p>

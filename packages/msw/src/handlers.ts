@@ -4,7 +4,7 @@
  */
 
 import { http, HttpResponse } from 'msw'
-import type { Resume } from '@website/data-types'
+import type { ResumeOutput } from '@website/data-types'
 import sampleResume from '@website/data-types/cv.json' assert { type: 'json' }
 
 /**
@@ -16,7 +16,7 @@ export const handlers = [
    * Returns the sample resume data
    */
   http.get('/api/resume', () => {
-    return HttpResponse.json<Resume>(sampleResume as Resume, {
+    return HttpResponse.json<ResumeOutput>(sampleResume as ResumeOutput, {
       status: 200,
       headers: {
         'Content-Type': 'application/json',
@@ -35,7 +35,7 @@ export const handlers = [
 
     // For now, return sample data for any ID
     // Later, this can be extended to support multiple resumes
-    return HttpResponse.json<Resume>(sampleResume as Resume, {
+    return HttpResponse.json<ResumeOutput>(sampleResume as ResumeOutput, {
       status: 200,
       headers: {
         'Content-Type': 'application/json',

@@ -46,7 +46,7 @@ export const Route = createRootRoute({
 })
 
 function RootComponent() {
-  const params = useParams({ strict: false })
+  const params = useParams({ strict: false }) as { company?: string }
   const theme = getThemeFromCompany(params.company)
   const themeStyles = theme === 'alan' ? alanCSS : ''
 
