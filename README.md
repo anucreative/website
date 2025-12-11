@@ -180,29 +180,6 @@ Add comprehensive test coverage for routes, components, utilities, and hooks usi
   - [x] Hooks
   - [x] Utils
 
-### Phase 9: Vue 3 Frontend (Alternative Framework 💚)
-
-Build Vue 3 version consuming the same data from the backend.
-
-- [ ] **9.1 Create Vue App**
-  - [ ] Initialize `apps/web-vue/` with Vite + Vue 3
-  - [ ] Set up TypeScript configuration
-  - [ ] Install Vue Router
-
-- [ ] **9.2 Create Routes & Pages**
-  - [ ] Create router configuration with shared routes
-  - [ ] Create `/src/views/CVPage.vue`
-  - [ ] Implement theme switching via composable
-
-- [ ] **9.3 Integrate UI Components**
-  - [ ] Import Lit components in Vue
-  - [ ] Apply theme CSS variables from `packages/ui`
-  - [ ] Verify all themes work
-
-- [ ] **9.4 Deploy**
-  - [ ] Deploy Vue app separately (or same Render service under subdomain)
-  - [ ] Verify routes and data fetching work
-
 ### Phase 9: FastAPI Backend with PostgreSQL (Type-Safe API 🔌)
 
 Replace MSW with real Python backend for CV management. PostgreSQL with JSONB stores CVs, FastAPI provides REST API with auto-validated Resume types.
@@ -210,19 +187,19 @@ Replace MSW with real Python backend for CV management. PostgreSQL with JSONB st
 **Architecture Decision:** See [CV_ARCHITECTURE.md](./CV_ARCHITECTURE.md) for detailed design.
 
 - [x] **9.1 Set up FastAPI Project**
-  - [ ] Initialize `services/api/` with FastAPI
-  - [ ] Set up SQLAlchemy with async PostgreSQL driver (`asyncpg`)
-  - [ ] Configure Pydantic models (Resume, CV metadata) matching `@website/data-types`
-  - [ ] Database config with connection pooling
-  - [ ] CRUD endpoints: `GET /cv`, `POST /cv`, `PATCH /cv/{id}`, `DELETE /cv/{id}`
+  - [x] Initialize `services/api/` with FastAPI
+  - [x] Set up SQLAlchemy with async PostgreSQL driver (`asyncpg`)
+  - [x] Configure Pydantic models (Resume, CV metadata) matching `@website/data-types`
+  - [x] Database config with connection pooling
+  - [x] CRUD endpoints: `GET /cv`, `POST /cv`, `PATCH /cv/{id}`, `DELETE /cv/{id}`
 
-- [ ] **9.2 Create Database Schema & Type Generation**
-  - [ ] Set up Alembic for database migrations
-  - [ ] Create initial migration for `cvs` table
-  - [ ] Set up `pydantic2ts` for generating TypeScript from Pydantic models
-  - [ ] Generate types and update `@website/data-types/Resume`
-  - [ ] Create seed script for base CV data
-  - [ ] Test endpoints locally with sample data
+- [x] **9.2 Create Database Schema & Type Generation**
+  - [x] Set up Alembic for database migrations
+  - [x] Create initial migration for `cvs` table
+  - [x] Set up `pydantic2ts` for generating TypeScript from Pydantic models
+  - [x] Generate types and update `@website/data-types/Resume`
+  - [x] Create seed script for base CV data
+  - [x] Test endpoints locally with sample data
 
 - [ ] **9.3 API Integration**
   - [ ] Update TanStack Start to fetch from FastAPI endpoints
