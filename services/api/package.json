@@ -1,0 +1,10 @@
+{
+  "name": "@website/api",
+  "version": "0.1.0",
+  "description": "FastAPI backend for CV management",
+  "private": true,
+  "scripts": {
+    "dev": "bash -c 'source venv/bin/activate && python run.py'",
+    "clean": "rm -rf __pycache__ .pytest_cache *.db"
+  }
+}

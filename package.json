@@ -12,7 +12,8 @@
   "scripts": {
     "watch": "turbo watch dev",
     "storybook": "turbo watch storybook --filter=@website/ui",
-    "dev": "turbo run dev --parallel",
+    "dev:clean": "lsof -i :3000,:8000 -t 2>/dev/null | xargs -r kill -9 2>/dev/null; sleep 1; true",
+    "dev": "yarn dev:clean && turbo run dev --parallel",
     "dev:filter": "turbo run dev --filter",
     "build": "turbo run build",
     "build:filter": "turbo run build --filter",
@@ -26,6 +27,7 @@
     "clean": "turbo run clean && rm -rf node_modules .turbo",
     "install-deps": "yarn install",
     "precommit": "yarn lint && yarn type-check",
+    "api:types": "openapi-ts",
     "api:types:watch": "openapi-ts --watch"
   },
   "engines": {
