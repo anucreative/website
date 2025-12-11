@@ -8,7 +8,9 @@
   "paths": {
     "/cv/": {
       "get": {
-        "tags": ["cv"],
+        "tags": [
+          "cv"
+        ],
         "summary": "List Cvs",
         "description": "List all CVs",
         "operationId": "listCvs",
@@ -22,7 +24,7 @@
                     "$ref": "#/components/schemas/CVResponse"
                   },
                   "type": "array",
-                  "title": "Response ListCvs"
+                  "title": "Response Listcvs"
                 }
               }
             }
@@ -30,7 +32,9 @@
         }
       },
       "post": {
-        "tags": ["cv"],
+        "tags": [
+          "cv"
+        ],
         "summary": "Create Cv",
         "description": "Create a new CV",
         "operationId": "createCv",
@@ -70,7 +74,9 @@
     },
     "/cv/{cv_id}": {
       "get": {
-        "tags": ["cv"],
+        "tags": [
+          "cv"
+        ],
         "summary": "Get Cv",
         "description": "Get a specific CV by ID",
         "operationId": "getCv",
@@ -110,7 +116,9 @@
         }
       },
       "patch": {
-        "tags": ["cv"],
+        "tags": [
+          "cv"
+        ],
         "summary": "Update Cv",
         "description": "Update a CV (partial update)",
         "operationId": "updateCv",
@@ -160,7 +168,9 @@
         }
       },
       "delete": {
-        "tags": ["cv"],
+        "tags": [
+          "cv"
+        ],
         "summary": "Delete Cv",
         "description": "Delete a CV",
         "operationId": "deleteCv",
@@ -254,7 +264,9 @@
           }
         },
         "type": "object",
-        "required": ["title"],
+        "required": [
+          "title"
+        ],
         "title": "Award"
       },
       "Basics": {
@@ -366,7 +378,9 @@
           }
         },
         "type": "object",
-        "required": ["name"],
+        "required": [
+          "name"
+        ],
         "title": "Basics"
       },
       "CVCreate": {
@@ -430,7 +444,11 @@
           }
         },
         "type": "object",
-        "required": ["type", "name", "content"],
+        "required": [
+          "type",
+          "name",
+          "content"
+        ],
         "title": "CVCreate",
         "description": "Request to create a new CV"
       },
@@ -509,7 +527,14 @@
           }
         },
         "type": "object",
-        "required": ["id", "type", "name", "content", "created_at", "updated_at"],
+        "required": [
+          "id",
+          "type",
+          "name",
+          "content",
+          "created_at",
+          "updated_at"
+        ],
         "title": "CVResponse",
         "description": "CV response with metadata"
       },
@@ -582,7 +607,9 @@
           }
         },
         "type": "object",
-        "required": ["name"],
+        "required": [
+          "name"
+        ],
         "title": "Certificate"
       },
       "Education": {
@@ -673,7 +700,9 @@
           }
         },
         "type": "object",
-        "required": ["institution"],
+        "required": [
+          "institution"
+        ],
         "title": "Education"
       },
       "HTTPValidationError": {
@@ -711,7 +740,9 @@
           }
         },
         "type": "object",
-        "required": ["name"],
+        "required": [
+          "name"
+        ],
         "title": "Interest"
       },
       "Language": {
@@ -733,7 +764,9 @@
           }
         },
         "type": "object",
-        "required": ["language"],
+        "required": [
+          "language"
+        ],
         "title": "Language"
       },
       "Location": {
@@ -827,7 +860,9 @@
           }
         },
         "type": "object",
-        "required": ["network"],
+        "required": [
+          "network"
+        ],
         "title": "Profile"
       },
       "Project": {
@@ -910,7 +945,9 @@
           }
         },
         "type": "object",
-        "required": ["name"],
+        "required": [
+          "name"
+        ],
         "title": "Project"
       },
       "Publication": {
@@ -965,7 +1002,9 @@
           }
         },
         "type": "object",
-        "required": ["name"],
+        "required": [
+          "name"
+        ],
         "title": "Publication"
       },
       "Reference": {
@@ -987,7 +1026,9 @@
           }
         },
         "type": "object",
-        "required": ["name"],
+        "required": [
+          "name"
+        ],
         "title": "Reference"
       },
       "Resume-Input": {
@@ -1151,7 +1192,9 @@
           }
         },
         "type": "object",
-        "required": ["basics"],
+        "required": [
+          "basics"
+        ],
         "title": "Resume",
         "description": "Full CV/Resume matching JSON Resume schema"
       },
@@ -1316,7 +1359,9 @@
           }
         },
         "type": "object",
-        "required": ["basics"],
+        "required": [
+          "basics"
+        ],
         "title": "Resume",
         "description": "Full CV/Resume matching JSON Resume schema"
       },
@@ -1353,7 +1398,9 @@
           }
         },
         "type": "object",
-        "required": ["name"],
+        "required": [
+          "name"
+        ],
         "title": "Skill"
       },
       "ValidationError": {
@@ -1382,7 +1429,11 @@
           }
         },
         "type": "object",
-        "required": ["loc", "msg", "type"],
+        "required": [
+          "loc",
+          "msg",
+          "type"
+        ],
         "title": "ValidationError"
       },
       "Volunteer": {
@@ -1462,7 +1513,9 @@
           }
         },
         "type": "object",
-        "required": ["organization"],
+        "required": [
+          "organization"
+        ],
         "title": "Volunteer"
       },
       "Work": {
@@ -1479,7 +1532,14 @@
             "title": "Name"
           },
           "position": {
-            "type": "string",
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
             "title": "Position"
           },
           "url": {
@@ -1564,7 +1624,6 @@
           }
         },
         "type": "object",
-        "required": ["position"],
         "title": "Work"
       }
     }

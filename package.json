@@ -26,7 +26,7 @@
     "clean": "turbo run clean && rm -rf node_modules .turbo",
     "install-deps": "yarn install",
     "precommit": "yarn lint && yarn type-check",
-    "api:types": "openapi-ts"
+    "api:types:watch": "openapi-ts --watch"
   },
   "engines": {
     "node": ">=24.0.0",

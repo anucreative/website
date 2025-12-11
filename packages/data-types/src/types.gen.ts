@@ -563,7 +563,7 @@ export type Work = {
   /**
    * Position
    */
-  position: string
+  position?: string | null
   /**
    * Url
    */
@@ -603,7 +603,7 @@ export type ListCvsData = {
 
 export type ListCvsResponses = {
   /**
-   * Response ListCvs
+   * Response Listcvs
    *
    * Successful Response
    */

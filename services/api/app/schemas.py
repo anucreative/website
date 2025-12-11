@@ -33,7 +33,7 @@ class Basics(BaseModel):
 
 class Work(BaseModel):
     name: Optional[str] = None
-    position: str
+    position: Optional[str] = None
     url: Optional[str] = None
     location: Optional[str] = None
     slug: Optional[str] = None
