@@ -11,13 +11,13 @@ from app.schemas import CVCreate, CVUpdate, CVResponse, Resume
 
 router = APIRouter()
 
-@router.get("/", response_model=list[CVResponse])
+@router.get("/", response_model=list[CVResponse], operation_id="listCvs")
 async def list_cvs(session: AsyncSession = Depends(get_session)):
     """List all CVs"""
     result = await session.execute(select(CV))
     return result.scalars().all()
 
-@router.post("/", response_model=CVResponse, status_code=201)
+@router.post("/", response_model=CVResponse, status_code=201, operation_id="createCv")
 async def create_cv(
     cv_create: CVCreate,
     session: AsyncSession = Depends(get_session)
@@ -47,7 +47,7 @@ async def create_cv(
     
     return new_cv
 
-@router.get("/{cv_id}", response_model=CVResponse)
+@router.get("/{cv_id}", response_model=CVResponse, operation_id="getCv")
 async def get_cv(
     cv_id: UUID,
     session: AsyncSession = Depends(get_session)
@@ -61,7 +61,7 @@ async def get_cv(
     
     return cv
 
-@router.patch("/{cv_id}", response_model=CVResponse)
+@router.patch("/{cv_id}", response_model=CVResponse, operation_id="updateCv")
 async def update_cv(
     cv_id: UUID,
     cv_update: CVUpdate,
@@ -84,7 +84,7 @@ async def update_cv(
     
     return cv
 
-@router.delete("/{cv_id}", status_code=204)
+@router.delete("/{cv_id}", status_code=204, operation_id="deleteCv")
 async def delete_cv(
     cv_id: UUID,
     session: AsyncSession = Depends(get_session)

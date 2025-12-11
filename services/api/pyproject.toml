@@ -4,13 +4,17 @@ version = "0.1.0"
 description = "FastAPI backend for CV management"
 requires-python = ">=3.10"
 dependencies = [
-    "fastapi==0.109.0",
+    "fastapi==0.124.2",
     "uvicorn[standard]==0.27.0",
     "sqlalchemy==2.0.23",
     "asyncpg==0.29.0",
+    "psycopg2-binary==2.9.9",
     "pydantic==2.5.3",
     "pydantic-settings==2.1.0",
     "python-multipart==0.0.6",
+    "alembic==1.13.1",
+    "greenlet==3.0.3",
+    "httpx==0.25.2",
 ]
 
 [project.optional-dependencies]
@@ -20,7 +24,11 @@ dev = [
     "httpx==0.25.2",
     "black==23.12.1",
     "ruff==0.1.11",
+    "datamodel-code-generator[python]==0.43.0",
 ]
+
+[tool.setuptools]
+packages = ["app", "scripts"]
 
 [build-system]
 requires = ["setuptools", "wheel"]

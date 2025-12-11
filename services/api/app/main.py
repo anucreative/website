@@ -1,5 +1,7 @@
 """FastAPI CV Management Backend"""
 
+import json
+from pathlib import Path
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from contextlib import asynccontextmanager
@@ -9,8 +11,17 @@ from app.routes import cv
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
-    """Initialize database on startup"""
+    """Initialize database on startup and save OpenAPI schema"""
     await init_db()
+    
+    # Save OpenAPI schema for type generation
+    schema = app.openapi()
+    # Path: app/main.py → app/ → services/api/ → services/api/openapi.json
+    schema_file = Path(__file__).parent.parent / "openapi.json"
+    
+    schema_file.write_text(json.dumps(schema, indent=2))
+    print(f"✅ OpenAPI schema saved to: {schema_file.absolute()}")
+    
     yield
 
 app = FastAPI(
@@ -32,7 +43,7 @@ app.add_middleware(
 # Routes
 app.include_router(cv.router, prefix="/cv", tags=["cv"])
 
-@app.get("/health")
+@app.get("/health", operation_id="health")
 async def health():
     """Health check endpoint"""
     return {"status": "ok"}

@@ -1,7 +1,7 @@
 """Pydantic schemas for CV management"""
 
 from typing import Optional
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, Field, ConfigDict
 from uuid import UUID
 from datetime import datetime
 
@@ -108,6 +108,8 @@ class Volunteer(BaseModel):
 
 class Resume(BaseModel):
     """Full CV/Resume matching JSON Resume schema"""
+    model_config = ConfigDict(json_schema_extra={})
+    
     basics: Basics
     work: Optional[list[Work]] = None
     volunteer: Optional[list[Volunteer]] = None
