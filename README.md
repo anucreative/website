@@ -203,49 +203,65 @@ Build Vue 3 version consuming the same data from the backend.
   - [ ] Deploy Vue app separately (or same Render service under subdomain)
   - [ ] Verify routes and data fetching work
 
-### Phase 10: Backend - Database & API (Type-Safe API 🔌))
+### Phase 9: FastAPI Backend with PostgreSQL (Type-Safe API 🔌)
 
-Replace MSW with real backend using Prisma + TanStack Start server routes. Generate TypeScript types from Prisma.
+Replace MSW with real Python backend for CV management. PostgreSQL with JSONB stores CVs, FastAPI provides REST API with auto-validated Resume types.
 
-- [ ] **10.1 Set up Prisma**
-  - [ ] Initialize Prisma in TanStack Start app
-  - [ ] Create `prisma/schema.prisma` with CV data model
-  - [ ] Set up SQLite for local dev (Postgres in production)
+**Architecture Decision:** See [CV_ARCHITECTURE.md](./CV_ARCHITECTURE.md) for detailed design.
 
-- [ ] **10.2 Create Server Routes**
-  - [ ] Create `/src/routes/api/cv.ts` - Server route returning CV data
-  - [ ] Integrate Prisma client
-  - [ ] Update TanStack Start to fetch from real API
+- [ ] **9.1 Set up FastAPI Project**
+  - [ ] Initialize `services/api/` with FastAPI
+  - [ ] Set up SQLAlchemy with async PostgreSQL driver (`asyncpg`)
+  - [ ] Configure Pydantic models (Resume, CV metadata)
+  - [ ] Database config with connection pooling
 
-- [ ] **10.3 Generate API Types**
-  - [ ] Set up `@prisma/client` type generation
-  - [ ] Create type guards and validators
-  - [ ] Use generated types in frontend
+- [ ] **9.2 Create Database Schema**
+  - [ ] Single `cvs` table: `id`, `type`, `name`, `parent_id`, `job_id`, `role_id`, `company_id`, `content` (JSONB)
+  - [ ] Indexes on metadata columns for fast lookups
+  - [ ] Alembic migrations
+  - [ ] Seed base CV data
 
-- [ ] **10.4 Database Setup**
-  - [ ] Create database migrations
-  - [ ] Seed database with sample data
-  - [ ] Document database schema
+- [ ] **9.3 Implement CV Endpoints**
+  - [ ] `GET /cv/{job_id}?role={role}&company={company}` - Fallback chain lookup
+  - [ ] `POST /cv` - Create CV from parent with Resume overrides
+  - [ ] `PUT /cv/{id}` - Update CV
+  - [ ] `GET /cvs` - List all CVs
 
-### Phase 11: FastAPI Backend (Optional Python Backend)
+- [ ] **9.4 Type Safety**
+  - [ ] Use `@website/data-types` Resume interfaces with Pydantic
+  - [ ] API docs auto-generated via FastAPI (Swagger UI)
+  - [ ] Type validation on request/response
 
-Add Python FastAPI backend as alternative to TanStack Start server routes.
+- [ ] **9.5 Deployment**
+  - [ ] Deploy FastAPI to Render (separate service from frontend)
+  - [ ] Configure PostgreSQL database (Render or external)
+  - [ ] Update TanStack Start to call FastAPI endpoints
+  - [ ] Remove MSW mock handlers
 
-- [ ] **11.1 Create FastAPI Service**
-  - [ ] Initialize `services/api-python/` with FastAPI
-  - [ ] Set up SQLAlchemy ORM
-  - [ ] Create database models
-  - [ ] Implement `/api/cv` endpoint
+### Phase 10: Vue 3 Frontend (Alternative UI)
 
-- [ ] **11.2 API Documentation**
-  - [ ] Generate OpenAPI schema
-  - [ ] Set up Swagger UI
+Build a Vue 3 variant of the CV site, sharing the same backend API and data structures. Demonstrates multi-framework capability of the monorepo.
 
-- [ ] **11.3 Type Generation**
-  - [ ] Generate TypeScript types from OpenAPI
-  - [ ] Update frontends to use FastAPI backend (optional)
+- [ ] **10.1 Create Vue 3 App**
+  - [ ] Initialize `apps/vue/` with Vite + Vue 3
+  - [ ] Set up TypeScript configuration
+  - [ ] Configure path aliases to `@website/*`
 
-### Phase 12: Optional Enhancements
+- [ ] **10.2 Implement Pages**
+  - [ ] Create root layout
+  - [ ] Create `/cv` page (mirror of React version)
+  - [ ] Fetch from FastAPI backend
+
+- [ ] **10.3 Theme System**
+  - [ ] Import CSS from `@website/tokens`
+  - [ ] Verify theme switching works
+  - [ ] Implement `/cv/alan` route with alan theme
+
+- [ ] **10.4 Deploy**
+  - [ ] Deploy Vue app as separate service or subdomain
+  - [ ] Verify routes and data fetching work
+
+### Phase 11: Optional Enhancements
 
 - [ ] Set up E2E testing (Playwright/Cypress)
 - [ ] Add CI/CD workflows (GitHub Actions)
