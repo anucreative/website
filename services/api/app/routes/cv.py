@@ -6,7 +6,7 @@ from sqlalchemy import select, or_, and_, case
 from uuid import UUID
 
 from app.database import get_session
-from app.models import CV
+from app.models import CV as CVModel
 from app.schemas import CVCreate, CVUpdate, CVResponse, CV
 
 router = APIRouter()
@@ -14,7 +14,7 @@ router = APIRouter()
 @router.get("/", response_model=list[CVResponse], operation_id="listCvs")
 async def list_cvs(session: AsyncSession = Depends(get_session)):
     """List all CVs"""
-    result = await session.execute(select(CV))
+    result = await session.execute(select(CVModel))
     return result.scalars().all()
 
 @router.post("/", response_model=CVResponse, status_code=201, operation_id="createCv")
@@ -26,12 +26,12 @@ async def create_cv(
     
     # Validate parent if provided
     if cv_create.parent_id:
-        result = await session.execute(select(CV).where(CV.id == cv_create.parent_id))
+        result = await session.execute(select(CVModel).where(CVModel.id == cv_create.parent_id))
         if not result.scalar():
             raise HTTPException(status_code=404, detail="Parent CV not found")
     
     # Create new CV
-    new_cv = CV(
+    new_cv = CVModel(
         type=cv_create.type,
         name=cv_create.name,
         parent_id=cv_create.parent_id,
@@ -53,7 +53,7 @@ async def get_cv(
     session: AsyncSession = Depends(get_session)
 ):
     """Get a specific CV by ID"""
-    result = await session.execute(select(CV).where(CV.id == cv_id))
+    result = await session.execute(select(CVModel).where(CVModel.id == cv_id))
     cv = result.scalar()
     
     if not cv:
@@ -68,7 +68,7 @@ async def update_cv(
     session: AsyncSession = Depends(get_session)
 ):
     """Update a CV (partial update)"""
-    result = await session.execute(select(CV).where(CV.id == cv_id))
+    result = await session.execute(select(CVModel).where(CVModel.id == cv_id))
     cv = result.scalar()
     
     if not cv:
@@ -90,7 +90,7 @@ async def delete_cv(
     session: AsyncSession = Depends(get_session)
 ):
     """Delete a CV"""
-    result = await session.execute(select(CV).where(CV.id == cv_id))
+    result = await session.execute(select(CVModel).where(CVModel.id == cv_id))
     cv = result.scalar()
     
     if not cv:
