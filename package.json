@@ -25,7 +25,8 @@
     "format:check": "prettier --check \"**/*.{ts,tsx,vue,js,jsx,json,md}\"",
     "clean": "turbo run clean && rm -rf node_modules .turbo",
     "install-deps": "yarn install",
-    "precommit": "yarn lint && yarn type-check"
+    "precommit": "yarn lint && yarn type-check",
+    "api:types": "openapi-ts"
   },
   "engines": {
     "node": ">=24.0.0",
@@ -36,6 +37,7 @@
   },
   "devDependencies": {
     "@eslint/js": "^9.39.1",
+    "@hey-api/openapi-ts": "^0.86.0",
     "@types/node": "^24.10.1",
     "eslint": "^9.39.1",
     "msw": "^2.12.3",

@@ -209,34 +209,30 @@ Replace MSW with real Python backend for CV management. PostgreSQL with JSONB st
 
 **Architecture Decision:** See [CV_ARCHITECTURE.md](./CV_ARCHITECTURE.md) for detailed design.
 
-- [ ] **9.1 Set up FastAPI Project**
+- [x] **9.1 Set up FastAPI Project**
   - [ ] Initialize `services/api/` with FastAPI
   - [ ] Set up SQLAlchemy with async PostgreSQL driver (`asyncpg`)
-  - [ ] Configure Pydantic models (Resume, CV metadata)
+  - [ ] Configure Pydantic models (Resume, CV metadata) matching `@website/data-types`
   - [ ] Database config with connection pooling
+  - [ ] CRUD endpoints: `GET /cv`, `POST /cv`, `PATCH /cv/{id}`, `DELETE /cv/{id}`
 
-- [ ] **9.2 Create Database Schema**
-  - [ ] Single `cvs` table: `id`, `type`, `name`, `parent_id`, `job_id`, `role_id`, `company_id`, `content` (JSONB)
-  - [ ] Indexes on metadata columns for fast lookups
-  - [ ] Alembic migrations
-  - [ ] Seed base CV data
+- [ ] **9.2 Create Database Schema & Type Generation**
+  - [ ] Set up Alembic for database migrations
+  - [ ] Create initial migration for `cvs` table
+  - [ ] Set up `pydantic2ts` for generating TypeScript from Pydantic models
+  - [ ] Generate types and update `@website/data-types/Resume`
+  - [ ] Create seed script for base CV data
+  - [ ] Test endpoints locally with sample data
 
-- [ ] **9.3 Implement CV Endpoints**
-  - [ ] `GET /cv/{job_id}?role={role}&company={company}` - Fallback chain lookup
-  - [ ] `POST /cv` - Create CV from parent with Resume overrides
-  - [ ] `PUT /cv/{id}` - Update CV
-  - [ ] `GET /cvs` - List all CVs
+- [ ] **9.3 API Integration**
+  - [ ] Update TanStack Start to fetch from FastAPI endpoints
+  - [ ] Remove MSW mock handlers (replace with real API calls)
+  - [ ] Update environment variables for API URL
 
-- [ ] **9.4 Type Safety**
-  - [ ] Use `@website/data-types` Resume interfaces with Pydantic
-  - [ ] API docs auto-generated via FastAPI (Swagger UI)
-  - [ ] Type validation on request/response
-
-- [ ] **9.5 Deployment**
+- [ ] **9.4 Deployment**
   - [ ] Deploy FastAPI to Render (separate service from frontend)
   - [ ] Configure PostgreSQL database (Render or external)
-  - [ ] Update TanStack Start to call FastAPI endpoints
-  - [ ] Remove MSW mock handlers
+  - [ ] Test all endpoints in production
 
 ### Phase 10: Vue 3 Frontend (Alternative UI)
 
