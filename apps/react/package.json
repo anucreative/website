@@ -16,10 +16,8 @@
     "clean": "rm -rf .output dist .turbo"
   },
   "dependencies": {
-    "@tanstack/react-query": "^5.90.11",
-    "@tanstack/react-router": "^1.139.14",
-    "@tanstack/react-start": "^1.139.14",
-    "@tanstack/start": "^1.62.0",
+    "@tanstack/react-router": "^1.141.0",
+    "@tanstack/react-start": "^1.141.0",
     "@website/data-types": "workspace:*",
     "@website/msw": "workspace:*",
     "@website/shared": "workspace:*",

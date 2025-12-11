@@ -1,20 +1,9 @@
 /// <reference types="vite/client" />
 import { Outlet, createRootRoute, HeadContent, Scripts, useParams } from '@tanstack/react-router'
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import globalCSS from '@website/ui/global.css?raw'
 import defaultCSS from '@website/tokens/default.css?raw'
 import alanCSS from '@website/tokens/alan.css?raw'
 import { getThemeFromCompany } from '../utils/theme-selector'
-
-// Create a client for the app to use
-const queryClient = new QueryClient({
-  defaultOptions: {
-    queries: {
-      staleTime: 1000 * 60 * 5, // 5 minutes
-      gcTime: 1000 * 60 * 10, // 10 minutes (formerly cacheTime)
-    },
-  },
-})
 
 export const Route = createRootRoute({
   head: () => {
@@ -51,17 +40,15 @@ function RootComponent() {
   const themeStyles = theme === 'alan' ? alanCSS : ''
 
   return (
-    <QueryClientProvider client={queryClient}>
-      <html lang="en">
-        <head>
-          <HeadContent />
-          <style key={`theme-${theme}`}>{themeStyles}</style>
-        </head>
-        <body>
-          <Outlet />
-          <Scripts />
-        </body>
-      </html>
-    </QueryClientProvider>
+    <html lang="en">
+      <head>
+        <HeadContent />
+        <style key={`theme-${theme}`}>{themeStyles}</style>
+      </head>
+      <body>
+        <Outlet />
+        <Scripts />
+      </body>
+    </html>
   )
 }
