@@ -1,24 +1,18 @@
 import { describe, test, expect, vi } from 'vitest'
 import '@testing-library/jest-dom'
 import { render, screen } from '@testing-library/react'
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import sampleResume from '@website/data-types/cv.json'
-import type { ResumeOutput } from '@website/data-types'
+import type { Cv } from '@website/data-types'
 import { CV } from '.'
 
 // Mock web components
 vi.mock('@website/ui/components', () => ({}))
 
 describe('CV Page Rendering', () => {
-  const resume: ResumeOutput = sampleResume
-  const queryClient = new QueryClient()
+  const resume: Cv = sampleResume
 
   test('should render CV component with resume data', () => {
-    render(
-      <QueryClientProvider client={queryClient}>
-        <CV resume={resume} />
-      </QueryClientProvider>
-    )
+    render(<CV resume={resume} />)
 
     // Check that the component renders without errors
     expect(screen.getByText(resume.basics.name)).toBeInTheDocument()
@@ -58,11 +52,7 @@ describe('CV Page Rendering', () => {
   })
 
   test('should render CV header with image', () => {
-    render(
-      <QueryClientProvider client={queryClient}>
-        <CV resume={resume} />
-      </QueryClientProvider>
-    )
+    render(<CV resume={resume} />)
 
     expect(screen.getByAltText(resume.basics.name)).toBeInTheDocument()
   })

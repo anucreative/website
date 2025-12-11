@@ -1,14 +1,14 @@
 import { describe, test, expect, vi, beforeEach } from 'vitest'
 import '@testing-library/jest-dom'
 import { act, render, screen } from '@testing-library/react'
-import type { ResumeOutput } from '@website/data-types'
+import type { CvOutput } from '@website/data-types'
 
 // Mock web components
 vi.mock('@website/ui/components', () => ({}))
 
 // Mock the CV component to simplify testing
 vi.mock('../../components/CV', () => ({
-  CV: ({ resume }: { resume: ResumeOutput }) => (
+  CV: ({ resume }: { resume: CvOutput }) => (
     <div data-testid="cv-component">{resume.basics.name}</div>
   ),
 }))
@@ -23,14 +23,13 @@ const setUpRouter = ({
   fetcher,
 }: {
   path: string
-  fetcher?: () => Promise<Resume | null>
+  fetcher?: () => Promise<CvOutput | null>
 }) => {
   const rootRoute = createRootRoute({})
   const indexRoute = createRoute({
     getParentRoute: () => rootRoute,
     path,
-    loader: async (): Promise<Resume | null> => {
-      console.debug('Loader called for path:', path)
+    loader: async (): Promise<CvOutput | null> => {
       return fetcher ? fetcher() : fetchResume()
     },
     component: RouteComponent,

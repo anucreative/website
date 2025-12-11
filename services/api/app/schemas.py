@@ -5,7 +5,7 @@ from pydantic import BaseModel, Field, ConfigDict
 from uuid import UUID
 from datetime import datetime
 
-# Resume schema models (matching @website/data-types)
+# CV schema models (matching @website/data-types)
 
 class Location(BaseModel):
     address: Optional[str] = None
@@ -106,8 +106,8 @@ class Volunteer(BaseModel):
     summary: Optional[str] = None
     highlights: Optional[list[str]] = None
 
-class Resume(BaseModel):
-    """Full CV/Resume matching JSON Resume schema"""
+class CV(BaseModel):
+    """Full CV matching JSON CV schema"""
     model_config = ConfigDict(json_schema_extra={})
     
     basics: Basics
@@ -129,7 +129,7 @@ class CVCreate(BaseModel):
     """Request to create a new CV"""
     type: str = Field(..., pattern="^(base|role|job|company)$")
     name: str
-    content: Resume
+    content: CV
     parent_id: Optional[UUID] = None
     job_id: Optional[str] = None
     role_id: Optional[str] = None
@@ -138,7 +138,7 @@ class CVCreate(BaseModel):
 class CVUpdate(BaseModel):
     """Request to update a CV"""
     name: Optional[str] = None
-    content: Optional[Resume] = None
+    content: Optional[CV] = None
 
 class CVResponse(BaseModel):
     """CV response with metadata"""
@@ -149,7 +149,7 @@ class CVResponse(BaseModel):
     job_id: Optional[str] = None
     role_id: Optional[str] = None
     company_id: Optional[str] = None
-    content: Resume
+    content: CV
     created_at: datetime
     updated_at: datetime
 

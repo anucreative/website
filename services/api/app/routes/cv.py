@@ -7,7 +7,7 @@ from uuid import UUID
 
 from app.database import get_session
 from app.models import CV
-from app.schemas import CVCreate, CVUpdate, CVResponse, Resume
+from app.schemas import CVCreate, CVUpdate, CVResponse, CV
 
 router = APIRouter()
 

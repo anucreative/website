@@ -70,6 +70,112 @@ export type Basics = {
 }
 
 /**
+ * CV
+ *
+ * Full CV matching JSON CV schema
+ */
+export type CvInput = {
+  basics: Basics
+  /**
+   * Work
+   */
+  work?: Array<Work> | null
+  /**
+   * Volunteer
+   */
+  volunteer?: Array<Volunteer> | null
+  /**
+   * Education
+   */
+  education?: Array<Education> | null
+  /**
+   * Awards
+   */
+  awards?: Array<Award> | null
+  /**
+   * Certificates
+   */
+  certificates?: Array<Certificate> | null
+  /**
+   * Publications
+   */
+  publications?: Array<Publication> | null
+  /**
+   * Skills
+   */
+  skills?: Array<Skill> | null
+  /**
+   * Languages
+   */
+  languages?: Array<Language> | null
+  /**
+   * Interests
+   */
+  interests?: Array<Interest> | null
+  /**
+   * References
+   */
+  references?: Array<Reference> | null
+  /**
+   * Projects
+   */
+  projects?: Array<Project> | null
+}
+
+/**
+ * CV
+ *
+ * Full CV matching JSON CV schema
+ */
+export type CvOutput = {
+  basics: Basics
+  /**
+   * Work
+   */
+  work?: Array<Work> | null
+  /**
+   * Volunteer
+   */
+  volunteer?: Array<Volunteer> | null
+  /**
+   * Education
+   */
+  education?: Array<Education> | null
+  /**
+   * Awards
+   */
+  awards?: Array<Award> | null
+  /**
+   * Certificates
+   */
+  certificates?: Array<Certificate> | null
+  /**
+   * Publications
+   */
+  publications?: Array<Publication> | null
+  /**
+   * Skills
+   */
+  skills?: Array<Skill> | null
+  /**
+   * Languages
+   */
+  languages?: Array<Language> | null
+  /**
+   * Interests
+   */
+  interests?: Array<Interest> | null
+  /**
+   * References
+   */
+  references?: Array<Reference> | null
+  /**
+   * Projects
+   */
+  projects?: Array<Project> | null
+}
+
+/**
  * CVCreate
  *
  * Request to create a new CV
@@ -83,7 +189,7 @@ export type CvCreate = {
    * Name
    */
   name: string
-  content: ResumeInput
+  content: CvInput
   /**
    * Parent Id
    */
@@ -136,7 +242,7 @@ export type CvResponse = {
    * Company Id
    */
   company_id?: string | null
-  content: ResumeOutput
+  content: CvOutput
   /**
    * Created At
    */
@@ -157,7 +263,7 @@ export type CvUpdate = {
    * Name
    */
   name?: string | null
-  content?: ResumeInput | null
+  content?: CvInput | null
 }
 
 /**
@@ -374,112 +480,6 @@ export type Reference = {
    * Reference
    */
   reference?: string | null
-}
-
-/**
- * Resume
- *
- * Full CV/Resume matching JSON Resume schema
- */
-export type ResumeInput = {
-  basics: Basics
-  /**
-   * Work
-   */
-  work?: Array<Work> | null
-  /**
-   * Volunteer
-   */
-  volunteer?: Array<Volunteer> | null
-  /**
-   * Education
-   */
-  education?: Array<Education> | null
-  /**
-   * Awards
-   */
-  awards?: Array<Award> | null
-  /**
-   * Certificates
-   */
-  certificates?: Array<Certificate> | null
-  /**
-   * Publications
-   */
-  publications?: Array<Publication> | null
-  /**
-   * Skills
-   */
-  skills?: Array<Skill> | null
-  /**
-   * Languages
-   */
-  languages?: Array<Language> | null
-  /**
-   * Interests
-   */
-  interests?: Array<Interest> | null
-  /**
-   * References
-   */
-  references?: Array<Reference> | null
-  /**
-   * Projects
-   */
-  projects?: Array<Project> | null
-}
-
-/**
- * Resume
- *
- * Full CV/Resume matching JSON Resume schema
- */
-export type ResumeOutput = {
-  basics: Basics
-  /**
-   * Work
-   */
-  work?: Array<Work> | null
-  /**
-   * Volunteer
-   */
-  volunteer?: Array<Volunteer> | null
-  /**
-   * Education
-   */
-  education?: Array<Education> | null
-  /**
-   * Awards
-   */
-  awards?: Array<Award> | null
-  /**
-   * Certificates
-   */
-  certificates?: Array<Certificate> | null
-  /**
-   * Publications
-   */
-  publications?: Array<Publication> | null
-  /**
-   * Skills
-   */
-  skills?: Array<Skill> | null
-  /**
-   * Languages
-   */
-  languages?: Array<Language> | null
-  /**
-   * Interests
-   */
-  interests?: Array<Interest> | null
-  /**
-   * References
-   */
-  references?: Array<Reference> | null
-  /**
-   * Projects
-   */
-  projects?: Array<Project> | null
 }
 
 /**

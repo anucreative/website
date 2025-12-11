@@ -383,6 +383,340 @@
         ],
         "title": "Basics"
       },
+      "CV-Input": {
+        "properties": {
+          "basics": {
+            "$ref": "#/components/schemas/Basics"
+          },
+          "work": {
+            "anyOf": [
+              {
+                "items": {
+                  "$ref": "#/components/schemas/Work"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Work"
+          },
+          "volunteer": {
+            "anyOf": [
+              {
+                "items": {
+                  "$ref": "#/components/schemas/Volunteer"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Volunteer"
+          },
+          "education": {
+            "anyOf": [
+              {
+                "items": {
+                  "$ref": "#/components/schemas/Education"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Education"
+          },
+          "awards": {
+            "anyOf": [
+              {
+                "items": {
+                  "$ref": "#/components/schemas/Award"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Awards"
+          },
+          "certificates": {
+            "anyOf": [
+              {
+                "items": {
+                  "$ref": "#/components/schemas/Certificate"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Certificates"
+          },
+          "publications": {
+            "anyOf": [
+              {
+                "items": {
+                  "$ref": "#/components/schemas/Publication"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Publications"
+          },
+          "skills": {
+            "anyOf": [
+              {
+                "items": {
+                  "$ref": "#/components/schemas/Skill"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Skills"
+          },
+          "languages": {
+            "anyOf": [
+              {
+                "items": {
+                  "$ref": "#/components/schemas/Language"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Languages"
+          },
+          "interests": {
+            "anyOf": [
+              {
+                "items": {
+                  "$ref": "#/components/schemas/Interest"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Interests"
+          },
+          "references": {
+            "anyOf": [
+              {
+                "items": {
+                  "$ref": "#/components/schemas/Reference"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "References"
+          },
+          "projects": {
+            "anyOf": [
+              {
+                "items": {
+                  "$ref": "#/components/schemas/Project"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Projects"
+          }
+        },
+        "type": "object",
+        "required": [
+          "basics"
+        ],
+        "title": "CV",
+        "description": "Full CV matching JSON CV schema"
+      },
+      "CV-Output": {
+        "properties": {
+          "basics": {
+            "$ref": "#/components/schemas/Basics"
+          },
+          "work": {
+            "anyOf": [
+              {
+                "items": {
+                  "$ref": "#/components/schemas/Work"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Work"
+          },
+          "volunteer": {
+            "anyOf": [
+              {
+                "items": {
+                  "$ref": "#/components/schemas/Volunteer"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Volunteer"
+          },
+          "education": {
+            "anyOf": [
+              {
+                "items": {
+                  "$ref": "#/components/schemas/Education"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Education"
+          },
+          "awards": {
+            "anyOf": [
+              {
+                "items": {
+                  "$ref": "#/components/schemas/Award"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Awards"
+          },
+          "certificates": {
+            "anyOf": [
+              {
+                "items": {
+                  "$ref": "#/components/schemas/Certificate"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Certificates"
+          },
+          "publications": {
+            "anyOf": [
+              {
+                "items": {
+                  "$ref": "#/components/schemas/Publication"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Publications"
+          },
+          "skills": {
+            "anyOf": [
+              {
+                "items": {
+                  "$ref": "#/components/schemas/Skill"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Skills"
+          },
+          "languages": {
+            "anyOf": [
+              {
+                "items": {
+                  "$ref": "#/components/schemas/Language"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Languages"
+          },
+          "interests": {
+            "anyOf": [
+              {
+                "items": {
+                  "$ref": "#/components/schemas/Interest"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Interests"
+          },
+          "references": {
+            "anyOf": [
+              {
+                "items": {
+                  "$ref": "#/components/schemas/Reference"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "References"
+          },
+          "projects": {
+            "anyOf": [
+              {
+                "items": {
+                  "$ref": "#/components/schemas/Project"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Projects"
+          }
+        },
+        "type": "object",
+        "required": [
+          "basics"
+        ],
+        "title": "CV",
+        "description": "Full CV matching JSON CV schema"
+      },
       "CVCreate": {
         "properties": {
           "type": {
@@ -395,7 +729,7 @@
             "title": "Name"
           },
           "content": {
-            "$ref": "#/components/schemas/Resume-Input"
+            "$ref": "#/components/schemas/CV-Input"
           },
           "parent_id": {
             "anyOf": [
@@ -513,7 +847,7 @@
             "title": "Company Id"
           },
           "content": {
-            "$ref": "#/components/schemas/Resume-Output"
+            "$ref": "#/components/schemas/CV-Output"
           },
           "created_at": {
             "type": "string",
@@ -554,7 +888,7 @@
           "content": {
             "anyOf": [
               {
-                "$ref": "#/components/schemas/Resume-Input"
+                "$ref": "#/components/schemas/CV-Input"
               },
               {
                 "type": "null"
@@ -1030,340 +1364,6 @@
           "name"
         ],
         "title": "Reference"
-      },
-      "Resume-Input": {
-        "properties": {
-          "basics": {
-            "$ref": "#/components/schemas/Basics"
-          },
-          "work": {
-            "anyOf": [
-              {
-                "items": {
-                  "$ref": "#/components/schemas/Work"
-                },
-                "type": "array"
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "title": "Work"
-          },
-          "volunteer": {
-            "anyOf": [
-              {
-                "items": {
-                  "$ref": "#/components/schemas/Volunteer"
-                },
-                "type": "array"
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "title": "Volunteer"
-          },
-          "education": {
-            "anyOf": [
-              {
-                "items": {
-                  "$ref": "#/components/schemas/Education"
-                },
-                "type": "array"
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "title": "Education"
-          },
-          "awards": {
-            "anyOf": [
-              {
-                "items": {
-                  "$ref": "#/components/schemas/Award"
-                },
-                "type": "array"
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "title": "Awards"
-          },
-          "certificates": {
-            "anyOf": [
-              {
-                "items": {
-                  "$ref": "#/components/schemas/Certificate"
-                },
-                "type": "array"
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "title": "Certificates"
-          },
-          "publications": {
-            "anyOf": [
-              {
-                "items": {
-                  "$ref": "#/components/schemas/Publication"
-                },
-                "type": "array"
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "title": "Publications"
-          },
-          "skills": {
-            "anyOf": [
-              {
-                "items": {
-                  "$ref": "#/components/schemas/Skill"
-                },
-                "type": "array"
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "title": "Skills"
-          },
-          "languages": {
-            "anyOf": [
-              {
-                "items": {
-                  "$ref": "#/components/schemas/Language"
-                },
-                "type": "array"
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "title": "Languages"
-          },
-          "interests": {
-            "anyOf": [
-              {
-                "items": {
-                  "$ref": "#/components/schemas/Interest"
-                },
-                "type": "array"
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "title": "Interests"
-          },
-          "references": {
-            "anyOf": [
-              {
-                "items": {
-                  "$ref": "#/components/schemas/Reference"
-                },
-                "type": "array"
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "title": "References"
-          },
-          "projects": {
-            "anyOf": [
-              {
-                "items": {
-                  "$ref": "#/components/schemas/Project"
-                },
-                "type": "array"
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "title": "Projects"
-          }
-        },
-        "type": "object",
-        "required": [
-          "basics"
-        ],
-        "title": "Resume",
-        "description": "Full CV/Resume matching JSON Resume schema"
-      },
-      "Resume-Output": {
-        "properties": {
-          "basics": {
-            "$ref": "#/components/schemas/Basics"
-          },
-          "work": {
-            "anyOf": [
-              {
-                "items": {
-                  "$ref": "#/components/schemas/Work"
-                },
-                "type": "array"
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "title": "Work"
-          },
-          "volunteer": {
-            "anyOf": [
-              {
-                "items": {
-                  "$ref": "#/components/schemas/Volunteer"
-                },
-                "type": "array"
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "title": "Volunteer"
-          },
-          "education": {
-            "anyOf": [
-              {
-                "items": {
-                  "$ref": "#/components/schemas/Education"
-                },
-                "type": "array"
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "title": "Education"
-          },
-          "awards": {
-            "anyOf": [
-              {
-                "items": {
-                  "$ref": "#/components/schemas/Award"
-                },
-                "type": "array"
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "title": "Awards"
-          },
-          "certificates": {
-            "anyOf": [
-              {
-                "items": {
-                  "$ref": "#/components/schemas/Certificate"
-                },
-                "type": "array"
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "title": "Certificates"
-          },
-          "publications": {
-            "anyOf": [
-              {
-                "items": {
-                  "$ref": "#/components/schemas/Publication"
-                },
-                "type": "array"
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "title": "Publications"
-          },
-          "skills": {
-            "anyOf": [
-              {
-                "items": {
-                  "$ref": "#/components/schemas/Skill"
-                },
-                "type": "array"
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "title": "Skills"
-          },
-          "languages": {
-            "anyOf": [
-              {
-                "items": {
-                  "$ref": "#/components/schemas/Language"
-                },
-                "type": "array"
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "title": "Languages"
-          },
-          "interests": {
-            "anyOf": [
-              {
-                "items": {
-                  "$ref": "#/components/schemas/Interest"
-                },
-                "type": "array"
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "title": "Interests"
-          },
-          "references": {
-            "anyOf": [
-              {
-                "items": {
-                  "$ref": "#/components/schemas/Reference"
-                },
-                "type": "array"
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "title": "References"
-          },
-          "projects": {
-            "anyOf": [
-              {
-                "items": {
-                  "$ref": "#/components/schemas/Project"
-                },
-                "type": "array"
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "title": "Projects"
-          }
-        },
-        "type": "object",
-        "required": [
-          "basics"
-        ],
-        "title": "Resume",
-        "description": "Full CV/Resume matching JSON Resume schema"
       },
       "Skill": {
         "properties": {
