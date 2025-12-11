@@ -49,7 +49,7 @@
       "highlights": [
         "Implemented new features and evolution of B2C site with React / Redux / Webpack / Cypress",
         "Led Core Web Vitals monitoring and improvements (TTFB -70%, LCP -50%, CLS 0.02s)",
-        "Implemented Cloudfront caching to improve performance and cut server costs (~30% cache hit rate)",
+        "Implemented Cloudfront caching to improve performance and cut server costs",
         "Led front-end code coverage initiatives, increasing coverage by ~25%",
         "Collaborated closely with Data / QA / Support teams to standardise best practices",
         "Improved and built on B2B apps with React / Typescript / Valtio / TanStack Query",
@@ -114,7 +114,7 @@
       "highlights": [
         "Grew and led the Design & UX team ",
         "Led the design and front-end development through a full site redesign",
-        "Set up a User-Centred Design framework including usability testing and user research pool",
+        "Created “user-centred design” framework inc. usability testing, research pool",
         "Prototyped and user-tested various revenue-generating initiatives",
         "Instigated and defined annual hack-days"
       ]
@@ -177,7 +177,9 @@
         "Next.js",
         "Webpack",
         "Component libraries",
-        "React Native"
+        "Storybook",
+        "React Native",
+        "Tailwind"
       ]
     },
     {
@@ -188,15 +190,7 @@
     {
       "name": "Back-end",
       "level": "Intermediate",
-      "keywords": [
-        "Node.js",
-        "Express",
-        "PostgreSQL",
-        "MongoDB",
-        "REST APIs",
-        "Ruby on Rails*",
-        "PHP*"
-      ]
+      "keywords": ["Node.js", "Express", "MySQL", "MongoDB", "REST APIs", "Ruby on Rails*", "PHP*"]
     },
     {
       "name": "UI/UX design",

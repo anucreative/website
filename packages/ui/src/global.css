@@ -58,7 +58,7 @@ a {
 }
 
 a:hover {
-  border-bottom: 0px solid var(--color-accent);
+  border-bottom-color: transparent;
 }
 
 /* Avatar */
