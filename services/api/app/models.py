@@ -19,6 +19,7 @@ class CV(Base):
     # Type classification
     type = Column(String(20), nullable=False)  # base, role, job, company
     name = Column(String(255), nullable=False)
+    slug = Column(String(255), unique=True, nullable=False, index=True)
     
     # Relationship to parent CV
     parent_id = Column(UUID(as_uuid=True), ForeignKey("cvs.id"), nullable=True)

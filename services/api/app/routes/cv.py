@@ -11,12 +11,6 @@ from app.schemas import CVCreate, CVUpdate, CVResponse, CV
 
 router = APIRouter()
 
-@router.get("/", response_model=list[CVResponse], operation_id="listCvs")
-async def list_cvs(session: AsyncSession = Depends(get_session)):
-    """List all CVs"""
-    result = await session.execute(select(CVModel))
-    return result.scalars().all()
-
 @router.post("/", response_model=CVResponse, status_code=201, operation_id="createCv")
 async def create_cv(
     cv_create: CVCreate,
@@ -34,6 +28,7 @@ async def create_cv(
     new_cv = CVModel(
         type=cv_create.type,
         name=cv_create.name,
+        slug=cv_create.slug,
         parent_id=cv_create.parent_id,
         job_id=cv_create.job_id,
         role_id=cv_create.role_id,
@@ -47,28 +42,33 @@ async def create_cv(
     
     return new_cv
 
-@router.get("/{cv_id}", response_model=CVResponse, operation_id="getCv")
+@router.get("/{slug}", response_model=CVResponse, operation_id="getCvBySlug")
 async def get_cv(
-    cv_id: UUID,
+    slug: str,
     session: AsyncSession = Depends(get_session)
 ):
-    """Get a specific CV by ID"""
-    result = await session.execute(select(CVModel).where(CVModel.id == cv_id))
+    """Get a specific CV by slug, fallback to 'base' if not found"""
+    result = await session.execute(select(CVModel).where(CVModel.slug == slug))
     cv = result.scalar()
     
+    # If not found, fall back to 'base' CV
     if not cv:
-        raise HTTPException(status_code=404, detail="CV not found")
+        result = await session.execute(select(CVModel).where(CVModel.slug == 'base'))
+        cv = result.scalar()
+        
+        if not cv:
+            raise HTTPException(status_code=404, detail="CV not found")
     
     return cv
 
-@router.patch("/{cv_id}", response_model=CVResponse, operation_id="updateCv")
+@router.patch("/{slug}", response_model=CVResponse, operation_id="updateCvBySlug")
 async def update_cv(
-    cv_id: UUID,
+    slug: str,
     cv_update: CVUpdate,
     session: AsyncSession = Depends(get_session)
 ):
     """Update a CV (partial update)"""
-    result = await session.execute(select(CVModel).where(CVModel.id == cv_id))
+    result = await session.execute(select(CVModel).where(CVModel.slug == slug))
     cv = result.scalar()
     
     if not cv:
@@ -76,6 +76,8 @@ async def update_cv(
     
     if cv_update.name:
         cv.name = cv_update.name
+    if cv_update.slug:
+        cv.slug = cv_update.slug
     if cv_update.content:
         cv.content = cv_update.content.model_dump(exclude_none=True)
     
@@ -84,13 +86,13 @@ async def update_cv(
     
     return cv
 
-@router.delete("/{cv_id}", status_code=204, operation_id="deleteCv")
+@router.delete("/{slug}", status_code=204, operation_id="deleteCvBySlug")
 async def delete_cv(
-    cv_id: UUID,
+    slug: str,
     session: AsyncSession = Depends(get_session)
 ):
     """Delete a CV"""
-    result = await session.execute(select(CVModel).where(CVModel.id == cv_id))
+    result = await session.execute(select(CVModel).where(CVModel.slug == slug))
     cv = result.scalar()
     
     if not cv:

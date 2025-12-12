@@ -1,38 +1,73 @@
 # CV Database & API Architecture
 
 ## Problem Statement
+
 Support personalized CVs for different jobs, roles, and companies with a single base CV. Users need to extend base CVs with role-specific or job-specific changes, then manage these versions with minimal duplication.
 
 ## Design Decisions
 
 ### 1. Database Schema
+
 **Technology:** PostgreSQL with JSONB + SQLAlchemy
+
 - Single `cvs` table with full `Resume` stored as JSONB (no normalization)
-- Metadata columns: `job_id`, `role_id`, `company_id` for lookups
+- **`slug` column (unique, indexed)** for direct human-friendly lookups
+- Metadata columns: `job_id`, `role_id`, `company_id` for optional filtering/auditing
 - Optional `parent_id` for lineage tracking (for auditing, not required for core logic)
 
 ### 2. CV Retrieval Strategy
-Fallback chain: Job → Company → Role → Base
+
+**Direct slug lookup** with fallback to base:
+
 ```sql
-SELECT * FROM cvs WHERE 
-  (job_id=$job AND role_id=$role AND company_id=$company)
-  OR (company_id=$company)
-  OR (role_id=$role)
-  OR (type='base')
+SELECT * FROM cvs WHERE slug = $slug
+-- If slug not found, fallback to: SELECT * FROM cvs WHERE slug = 'base'
 ```
 
-### 3. Creation Workflow
-User selects parent CV → Fetches content → Edits in form → Saves as new CV with `parent_id` reference.
-Supports inheritance from any context: base, role, company, or job.
+**API Endpoint:** `GET /cv/{slug}`
 
-### 4. Update & Migration
-Search-replace across all CVs using PostgreSQL JSONB operators.
-No cascading updates needed—each CV is independent.
+- Fetch CV by slug (e.g., `/cv/base`, `/cv/alan`, `/cv/alan-frontend-developer`)
+- If CV with slug not found, automatically returns base CV (fallback behavior)
+- Simple, human-readable URLs without IDs or nested routes
 
-### 5. Backend Framework
-**FastAPI** over Flask:
+### 3. API Endpoints
+
+- **GET `/cv/{slug}`** – Fetch CV by slug (returns base if not found)
+- **POST `/cv/`** – Create new CV (requires `slug` in body, must be unique)
+- **PATCH `/cv/{slug}`** – Update CV by slug
+- **DELETE `/cv/{slug}`** – Delete CV by slug
+
+All endpoints use direct slug lookup. No ID-based access needed.
+
+### 4. Frontend Routing
+
+**React/TanStack Start routes:**
+
+- `/cv/` – Landing route, loads base CV via `fetchResume()`
+- `/cv/:slug` – Dynamic route, loads CV by slug parameter
+
+Simple dynamic routes without nested path structure.
+
+### 5. Data Storage & Updates
+
+- Each CV is **fully independent** - stored as complete JSONB document
+- No cascading updates needed
+- Update any field in any CV without affecting others
+- Optional `parent_id` for tracking inheritance history (audit trail)
+
+### 6. Backend Framework
+
+**FastAPI** with async SQLAlchemy:
+
 - Async by default (good for concurrent queries)
 - Pydantic validation (auto-validates Resume shape)
 - Type hints as contracts (Python 3.10+)
 - Auto-generated API docs (Swagger UI)
-- First-class async SQLAlchemy support
+- First-class async SQLAlchemy support with asyncpg
+
+### 7. Development Workflow
+
+- **No migrations during development** – SQLAlchemy `create_all()` from models
+- Database recreated fresh from models when needed
+- Seed script loads data from `packages/data-types/cv.json`
+- Types auto-generated from OpenAPI schema via `yarn generate-types`

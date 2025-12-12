@@ -51,6 +51,7 @@ async def seed_base_cv():
             id=uuid.uuid4(),
             type='base',
             name='Base CV',
+            slug='base',
             parent_id=None,
             job_id=None,
             role_id=None,

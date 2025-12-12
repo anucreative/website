@@ -74,60 +74,7 @@ export type Basics = {
  *
  * Full CV matching JSON CV schema
  */
-export type CvInput = {
-  basics: Basics
-  /**
-   * Work
-   */
-  work?: Array<Work> | null
-  /**
-   * Volunteer
-   */
-  volunteer?: Array<Volunteer> | null
-  /**
-   * Education
-   */
-  education?: Array<Education> | null
-  /**
-   * Awards
-   */
-  awards?: Array<Award> | null
-  /**
-   * Certificates
-   */
-  certificates?: Array<Certificate> | null
-  /**
-   * Publications
-   */
-  publications?: Array<Publication> | null
-  /**
-   * Skills
-   */
-  skills?: Array<Skill> | null
-  /**
-   * Languages
-   */
-  languages?: Array<Language> | null
-  /**
-   * Interests
-   */
-  interests?: Array<Interest> | null
-  /**
-   * References
-   */
-  references?: Array<Reference> | null
-  /**
-   * Projects
-   */
-  projects?: Array<Project> | null
-}
-
-/**
- * CV
- *
- * Full CV matching JSON CV schema
- */
-export type CvOutput = {
+export type Cv = {
   basics: Basics
   /**
    * Work
@@ -189,7 +136,11 @@ export type CvCreate = {
    * Name
    */
   name: string
-  content: CvInput
+  /**
+   * Slug
+   */
+  slug: string
+  content: Cv
   /**
    * Parent Id
    */
@@ -227,6 +178,10 @@ export type CvResponse = {
    */
   name: string
   /**
+   * Slug
+   */
+  slug: string
+  /**
    * Parent Id
    */
   parent_id?: string | null
@@ -242,7 +197,7 @@ export type CvResponse = {
    * Company Id
    */
   company_id?: string | null
-  content: CvOutput
+  content: Cv
   /**
    * Created At
    */
@@ -263,7 +218,11 @@ export type CvUpdate = {
    * Name
    */
   name?: string | null
-  content?: CvInput | null
+  /**
+   * Slug
+   */
+  slug?: string | null
+  content?: Cv | null
 }
 
 /**
@@ -594,24 +553,6 @@ export type Work = {
   highlights?: Array<string> | null
 }
 
-export type ListCvsData = {
-  body?: never
-  path?: never
-  query?: never
-  url: '/cv/'
-}
-
-export type ListCvsResponses = {
-  /**
-   * Response Listcvs
-   *
-   * Successful Response
-   */
-  200: Array<CvResponse>
-}
-
-export type ListCvsResponse = ListCvsResponses[keyof ListCvsResponses]
-
 export type CreateCvData = {
   body: CvCreate
   path?: never
@@ -637,95 +578,95 @@ export type CreateCvResponses = {
 
 export type CreateCvResponse = CreateCvResponses[keyof CreateCvResponses]
 
-export type DeleteCvData = {
+export type DeleteCvBySlugData = {
   body?: never
   path: {
     /**
-     * Cv Id
+     * Slug
      */
-    cv_id: string
+    slug: string
   }
   query?: never
-  url: '/cv/{cv_id}'
+  url: '/cv/{slug}'
 }
 
-export type DeleteCvErrors = {
+export type DeleteCvBySlugErrors = {
   /**
    * Validation Error
    */
   422: HttpValidationError
 }
 
-export type DeleteCvError = DeleteCvErrors[keyof DeleteCvErrors]
+export type DeleteCvBySlugError = DeleteCvBySlugErrors[keyof DeleteCvBySlugErrors]
 
-export type DeleteCvResponses = {
+export type DeleteCvBySlugResponses = {
   /**
    * Successful Response
    */
   204: void
 }
 
-export type DeleteCvResponse = DeleteCvResponses[keyof DeleteCvResponses]
+export type DeleteCvBySlugResponse = DeleteCvBySlugResponses[keyof DeleteCvBySlugResponses]
 
-export type GetCvData = {
+export type GetCvBySlugData = {
   body?: never
   path: {
     /**
-     * Cv Id
+     * Slug
      */
-    cv_id: string
+    slug: string
   }
   query?: never
-  url: '/cv/{cv_id}'
+  url: '/cv/{slug}'
 }
 
-export type GetCvErrors = {
+export type GetCvBySlugErrors = {
   /**
    * Validation Error
    */
   422: HttpValidationError
 }
 
-export type GetCvError = GetCvErrors[keyof GetCvErrors]
+export type GetCvBySlugError = GetCvBySlugErrors[keyof GetCvBySlugErrors]
 
-export type GetCvResponses = {
+export type GetCvBySlugResponses = {
   /**
    * Successful Response
    */
   200: CvResponse
 }
 
-export type GetCvResponse = GetCvResponses[keyof GetCvResponses]
+export type GetCvBySlugResponse = GetCvBySlugResponses[keyof GetCvBySlugResponses]
 
-export type UpdateCvData = {
+export type UpdateCvBySlugData = {
   body: CvUpdate
   path: {
     /**
-     * Cv Id
+     * Slug
      */
-    cv_id: string
+    slug: string
   }
   query?: never
-  url: '/cv/{cv_id}'
+  url: '/cv/{slug}'
 }
 
-export type UpdateCvErrors = {
+export type UpdateCvBySlugErrors = {
   /**
    * Validation Error
    */
   422: HttpValidationError
 }
 
-export type UpdateCvError = UpdateCvErrors[keyof UpdateCvErrors]
+export type UpdateCvBySlugError = UpdateCvBySlugErrors[keyof UpdateCvBySlugErrors]
 
-export type UpdateCvResponses = {
+export type UpdateCvBySlugResponses = {
   /**
    * Successful Response
    */
   200: CvResponse
 }
 
-export type UpdateCvResponse = UpdateCvResponses[keyof UpdateCvResponses]
+export type UpdateCvBySlugResponse = UpdateCvBySlugResponses[keyof UpdateCvBySlugResponses]
 
 export type HealthData = {
   body?: never

@@ -7,30 +7,6 @@
   },
   "paths": {
     "/cv/": {
-      "get": {
-        "tags": [
-          "cv"
-        ],
-        "summary": "List Cvs",
-        "description": "List all CVs",
-        "operationId": "listCvs",
-        "responses": {
-          "200": {
-            "description": "Successful Response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "items": {
-                    "$ref": "#/components/schemas/CVResponse"
-                  },
-                  "type": "array",
-                  "title": "Response Listcvs"
-                }
-              }
-            }
-          }
-        }
-      },
       "post": {
         "tags": [
           "cv"
@@ -72,23 +48,22 @@
         }
       }
     },
-    "/cv/{cv_id}": {
+    "/cv/{slug}": {
       "get": {
         "tags": [
           "cv"
         ],
         "summary": "Get Cv",
-        "description": "Get a specific CV by ID",
-        "operationId": "getCv",
+        "description": "Get a specific CV by slug, fallback to 'base' if not found",
+        "operationId": "getCvBySlug",
         "parameters": [
           {
-            "name": "cv_id",
+            "name": "slug",
             "in": "path",
             "required": true,
             "schema": {
               "type": "string",
-              "format": "uuid",
-              "title": "Cv Id"
+              "title": "Slug"
             }
           }
         ],
@@ -121,16 +96,15 @@
         ],
         "summary": "Update Cv",
         "description": "Update a CV (partial update)",
-        "operationId": "updateCv",
+        "operationId": "updateCvBySlug",
         "parameters": [
           {
-            "name": "cv_id",
+            "name": "slug",
             "in": "path",
             "required": true,
             "schema": {
               "type": "string",
-              "format": "uuid",
-              "title": "Cv Id"
+              "title": "Slug"
             }
           }
         ],
@@ -173,16 +147,15 @@
         ],
         "summary": "Delete Cv",
         "description": "Delete a CV",
-        "operationId": "deleteCv",
+        "operationId": "deleteCvBySlug",
         "parameters": [
           {
-            "name": "cv_id",
+            "name": "slug",
             "in": "path",
             "required": true,
             "schema": {
               "type": "string",
-              "format": "uuid",
-              "title": "Cv Id"
+              "title": "Slug"
             }
           }
         ],
@@ -383,174 +356,7 @@
         ],
         "title": "Basics"
       },
-      "CV-Input": {
-        "properties": {
-          "basics": {
-            "$ref": "#/components/schemas/Basics"
-          },
-          "work": {
-            "anyOf": [
-              {
-                "items": {
-                  "$ref": "#/components/schemas/Work"
-                },
-                "type": "array"
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "title": "Work"
-          },
-          "volunteer": {
-            "anyOf": [
-              {
-                "items": {
-                  "$ref": "#/components/schemas/Volunteer"
-                },
-                "type": "array"
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "title": "Volunteer"
-          },
-          "education": {
-            "anyOf": [
-              {
-                "items": {
-                  "$ref": "#/components/schemas/Education"
-                },
-                "type": "array"
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "title": "Education"
-          },
-          "awards": {
-            "anyOf": [
-              {
-                "items": {
-                  "$ref": "#/components/schemas/Award"
-                },
-                "type": "array"
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "title": "Awards"
-          },
-          "certificates": {
-            "anyOf": [
-              {
-                "items": {
-                  "$ref": "#/components/schemas/Certificate"
-                },
-                "type": "array"
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "title": "Certificates"
-          },
-          "publications": {
-            "anyOf": [
-              {
-                "items": {
-                  "$ref": "#/components/schemas/Publication"
-                },
-                "type": "array"
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "title": "Publications"
-          },
-          "skills": {
-            "anyOf": [
-              {
-                "items": {
-                  "$ref": "#/components/schemas/Skill"
-                },
-                "type": "array"
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "title": "Skills"
-          },
-          "languages": {
-            "anyOf": [
-              {
-                "items": {
-                  "$ref": "#/components/schemas/Language"
-                },
-                "type": "array"
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "title": "Languages"
-          },
-          "interests": {
-            "anyOf": [
-              {
-                "items": {
-                  "$ref": "#/components/schemas/Interest"
-                },
-                "type": "array"
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "title": "Interests"
-          },
-          "references": {
-            "anyOf": [
-              {
-                "items": {
-                  "$ref": "#/components/schemas/Reference"
-                },
-                "type": "array"
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "title": "References"
-          },
-          "projects": {
-            "anyOf": [
-              {
-                "items": {
-                  "$ref": "#/components/schemas/Project"
-                },
-                "type": "array"
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "title": "Projects"
-          }
-        },
-        "type": "object",
-        "required": [
-          "basics"
-        ],
-        "title": "CV",
-        "description": "Full CV matching JSON CV schema"
-      },
-      "CV-Output": {
+      "CV": {
         "properties": {
           "basics": {
             "$ref": "#/components/schemas/Basics"
@@ -728,8 +534,12 @@
             "type": "string",
             "title": "Name"
           },
+          "slug": {
+            "type": "string",
+            "title": "Slug"
+          },
           "content": {
-            "$ref": "#/components/schemas/CV-Input"
+            "$ref": "#/components/schemas/CV"
           },
           "parent_id": {
             "anyOf": [
@@ -781,6 +591,7 @@
         "required": [
           "type",
           "name",
+          "slug",
           "content"
         ],
         "title": "CVCreate",
@@ -801,6 +612,10 @@
             "type": "string",
             "title": "Name"
           },
+          "slug": {
+            "type": "string",
+            "title": "Slug"
+          },
           "parent_id": {
             "anyOf": [
               {
@@ -847,7 +662,7 @@
             "title": "Company Id"
           },
           "content": {
-            "$ref": "#/components/schemas/CV-Output"
+            "$ref": "#/components/schemas/CV"
           },
           "created_at": {
             "type": "string",
@@ -865,6 +680,7 @@
           "id",
           "type",
           "name",
+          "slug",
           "content",
           "created_at",
           "updated_at"
@@ -885,10 +701,21 @@
             ],
             "title": "Name"
           },
+          "slug": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Slug"
+          },
           "content": {
             "anyOf": [
               {
-                "$ref": "#/components/schemas/CV-Input"
+                "$ref": "#/components/schemas/CV"
               },
               {
                 "type": "null"

@@ -129,6 +129,7 @@ class CVCreate(BaseModel):
     """Request to create a new CV"""
     type: str = Field(..., pattern="^(base|role|job|company)$")
     name: str
+    slug: str
     content: CV
     parent_id: Optional[UUID] = None
     job_id: Optional[str] = None
@@ -138,6 +139,7 @@ class CVCreate(BaseModel):
 class CVUpdate(BaseModel):
     """Request to update a CV"""
     name: Optional[str] = None
+    slug: Optional[str] = None
     content: Optional[CV] = None
 
 class CVResponse(BaseModel):
@@ -145,6 +147,7 @@ class CVResponse(BaseModel):
     id: UUID
     type: str
     name: str
+    slug: str
     parent_id: Optional[UUID] = None
     job_id: Optional[str] = None
     role_id: Optional[str] = None

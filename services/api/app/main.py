@@ -28,7 +28,8 @@ app = FastAPI(
     title="anucreative API",
     description="CV management backend",
     version="0.1.0",
-    lifespan=lifespan
+    lifespan=lifespan,
+    separate_input_output_schemas=False
 )
 
 # CORS configuration
