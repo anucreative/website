@@ -52,10 +52,6 @@ async def seed_base_cv():
             type='base',
             name='Base CV',
             slug='base',
-            parent_id=None,
-            job_id=None,
-            role_id=None,
-            company_id=None,
             content=cv_content
         )
         

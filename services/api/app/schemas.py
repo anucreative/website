@@ -131,10 +131,6 @@ class CVCreate(BaseModel):
     name: str
     slug: str
     content: CV
-    parent_id: Optional[UUID] = None
-    job_id: Optional[str] = None
-    role_id: Optional[str] = None
-    company_id: Optional[str] = None
 
 class CVUpdate(BaseModel):
     """Request to update a CV"""
@@ -148,10 +144,6 @@ class CVResponse(BaseModel):
     type: str
     name: str
     slug: str
-    parent_id: Optional[UUID] = None
-    job_id: Optional[str] = None
-    role_id: Optional[str] = None
-    company_id: Optional[str] = None
     content: CV
     created_at: datetime
     updated_at: datetime

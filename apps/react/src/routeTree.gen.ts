@@ -11,7 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as CvIndexRouteImport } from './routes/cv/index'
-import { Route as CvCompanyRouteImport } from './routes/cv/$company'
+import { Route as CvSlugRouteImport } from './routes/cv/$slug'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -23,39 +23,39 @@ const CvIndexRoute = CvIndexRouteImport.update({
   path: '/cv/',
   getParentRoute: () => rootRouteImport,
 } as any)
-const CvCompanyRoute = CvCompanyRouteImport.update({
-  id: '/cv/$company',
-  path: '/cv/$company',
+const CvSlugRoute = CvSlugRouteImport.update({
+  id: '/cv/$slug',
+  path: '/cv/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
-  '/cv/$company': typeof CvCompanyRoute
+  '/cv/$slug': typeof CvSlugRoute
   '/cv': typeof CvIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/cv/$company': typeof CvCompanyRoute
+  '/cv/$slug': typeof CvSlugRoute
   '/cv': typeof CvIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
-  '/cv/$company': typeof CvCompanyRoute
+  '/cv/$slug': typeof CvSlugRoute
   '/cv/': typeof CvIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/cv/$company' | '/cv'
+  fullPaths: '/' | '/cv/$slug' | '/cv'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/cv/$company' | '/cv'
-  id: '__root__' | '/' | '/cv/$company' | '/cv/'
+  to: '/' | '/cv/$slug' | '/cv'
+  id: '__root__' | '/' | '/cv/$slug' | '/cv/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  CvCompanyRoute: typeof CvCompanyRoute
+  CvSlugRoute: typeof CvSlugRoute
   CvIndexRoute: typeof CvIndexRoute
 }
 
@@ -75,11 +75,11 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CvIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/cv/$company': {
-      id: '/cv/$company'
-      path: '/cv/$company'
-      fullPath: '/cv/$company'
-      preLoaderRoute: typeof CvCompanyRouteImport
+    '/cv/$slug': {
+      id: '/cv/$slug'
+      path: '/cv/$slug'
+      fullPath: '/cv/$slug'
+      preLoaderRoute: typeof CvSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
   }
@@ -87,7 +87,7 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  CvCompanyRoute: CvCompanyRoute,
+  CvSlugRoute: CvSlugRoute,
   CvIndexRoute: CvIndexRoute,
 }
 export const routeTree = rootRouteImport

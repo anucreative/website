@@ -141,22 +141,6 @@ export type CvCreate = {
    */
   slug: string
   content: Cv
-  /**
-   * Parent Id
-   */
-  parent_id?: string | null
-  /**
-   * Job Id
-   */
-  job_id?: string | null
-  /**
-   * Role Id
-   */
-  role_id?: string | null
-  /**
-   * Company Id
-   */
-  company_id?: string | null
 }
 
 /**
@@ -181,22 +165,6 @@ export type CvResponse = {
    * Slug
    */
   slug: string
-  /**
-   * Parent Id
-   */
-  parent_id?: string | null
-  /**
-   * Job Id
-   */
-  job_id?: string | null
-  /**
-   * Role Id
-   */
-  role_id?: string | null
-  /**
-   * Company Id
-   */
-  company_id?: string | null
   content: Cv
   /**
    * Created At

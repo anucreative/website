@@ -49,12 +49,17 @@ def setup_dev():
     ensure_database_exists()
     print()
     
-    # 2. Create tables from models
-    print("2️⃣  Creating database schema...")
-    from app.database import engine
-    from app.models import Base
-    Base.metadata.create_all(bind=engine)
-    print("✅ Database schema created\n")
+    # 2. Run migrations
+    print("2️⃣  Running database migrations...")
+    result = subprocess.run(
+        [sys.executable, "-m", "alembic", "upgrade", "head"],
+        capture_output=True,
+        text=True
+    )
+    if result.returncode != 0:
+        print(f"❌ Migration failed: {result.stderr}")
+        sys.exit(1)
+    print("✅ Migrations complete\n")
     
     # 3. Seed data
     print("3️⃣  Seeding base CV...")

@@ -18,21 +18,11 @@ async def create_cv(
 ):
     """Create a new CV"""
     
-    # Validate parent if provided
-    if cv_create.parent_id:
-        result = await session.execute(select(CVModel).where(CVModel.id == cv_create.parent_id))
-        if not result.scalar():
-            raise HTTPException(status_code=404, detail="Parent CV not found")
-    
     # Create new CV
     new_cv = CVModel(
         type=cv_create.type,
         name=cv_create.name,
         slug=cv_create.slug,
-        parent_id=cv_create.parent_id,
-        job_id=cv_create.job_id,
-        role_id=cv_create.role_id,
-        company_id=cv_create.company_id,
         content=cv_create.content.model_dump(exclude_none=True),
     )
     
