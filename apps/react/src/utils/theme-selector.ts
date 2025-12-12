@@ -1,6 +1,6 @@
 // Determine theme based on company param
-export const getThemeFromCompany = (company?: string): 'default' | 'alan' => {
-  if (company === 'alan') {
+export const getThemeFromSlug = (slug?: string): 'default' | 'alan' => {
+  if (slug === 'alan') {
     return 'alan'
   }
   return 'default'

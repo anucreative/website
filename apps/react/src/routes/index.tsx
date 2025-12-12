@@ -1,5 +1,5 @@
 import { createFileRoute } from '@tanstack/react-router'
-import { Logo } from 'src/components/Logo'
+import { Logo } from '../components/Logo'
 
 import favicon from '/favicon.png'
 

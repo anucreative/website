@@ -1,9 +1,9 @@
-import type { CvOutput } from '@website/data-types'
+import type { Cv } from '@website/data-types'
 import { getDates } from '../../utils/date'
 import '@website/ui/components'
 
 interface CVProps {
-  resume: CvOutput
+  resume: Cv
 }
 
 export function CV({ resume }: CVProps) {

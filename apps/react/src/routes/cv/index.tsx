@@ -1,11 +1,11 @@
 import { createFileRoute } from '@tanstack/react-router'
-import type { CvOutput } from '@website/data-types'
+import type { Cv } from '@website/data-types'
 import { CV } from '../../components/CV'
-import { fetchResume } from '../../api/resume'
+import { fetchCv } from '../../api/cv'
 
 export const Route = createFileRoute('/cv/')({
-  loader: async (): Promise<CvOutput> => {
-    return await fetchResume()
+  loader: async (): Promise<Cv> => {
+    return await fetchCv()
   },
   head: ctx => {
     const title = 'Robert Douglas | CV'
@@ -21,11 +21,11 @@ export const Route = createFileRoute('/cv/')({
       ],
     }
   },
-  component: CVPage,
+  component: RouteComponent,
   errorComponent: ErrorComponent,
 })
 
-function CVPage() {
+function RouteComponent() {
   const resume = Route.useLoaderData()
 
   if (!resume) {

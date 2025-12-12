@@ -3,13 +3,13 @@
 
 @keyframes drawPath {
   0% {
-    stroke-dashoffset: 800;
+    stroke-dashoffset: 1600;
   }
   50% {
-    stroke-dashoffset: 0;
+    stroke-dashoffset: 800;
   }
   100% {
-    stroke-dashoffset: -800;
+    stroke-dashoffset: 0;
   }
 }
 

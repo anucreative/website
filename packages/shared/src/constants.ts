@@ -30,5 +30,5 @@ export const REQUEST_TIMEOUT = 10000 // 10 seconds
  * Get the appropriate API URL based on environment
  */
 export const getApiUrl = (): string => {
-  return API_ENDPOINTS.BASE_URL
+  return API_ENDPOINTS.PYTHON_API_URL
 }

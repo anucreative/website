@@ -38,16 +38,16 @@ async def get_cv(
     session: AsyncSession = Depends(get_session)
 ):
     """Get a specific CV by slug, fallback to 'base' if not found"""
-    result = await session.execute(select(CVModel).where(CVModel.slug == slug))
-    cv = result.scalar()
+    # Single query: fetch matching slug OR base, prioritize exact match
+    result = await session.execute(
+        select(CVModel)
+        .where(or_(CVModel.slug == slug, CVModel.slug == 'base'))
+        .order_by(case((CVModel.slug == slug, 0), else_=1))
+    )
+    cv = result.scalars().first()
     
-    # If not found, fall back to 'base' CV
     if not cv:
-        result = await session.execute(select(CVModel).where(CVModel.slug == 'base'))
-        cv = result.scalar()
-        
-        if not cv:
-            raise HTTPException(status_code=404, detail="CV not found")
+        raise HTTPException(status_code=404, detail="CV not found")
     
     return cv
 

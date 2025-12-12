@@ -1,22 +1,32 @@
 /**
- * MSW Handlers for CV/Resume API
- * Intercepts HTTP requests and returns mock data
+ * MSW Handlers for CV API
  */
 
 import { http, HttpResponse } from 'msw'
-import type { CvOutput } from '@website/data-types'
+import type { CvResponse } from '@website/data-types'
 import sampleResume from '@website/data-types/cv.json' assert { type: 'json' }
+import { getApiUrl } from '@website/shared'
+
+export const cvResponse: CvResponse = {
+  id: 'base',
+  name: 'base',
+  slug: 'base',
+  type: 'base',
+  content: sampleResume,
+  created_at: new Date().toISOString(),
+  updated_at: new Date().toISOString(),
+}
 
 /**
  * Mock API endpoints
  */
 export const handlers = [
   /**
-   * GET /api/resume
-   * Returns the sample resume data
+   * GET /cv
+   * Returns the sample cv data
    */
-  http.get('/api/resume', () => {
-    return HttpResponse.json<CvOutput>(sampleResume as CvOutput, {
+  http.get(`${getApiUrl()}/cv`, () => {
+    return HttpResponse.json<CvResponse>(cvResponse, {
       status: 200,
       headers: {
         'Content-Type': 'application/json',
@@ -25,17 +35,15 @@ export const handlers = [
   }),
 
   /**
-   * GET /api/resume/:id
-   * Returns resume by ID (currently returns sample for all IDs)
-   * In Phase 6, this will query a real database
+   * GET /cv/:slug
+   * Returns cv by slug (currently returns sample for all slugs)
    */
-  http.get('/api/resume/:id', ({ params }) => {
-    const { id } = params
-    console.log(`[MSW] Fetching resume: ${id}`)
+  http.get(`${getApiUrl()}/cv/*`, () => {
+    console.log(`[MSW] Fetching cv: base`)
 
     // For now, return sample data for any ID
-    // Later, this can be extended to support multiple resumes
-    return HttpResponse.json<CvOutput>(sampleResume as CvOutput, {
+    // Later, this can be extended to support multiple cvs
+    return HttpResponse.json<CvResponse>(cvResponse, {
       status: 200,
       headers: {
         'Content-Type': 'application/json',

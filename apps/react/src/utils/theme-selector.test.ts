@@ -1,8 +1,8 @@
 import { describe, test, expect } from 'vitest'
-import { getThemeFromCompany } from './theme-selector'
+import { getThemeFromSlug } from './theme-selector'
 
 describe('theme-selector', () => {
-  describe('getThemeFromCompany', () => {
+  describe('getThemeFromSlug', () => {
     const expectations: Array<[string | undefined, 'alan' | 'default']> = [
       ['alan', 'alan'],
       [undefined, 'default'],
@@ -17,7 +17,7 @@ describe('theme-selector', () => {
     ]
 
     test.each(expectations)('should return "%s" when company param is %s', (input, expected) => {
-      expect(getThemeFromCompany(input)).toBe(expected)
+      expect(getThemeFromSlug(input)).toBe(expected)
     })
   })
 })

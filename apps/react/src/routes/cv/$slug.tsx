@@ -1,15 +1,15 @@
 import { createFileRoute } from '@tanstack/react-router'
-import type { CvOutput } from '@website/data-types'
+import type { Cv } from '@website/data-types'
 import { CV } from '../../components/CV'
-import { fetchResume } from '../../api/resume'
+import { fetchCv } from '../../api/cv'
 
-export const Route = createFileRoute('/cv/$company')({
-  loader: async (): Promise<CvOutput> => {
-    return fetchResume()
+export const Route = createFileRoute('/cv/$slug')({
+  loader: async ({ params }): Promise<Cv> => {
+    return await fetchCv({ data: params.slug })
   },
   head: ctx => {
     const title = 'Robert Douglas | CV'
-    const description = ctx.loaderData?.basics.summary ?? ''
+    const description = ctx.loaderData?.basics?.summary ?? ''
 
     return {
       meta: [

@@ -3,7 +3,7 @@ import { Outlet, createRootRoute, HeadContent, Scripts, useParams } from '@tanst
 import globalCSS from '@website/ui/global.css?raw'
 import defaultCSS from '@website/tokens/default.css?raw'
 import alanCSS from '@website/tokens/alan.css?raw'
-import { getThemeFromCompany } from '../utils/theme-selector'
+import { getThemeFromSlug } from '../utils/theme-selector'
 
 export const Route = createRootRoute({
   head: () => {
@@ -35,8 +35,8 @@ export const Route = createRootRoute({
 })
 
 function RootComponent() {
-  const params = useParams({ strict: false }) as { company?: string }
-  const theme = getThemeFromCompany(params.company)
+  const params = useParams({ strict: false }) as { slug?: string }
+  const theme = getThemeFromSlug(params.slug)
   const themeStyles = theme === 'alan' ? alanCSS : ''
 
   return (
