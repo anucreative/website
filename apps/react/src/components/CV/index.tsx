@@ -1,27 +1,36 @@
 import type { Resume } from '@website/data-types'
 import { getDates } from '../../utils/date'
-import '@website/ui/components'
+import '@website/components'
 
 interface CVProps {
+  company?: string
   resume: Resume
 }
 
-export function CV({ resume }: CVProps) {
+export function CV({ resume, company }: CVProps) {
   const { basics, work, education, skills, languages, interests, volunteer } = resume
 
   return (
     <div className="container">
       <cv-header>
-        <a href="/" title="anucreative homepage" slot="image">
+        <img
+          slot="image"
+          src={'/favicon.png'}
+          alt={basics.name}
+          width={100}
+          height={100}
+          fetchPriority="high"
+        />
+        {company && (
           <img
-            src={'/favicon.png'}
-            alt={basics.name}
-            width={100}
-            height={100}
+            slot="brand"
+            src={`/brands/${company}.png`}
+            alt={company}
+            width={50}
+            height={50}
             fetchPriority="high"
-            className="avatar"
           />
-        </a>
+        )}
         <h1 slot="title">{basics.name}</h1>
         <p slot="byline">{basics.label}</p>
         <p slot="summary">{basics.summary}</p>
@@ -50,6 +59,12 @@ export function CV({ resume }: CVProps) {
             </div>
           </div>
         </cv-subsection>
+        {basics.nationality && (
+          <cv-subsection>
+            <h3 slot="title">Nationality</h3>
+            <div className="content">{basics.nationality}</div>
+          </cv-subsection>
+        )}
         {languages && languages.length > 0 && (
           <cv-subsection>
             <h3 slot="title">Languages</h3>

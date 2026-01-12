@@ -7,7 +7,7 @@ import type { Resume } from '@website/data-types'
 import { CV } from '.'
 
 // Mock web components
-vi.mock('@website/ui/components', () => ({}))
+vi.mock('@website/components', () => ({}))
 
 describe('CV Page Rendering', () => {
   const resume: Resume = sampleResume

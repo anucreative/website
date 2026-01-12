@@ -7,13 +7,13 @@
   },
   "basics": {
     "name": "Robert Douglas",
-    "label": "Senior Frontend Developer / Design Engineer",
+    "label": "Senior Frontend Developer / UI Architect",
     "image": "https://gravatar.com/avatar/0657b90b945d2fbc5d47da5f1ef480ee32c7dc10afaafc8e19b7efff7bcd468f?v=1522820361000&size=256&d=initials",
     "email": "rob@anucreative.com",
     "phone": "+33 7 50 97 71 72",
     "url": "https://anucreative.com",
-    "summary": "Developer / designer with 20+ years experience in web and mobile, I combine my full-stack engineering and UX expertise to develop solid, user-centred product solutions. I'm known for being passionate, collaborative, supportive, and calm under pressure. I care deeply about product and people, quality and clarity.",
-    "future": "Prior to Welcome to the Jungle, I led the Design & UX team at Rightmove (UK's largest property website), was a 'multidisciplinaire' at ribot (mobile design studio), and (remotely) led a cross-functional team at a VR startup in London. I'm looking for a role where I can put my T-shaped skills to good use, working with great people on interesting problems.",
+    "summary": "I help teams build fast, accessible, and maintainable web and mobile products. With 20+ years of experience, I specialise in front-end architecture, performance, accessibility, and scalable design systems. I work daily with AI development tools to increase efficiency — applying them with the judgement, pragmatism, and responsibility of a senior engineer. I’m known for being calm under pressure, collaborative, and supportive, with a strong focus on people and product, quality and clarity.",
+    "future": "With over 10 years of experience working in distributed teams and strong written communication, I’m looking for a remote senior front-end or full-stack role where I can apply my T-shaped skills to meaningful problems with thoughtful, high-performing teams.",
     "location": {
       "address": "5 Avenue de la Campagne Berger",
       "city": "Marseille",
@@ -35,7 +35,8 @@
         "network": "Website",
         "url": "https://anucreative.com"
       }
-    ]
+    ],
+    "nationality": "New Zealand / British / Carte de séjour with right to work in France"
   },
   "work": [
     {

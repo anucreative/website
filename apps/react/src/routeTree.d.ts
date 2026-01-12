@@ -20,4 +20,4 @@ declare module '@tanstack/react-router' {
 }
 
 import { Route as rootRoute } from './routes/__root'
-import { Route as cvRoute } from './routes/cv'
+import { Route as cvRoute } from './routes/cv/route'

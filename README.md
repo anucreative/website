@@ -97,16 +97,18 @@ Get the app live on Render with automatic deployments.
 - [x] Deployment tested on Render
 - [x] /cv and /cv/alan (once Phase 5 done) live and working
 
-### Phase 4: Component Library (Reusable UI 🎨)
+### Phase 4: Design System (Components + Tokens 🎨) ✓ Complete
 
-Extract components to a shared Lit web components library with theming support via CSS variables.
+Create a unified design system package with Lit web components and design tokens via Style Dictionary.
 
-- [x] **4.1 Create `packages/ui/` - Lit Components**
+- [x] **4.1 Create `packages/components/` - Lit Components + Design Tokens**
   - [x] Initialize package with `package.json`
   - [x] Set up TypeScript configuration
   - [x] Create `src/components/` directory (CVHeader, CVSection, CVSectionTitle, CVSubsection)
-  - [x] Create `src/themes/` directory for theme configuration
-  - [x] Create theme system with `applyTheme()` and `getThemeVariables()`
+  - [x] Create `src/tokens/` directory with theme JSON files (`default.json`, `alan.json`)
+  - [x] Define design tokens (colors, typography, spacing, layout)
+  - [x] Generate CSS files via Style Dictionary in build process
+  - [x] Create `src/constants.ts` with BRANDS and Brand type
 
 - [x] **4.2 Set up Storybook for Component Testing**
   - [x] Install Storybook 10.1.4 with web-components-vite framework
@@ -121,30 +123,7 @@ Extract components to a shared Lit web components library with theming support v
   - [x] Verify theme CSS variables work
   - [x] Test locally and build successfully
 
-### Phase 5: Style Dictionary (Design Token Management 🎨) ✓ Complete
-
-Set up Style Dictionary to generate CSS from centralized theme JSON files.
-
-- [x] **5.1 Create `packages/tokens/` - Design Tokens**
-  - [x] Initialize package with `package.json`
-  - [x] Create theme JSON files (`default.json`, `alan.json`)
-  - [x] Define design tokens (colors, typography, spacing, layout)
-  - [x] Set up Style Dictionary configuration (`config.json`)
-  - [x] Generate CSS files in `dist/default.css` and `dist/alan.css`
-
-- [x] **5.2 Generate Theme CSS**
-  - [x] Verified CSS files are generated from token definitions
-  - [x] Updated `packages/ui` to import generated CSS files
-  - [x] Replaced hardcoded theme variables with generated CSS
-  - [x] Verified all themes compile and apply correctly
-
-- [x] **5.3 Integrate Generated Themes into UI Package**
-  - [x] Updated `packages/ui` imports to use `packages/tokens` CSS
-  - [x] Removed duplicate theme definitions from `src/themes/`
-  - [x] Removed theme generation functions from `packages/shared`
-  - [x] Verified all components render with generated token values
-
-### Phase 6: ALAN Theme (Multiple Themes 🎭) ✓ Complete
+### Phase 5: ALAN Theme (Multiple Themes 🎭) ✓ Complete
 
 Add ALAN theme variant at `/cv/alan` using CSS variables from generated themes.
 
@@ -154,47 +133,47 @@ Add ALAN theme variant at `/cv/alan` using CSS variables from generated themes.
   - [x] All ALAN theme tokens defined and working
   - [x] Theme switching works via route-based CSS injection
 
-### Phase 7: Server-Side Rendering
+### Phase 6: Server-Side Rendering
 
 Implement SSR with TanStack Start and add loading/error states for better UX.
 
-- [x] **7.1 TanStack Start SSR Setup** ✓
+- [x] **6.1 TanStack Start SSR Setup** ✓
   - [x] TanStack Start configured for SSR (tanstackStart plugin in vite.config.ts)
   - [x] Server-side rendering working in production build (dist/server/server.js generated)
   - [x] CSS (themes) properly injected on server (style tags in \_\_root.tsx)
   - [x] No hydration mismatches (theme styles keyed by route)
 
-- [ ] **7.4 Performance Optimization**
+- [ ] **6.2 Performance Optimization**
   - [ ] Add caching headers for static assets
   - [ ] Implement streaming responses for large data
   - [ ] Optimize bundle size and lazy loading
   - [ ] Measure and improve Core Web Vitals
 
-### Phase 8: Testing Suite (Test Coverage 🧪) ✓ Complete
+### Phase 7: Testing Suite (Test Coverage 🧪) ✓ Complete
 
 Add comprehensive test coverage for routes, components, utilities, and hooks using Vitest and MSW.
 
-- [x] **8.1 Add tests**
+- [x] **7.1 Add tests**
   - [x] RouteComponent renders CV with resume data
   - [x] CV component
   - [x] Hooks
   - [x] Utils
 
-### Phase 9: Vue 3 Frontend (Alternative Framework 💚)
+### Phase 8: Vue 3 Frontend (Alternative Framework 💚)
 
 Build Vue 3 version consuming the same data from the backend.
 
-- [ ] **9.1 Create Vue App**
+- [ ] **8.1 Create Vue App**
   - [ ] Initialize `apps/web-vue/` with Vite + Vue 3
   - [ ] Set up TypeScript configuration
   - [ ] Install Vue Router
 
-- [ ] **9.2 Create Routes & Pages**
+- [ ] **8.2 Create Routes & Pages**
   - [ ] Create router configuration with shared routes
   - [ ] Create `/src/views/CVPage.vue`
   - [ ] Implement theme switching via composable
 
-- [ ] **9.3 Integrate UI Components**
+- [ ] **8.3 Integrate UI Components**
   - [ ] Import Lit components in Vue
   - [ ] Apply theme CSS variables from `packages/ui`
   - [ ] Verify all themes work
@@ -203,41 +182,41 @@ Build Vue 3 version consuming the same data from the backend.
   - [ ] Deploy Vue app separately (or same Render service under subdomain)
   - [ ] Verify routes and data fetching work
 
-### Phase 10: Backend - Database & API (Type-Safe API 🔌))
+### Phase 9: Backend - Database & API (Type-Safe API 🔌)
 
 Replace MSW with real backend using Prisma + TanStack Start server routes. Generate TypeScript types from Prisma.
 
-- [ ] **10.1 Set up Prisma**
+- [ ] **9.1 Set up Prisma**
   - [ ] Initialize Prisma in TanStack Start app
   - [ ] Create `prisma/schema.prisma` with CV data model
   - [ ] Set up SQLite for local dev (Postgres in production)
 
-- [ ] **10.2 Create Server Routes**
+- [ ] **9.2 Create Server Routes**
   - [ ] Create `/src/routes/api/cv.ts` - Server route returning CV data
   - [ ] Integrate Prisma client
   - [ ] Update TanStack Start to fetch from real API
 
-- [ ] **10.3 Generate API Types**
+- [ ] **9.3 Generate API Types**
   - [ ] Set up `@prisma/client` type generation
   - [ ] Create type guards and validators
   - [ ] Use generated types in frontend
 
-- [ ] **10.4 Database Setup**
+- [ ] **9.4 Database Setup**
   - [ ] Create database migrations
   - [ ] Seed database with sample data
   - [ ] Document database schema
 
-### Phase 11: FastAPI Backend (Optional Python Backend)
+### Phase 10: FastAPI Backend (Optional Python Backend)
 
 Add Python FastAPI backend as alternative to TanStack Start server routes.
 
-- [ ] **11.1 Create FastAPI Service**
+- [ ] **10.1 Create FastAPI Service**
   - [ ] Initialize `services/api-python/` with FastAPI
   - [ ] Set up SQLAlchemy ORM
   - [ ] Create database models
   - [ ] Implement `/api/cv` endpoint
 
-- [ ] **11.2 API Documentation**
+- [ ] **10.2 API Documentation**
   - [ ] Generate OpenAPI schema
   - [ ] Set up Swagger UI
 
@@ -245,7 +224,7 @@ Add Python FastAPI backend as alternative to TanStack Start server routes.
   - [ ] Generate TypeScript types from OpenAPI
   - [ ] Update frontends to use FastAPI backend (optional)
 
-### Phase 12: Optional Enhancements
+### Phase 11: Optional Enhancements
 
 - [ ] Set up E2E testing (Playwright/Cypress)
 - [ ] Add CI/CD workflows (GitHub Actions)
@@ -268,10 +247,10 @@ anucreative-website/
 │   ├── react/ # TanStack Start (React) full-stack app
 │   └── web-vue/ # Vue 3 frontend (Phase 8)
 ├── packages/
-│   ├── shared/ # Routes, constants
+│   ├── config/ # API endpoints, app configuration
+│   ├── components/ # Lit web components + design tokens
 │   ├── data-types/ # TypeScript interfaces for CV data
-│   ├── ui/ # Lit web components library
-│   ├── tokens/ # Style Dictionary design tokens (Phase 5)
+│   ├── tokens/ # Style Dictionary design tokens (build artifacts)
 │   └── msw/ # Mock Service Worker setup
 ├── services/
 │   └── api-python/ # FastAPI backend (Phase 10, optional)
@@ -391,6 +370,6 @@ git push origin main
 - **Single source of truth for routes:** `packages/shared/routes.ts`
 - **Data types defined upfront:** Interfaces match future API shape (Prisma models)
 - **MSW from the start:** Decouples frontend from backend from day one
-- **CSS variables for theming:** All themes defined in `packages/ui/`
+- **CSS variables for theming:** All themes defined in `packages/components/`
 - **Iterative releases:** Each phase delivers a working product
 - **Type safety throughout:** TypeScript from Prisma models → Frontend types

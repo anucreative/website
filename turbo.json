@@ -8,6 +8,10 @@
       "outputs": ["dist/**", "build/**"],
       "cache": true
     },
+    "clean": {
+      "dependsOn": ["^clean"],
+      "cache": false
+    },
     "dev": {
       "dependsOn": ["^build"],
       "cache": false,

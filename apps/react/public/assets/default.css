@@ -1,0 +1,36 @@
+/**
+ * Do not edit directly, this file was auto-generated.
+ */
+
+:root {
+  --color-primary: #1a1a1a;
+  --color-secondary: #666666;
+  --color-accent: #ff4c4f;
+  --color-text: #000000;
+  --color-light: #f5f5f5;
+  --color-background: #f9f9f9;
+  --color-link: #ff4c4f;
+  --typography-font-family: Lato, Roboto, 'Helvetica Neue', Arial, sans-serif;
+  --typography-font-size-xs: 12px;
+  --typography-font-size-sm: 14px;
+  --typography-font-size-md: 16px;
+  --typography-font-size-lg: 20px;
+  --typography-font-size-xl: 28px;
+  --typography-font-size-2xl: 40px;
+  --typography-font-weight-normal: 400;
+  --typography-font-weight-semibold: 600;
+  --typography-font-weight-bold: 900;
+  --typography-line-height-md: 1.5;
+  --typography-line-height-lg: 1.7;
+  --spacing-xs: 4px;
+  --spacing-sm: 8px;
+  --spacing-md: 16px;
+  --spacing-lg: 24px;
+  --spacing-xl: 32px;
+  --spacing-2xl: 48px;
+  --border-radius-sm: 4px;
+  --border-radius-md: 8px;
+  --border-radius-lg: 16px;
+  --layout-max-width: 1000px;
+  --layout-column-width: 150px;
+}

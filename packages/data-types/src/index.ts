@@ -48,7 +48,7 @@ export interface Basics {
  */
 export interface Work {
   name?: string
-  position: string
+  position?: string
   url?: string
   location?: string
   slug?: string

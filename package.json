@@ -11,11 +11,9 @@
   ],
   "scripts": {
     "watch": "turbo watch dev",
-    "storybook": "turbo watch storybook --filter=@website/ui",
+    "storybook": "turbo watch storybook --filter=@website/components",
     "dev": "turbo run dev --parallel",
-    "dev:filter": "turbo run dev --filter",
     "build": "turbo run build",
-    "build:filter": "turbo run build --filter",
     "start": "cd apps/react && yarn start",
     "lint": "turbo run lint",
     "type-check": "turbo run type-check",
@@ -23,7 +21,7 @@
     "test:watch": "turbo run test -- --watch",
     "format": "prettier --write \"**/*.{ts,tsx,vue,js,jsx,json,md}\"",
     "format:check": "prettier --check \"**/*.{ts,tsx,vue,js,jsx,json,md}\"",
-    "clean": "turbo run clean && rm -rf node_modules .turbo",
+    "clean": "turbo run clean && rm -rf .turbo",
     "install-deps": "yarn install",
     "precommit": "yarn lint && yarn type-check"
   },

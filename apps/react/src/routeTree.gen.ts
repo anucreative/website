@@ -9,58 +9,64 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as CvRouteImport } from './routes/cv'
 import { Route as IndexRouteImport } from './routes/index'
-import { Route as CvIndexRouteImport } from './routes/cv/index'
 import { Route as CvCompanyRouteImport } from './routes/cv/$company'
 
+const CvRoute = CvRouteImport.update({
+  id: '/cv',
+  path: '/cv',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
-const CvIndexRoute = CvIndexRouteImport.update({
-  id: '/cv/',
-  path: '/cv/',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const CvCompanyRoute = CvCompanyRouteImport.update({
-  id: '/cv/$company',
-  path: '/cv/$company',
-  getParentRoute: () => rootRouteImport,
+  id: '/$company',
+  path: '/$company',
+  getParentRoute: () => CvRoute,
 } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/cv': typeof CvRouteWithChildren
   '/cv/$company': typeof CvCompanyRoute
-  '/cv': typeof CvIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/cv': typeof CvRouteWithChildren
   '/cv/$company': typeof CvCompanyRoute
-  '/cv': typeof CvIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/cv': typeof CvRouteWithChildren
   '/cv/$company': typeof CvCompanyRoute
-  '/cv/': typeof CvIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/cv/$company' | '/cv'
+  fullPaths: '/' | '/cv' | '/cv/$company'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/cv/$company' | '/cv'
-  id: '__root__' | '/' | '/cv/$company' | '/cv/'
+  to: '/' | '/cv' | '/cv/$company'
+  id: '__root__' | '/' | '/cv' | '/cv/$company'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  CvCompanyRoute: typeof CvCompanyRoute
-  CvIndexRoute: typeof CvIndexRoute
+  CvRoute: typeof CvRouteWithChildren
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/cv': {
+      id: '/cv'
+      path: '/cv'
+      fullPath: '/cv'
+      preLoaderRoute: typeof CvRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -68,27 +74,29 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/cv/': {
-      id: '/cv/'
-      path: '/cv'
-      fullPath: '/cv'
-      preLoaderRoute: typeof CvIndexRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/cv/$company': {
       id: '/cv/$company'
-      path: '/cv/$company'
+      path: '/$company'
       fullPath: '/cv/$company'
       preLoaderRoute: typeof CvCompanyRouteImport
-      parentRoute: typeof rootRouteImport
+      parentRoute: typeof CvRoute
     }
   }
 }
 
+interface CvRouteChildren {
+  CvCompanyRoute: typeof CvCompanyRoute
+}
+
+const CvRouteChildren: CvRouteChildren = {
+  CvCompanyRoute: CvCompanyRoute,
+}
+
+const CvRouteWithChildren = CvRoute._addFileChildren(CvRouteChildren)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  CvCompanyRoute: CvCompanyRoute,
-  CvIndexRoute: CvIndexRoute,
+  CvRoute: CvRouteWithChildren,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

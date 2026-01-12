@@ -5,7 +5,8 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "vite dev",
+    "dev": "yarn prebuild && vite dev",
+    "prebuild": "node scripts/sync-assets.ts",
     "build": "vite build",
     "start": "vite preview --host 0.0.0.0 --port 3000",
     "type-check": "tsc --noEmit",
@@ -20,11 +21,10 @@
     "@tanstack/react-router": "^1.139.14",
     "@tanstack/react-start": "^1.139.14",
     "@tanstack/start": "^1.62.0",
+    "@website/components": "workspace:*",
+    "@website/config": "workspace:*",
     "@website/data-types": "workspace:*",
     "@website/msw": "workspace:*",
-    "@website/shared": "workspace:*",
-    "@website/tokens": "workspace:*",
-    "@website/ui": "workspace:*",
     "react": "^19.0.0",
     "react-dom": "^19.0.0"
   },

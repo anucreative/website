@@ -4,7 +4,7 @@ import { act, render, screen } from '@testing-library/react'
 import type { Resume } from '@website/data-types'
 
 // Mock web components
-vi.mock('@website/ui/components', () => ({}))
+vi.mock('@website/components', () => ({}))
 
 // Mock the CV component to simplify testing
 vi.mock('../../components/CV', () => ({
@@ -14,7 +14,7 @@ vi.mock('../../components/CV', () => ({
 }))
 
 // Import the components
-import { RouteComponent, ErrorComponent } from './$company'
+import { CVLayout, CVError } from '../cv'
 import { createRootRoute, createRoute, createRouter, RouterProvider } from '@tanstack/react-router'
 import { fetchResume } from '../../api/resume'
 
@@ -30,10 +30,9 @@ const setUpRouter = ({
     getParentRoute: () => rootRoute,
     path,
     loader: async (): Promise<Resume | null> => {
-      console.debug('Loader called for path:', path)
       return fetcher ? fetcher() : fetchResume()
     },
-    component: RouteComponent,
+    component: CVLayout,
   })
   const routeTree = rootRoute.addChildren([indexRoute])
   const router = createRouter({ routeTree })
@@ -65,7 +64,7 @@ describe('/cv/$company route components', () => {
     test('should render error component when fetch fails', () => {
       const error = new Error('Failed to fetch resume')
 
-      render(<ErrorComponent error={error} />)
+      render(<CVError error={error} />)
 
       expect(screen.getByText('Error loading resume')).toBeInTheDocument()
       expect(screen.getByText('Failed to fetch resume')).toBeInTheDocument()
@@ -74,7 +73,7 @@ describe('/cv/$company route components', () => {
     test('should render error with unknown error message', () => {
       const error = { message: 'Network error' } as unknown as Error
 
-      render(<ErrorComponent error={error} />)
+      render(<CVError error={error} />)
 
       expect(screen.getByText('Error loading resume')).toBeInTheDocument()
       expect(screen.getByText('Unknown error')).toBeInTheDocument()

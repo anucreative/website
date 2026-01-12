@@ -1,8 +1,5 @@
 import type { DOMAttributes } from 'react'
-import type { CVHeader } from '@website/ui'
-import type { CVSection } from '@website/ui'
-import type { CVSectionTitle } from '@website/ui'
-import type { CVSubsection } from '@website/ui'
+import type { CVHeader, CVSection, CVSectionTitle, CVSubsection } from '@website/components'
 
 type CustomElement<T> = Partial<
   T & DOMAttributes<T> & { children: any; class?: string; key?: string | number }
