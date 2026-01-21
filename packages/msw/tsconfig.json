@@ -6,7 +6,11 @@
     "declaration": true,
     "outDir": "./dist",
     "rootDir": "./src",
-    "module": "ESNext"
+    "module": "ESNext",
+    "baseUrl": ".",
+    "paths": {
+      "@website/*": ["../../apps/*", "../../packages/*"]
+    }
   },
   "include": ["src/**/*.ts"],
   "exclude": ["dist", "node_modules"]

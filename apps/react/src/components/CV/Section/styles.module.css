@@ -8,6 +8,8 @@
 }
 
 .title {
+  font-weight: var(--typography-font-weight-md);
+
   @media (min-width: 768px) {
     margin-bottom: var(--spacing-sm);
   }

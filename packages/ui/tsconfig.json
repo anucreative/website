@@ -5,7 +5,16 @@
     "moduleResolution": "NodeNext",
     "target": "ES2022",
     "lib": ["ES2022"],
-    "types": ["node"]
+    "types": ["node"],
+    "outDir": "./dist",
+    "declaration": true,
+    "declarationMap": true,
+    "sourceMap": true,
+    "noEmit": false,
+    "baseUrl": ".",
+    "paths": {
+      "@website/*": ["../../apps/*", "../../packages/*"]
+    }
   },
-  "include": ["scripts/**/*"]
+  "include": ["src/**/*"]
 }

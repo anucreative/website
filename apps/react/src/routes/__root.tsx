@@ -21,7 +21,7 @@ export const Route = createRootRoute({
         { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
         { rel: 'preconnect', href: 'https://fonts.gstatic.com', crossOrigin: 'anonymous' },
         {
-          href: 'https://fonts.googleapis.com/css2?family=Readex+Pro:wght@400;600;700;900&family=Manrope:wght@400;600;700;900&family=Alan+Sans:wght@400;600;700;900&family=Lato:wght@400;600;700;900&display=swap&subset=latin',
+          href: 'https://fonts.googleapis.com/css2?family=Geist:wght@400;600;700;900&family=Readex+Pro:wght@400;600;700;900&family=Manrope:wght@400;600;700;900&family=Alan+Sans:wght@400;600;700;900&family=Lato:wght@400;600;700;900&display=swap&subset=latin',
           rel: 'stylesheet',
         },
         { rel: 'stylesheet', href: `/assets/global.css` },

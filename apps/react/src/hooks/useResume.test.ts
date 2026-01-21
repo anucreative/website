@@ -29,7 +29,7 @@ describe('useResume', () => {
 
     expect(result.current.data).toBeDefined()
     expect(result.current.data?.basics).toBeDefined()
-    expect(result.current.data?.basics.name).toBe('Robert Douglas')
+    expect(result.current.data?.basics?.name).toBe('Robert Douglas')
   })
 
   test('should have isLoading true initially', () => {

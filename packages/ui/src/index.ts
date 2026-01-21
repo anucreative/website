@@ -3,4 +3,4 @@
  * Design system: React components library with theming support via CSS variables
  */
 
-export * from './constants'
+export * from './constants.js'
