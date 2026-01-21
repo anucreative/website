@@ -1,0 +1,3 @@
+{
+  "ignore": ["apps/react/src/routeTree.gen.ts", "apps/react/src/routeTree.d.ts"]
+}

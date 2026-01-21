@@ -1,9 +1,9 @@
 import { createFileRoute, ResolveParams } from '@tanstack/react-router'
 import type { Resume } from '@website/data-types'
-import { fetchResume } from '../api/resume'
-import { CV } from '../components/CV'
+import { fetchResume } from '../../api/resume'
+import { CV } from '../../components/CV'
 
-export const Route = createFileRoute('/cv')({
+export const Route = createFileRoute('/cv/')({
   loader: async (): Promise<Resume> => {
     return fetchResume()
   },

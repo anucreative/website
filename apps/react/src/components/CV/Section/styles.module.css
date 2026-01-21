@@ -1,0 +1,14 @@
+.section {
+  margin-bottom: var(--spacing-2xl);
+  position: relative;
+
+  @media (min-width: 768px) {
+    padding-left: var(--layout-column-width);
+  }
+}
+
+.title {
+  @media (min-width: 768px) {
+    margin-bottom: var(--spacing-sm);
+  }
+}

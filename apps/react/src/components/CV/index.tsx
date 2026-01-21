@@ -1,6 +1,10 @@
 import type { Resume } from '@website/data-types'
 import { getDates } from '../../utils/date'
-import '@website/components'
+import '@website/ui'
+import Header from './Header'
+import Section from './Section'
+import Item from './Item'
+import styles from './styles.module.css'
 
 interface CVProps {
   company?: string
@@ -11,205 +15,181 @@ export function CV({ resume, company }: CVProps) {
   const { basics, work, education, skills, languages, interests, volunteer } = resume
 
   return (
-    <div className="container">
-      <cv-header>
-        <img
-          slot="image"
-          src={'/favicon.png'}
-          alt={basics.name}
-          width={100}
-          height={100}
-          fetchPriority="high"
-        />
-        {company && (
+    <div className={styles.container}>
+      <Header.Header>
+        <Header.Image>
           <img
-            slot="brand"
-            src={`/brands/${company}.png`}
-            alt={company}
-            width={50}
-            height={50}
+            src={'/favicon.png'}
+            alt={basics.name}
+            width={100}
+            height={100}
             fetchPriority="high"
           />
+        </Header.Image>
+        {company && (
+          <Header.Logo>
+            <img
+              src={`/brands/${company}.png`}
+              alt={company}
+              width={50}
+              height={50}
+              fetchPriority="high"
+            />
+          </Header.Logo>
         )}
-        <h1 slot="title">{basics.name}</h1>
-        <p slot="byline">{basics.label}</p>
-        <p slot="summary">{basics.summary}</p>
-        <p slot="summary">{basics.future}</p>
-      </cv-header>
-      <cv-section class="overview">
-        <cv-section-title>
-          <h2>Contact</h2>
-        </cv-section-title>
-        <cv-subsection>
-          <h3 slot="title">Contact</h3>
-          <div className="content">
-            <div className="entry">
-              <a href={`mailto:${basics.email}`}>{basics.email}</a>
-            </div>
-            <div className="entry">
-              <a href={`tel:${basics.phone}`}>{basics.phone}</a>
-            </div>
-          </div>
-        </cv-subsection>
-        <cv-subsection>
-          <h3 slot="title">Address</h3>
-          <div className="content">
-            <div className="entry">
-              {basics.location?.address}, {basics.location?.city}, {basics.location?.countryCode}
-            </div>
-          </div>
-        </cv-subsection>
+        <Header.Title>{basics.name}</Header.Title>
+        <Header.Byline>{basics.label}</Header.Byline>
+        <Header.Summary>{basics.summary}</Header.Summary>
+        <Header.Summary>{basics.future}</Header.Summary>
+      </Header.Header>
+      <Section.Section className={styles.overview}>
+        <Section.Title>Contact</Section.Title>
+        <Item.Item>
+          <Item.Title>Contact</Item.Title>
+
+          <Item.Content>
+            <a href={`mailto:${basics.email}`}>{basics.email}</a>
+          </Item.Content>
+          <Item.Content>
+            <a href={`tel:${basics.phone}`}>{basics.phone}</a>
+          </Item.Content>
+        </Item.Item>
+        <Item.Item>
+          <Item.Title>Address</Item.Title>
+          <Item.Content>
+            {basics.location?.address}, {basics.location?.city}, {basics.location?.countryCode}
+          </Item.Content>
+        </Item.Item>
         {basics.nationality && (
-          <cv-subsection>
-            <h3 slot="title">Nationality</h3>
-            <div className="content">{basics.nationality}</div>
-          </cv-subsection>
+          <Item.Item>
+            <Item.Title>Nationality</Item.Title>
+            {basics.nationality?.length > 0 &&
+              basics.nationality.map(nationality => (
+                <Item.Content key={nationality}>{nationality}</Item.Content>
+              ))}
+          </Item.Item>
         )}
         {languages && languages.length > 0 && (
-          <cv-subsection>
-            <h3 slot="title">Languages</h3>
-            <div className="content">
-              {languages.map(({ language, fluency }) => (
-                <div key={language} className="entry">
-                  <span className="language">{language}</span>
-                  <span className="fluency">({fluency})</span>
-                </div>
-              ))}
-            </div>
-          </cv-subsection>
+          <Item.Item>
+            <Item.Title>Languages</Item.Title>
+            {languages.map(({ language, fluency }) => (
+              <Item.Content key={language}>
+                <span className={styles.language}>{language}</span>
+                <span className={styles.fluency}>({fluency})</span>
+              </Item.Content>
+            ))}
+          </Item.Item>
         )}
         {basics.profiles && basics.profiles.length > 0 && (
-          <cv-subsection>
-            <h3 slot="title">Profiles</h3>
-            <div className="content">
-              {basics.profiles.map(({ network, url }) => (
-                <div key={network} className="entry">
-                  <a href={url} target="_blank" rel="noopener noreferrer">
-                    {network}
-                  </a>
-                </div>
-              ))}
-            </div>
-          </cv-subsection>
+          <Item.Item>
+            <Item.Title>Profiles</Item.Title>
+
+            {basics.profiles.map(({ network, url }) => (
+              <Item.Content key={network}>
+                <a href={url} target="_blank" rel="noopener noreferrer">
+                  {network}
+                </a>
+              </Item.Content>
+            ))}
+          </Item.Item>
         )}
-      </cv-section>
+      </Section.Section>
 
       {skills && skills.length > 0 && (
-        <cv-section class="skills">
-          <cv-section-title>
-            <h2>Skills & tools</h2>
-          </cv-section-title>
+        <Section.Section className={styles.skills}>
+          <Section.Title>Skills & tools</Section.Title>
           {skills.map(({ name, keywords }) => (
-            <cv-subsection key={name}>
-              <h3 slot="title">{name}</h3>
-              {keywords && keywords.length > 0 && (
-                <div className="content">
-                  {keywords.map(keyword => (
-                    <span key={keyword} className="entry">
-                      {keyword}
-                    </span>
-                  ))}
-                </div>
-              )}
-            </cv-subsection>
+            <Item.Item key={name}>
+              <Item.Title>{name}</Item.Title>
+              {keywords &&
+                keywords.length > 0 &&
+                keywords.map(keyword => <Item.Content key={keyword}>{keyword}</Item.Content>)}
+            </Item.Item>
           ))}
-        </cv-section>
+        </Section.Section>
       )}
 
       {work && work.length > 0 && (
-        <cv-section class="experience">
-          <cv-section-title>
-            <h2>Experience</h2>
-          </cv-section-title>
+        <Section.Section className={styles.experience}>
+          <Section.Title>Experience</Section.Title>
           {work.map(
-            ({ name, position, startDate, endDate, location, summary, highlights, slug, url }) => {
+            ({ name, position, startDate, endDate, location, summary, highlights, url }) => {
               const dates = getDates({ startDate, endDate })
               return (
-                <cv-subsection key={name}>
-                  <div className={`content ${position ? 'has-position' : ''}`}>
-                    <div className="intro">
-                      {slug && (
-                        <a href={url} target="_blank" rel="noopener noreferrer">
-                          <img src={`/logos/${slug}.png`} alt={`${name} logo`} className="logo" />
-                        </a>
-                      )}
-                      <div className="position-company">
-                        {position && <h3 className="position">{position}</h3>}
-                        <p className="company">
-                          {url ? (
-                            <a href={url} target="_blank" rel="noopener noreferrer">
-                              {name}
-                            </a>
-                          ) : (
-                            name
-                          )}
-                          {summary && <span className="summary">{summary}</span>}
-                          {location && <span className="summary">{location}</span>}
-                        </p>
-                      </div>
+                <Item.Item key={name}>
+                  <div className={position ? styles.hasPosition : ''}>
+                    <div className={styles.intro}>
+                      <Item.Title as="span">{dates}</Item.Title>
+                      {position && <h3 className={styles.position}>{position}</h3>}
+                      <Item.Content>
+                        {url ? (
+                          <a href={url} target="_blank" rel="noopener noreferrer">
+                            {name}
+                          </a>
+                        ) : (
+                          name
+                        )}
+                      </Item.Content>
+                      {summary && <Item.Content>{summary}</Item.Content>}
+                      {location && <Item.Content>{location}</Item.Content>}
                     </div>
                     {highlights && highlights.length > 0 && (
-                      <ul className="highlights">
+                      <ul className={styles.highlights}>
                         {highlights.map(highlight => (
                           <li key={highlight}>{highlight}</li>
                         ))}
                       </ul>
                     )}
                   </div>
-                  <p slot="title">{dates}</p>
-                </cv-subsection>
+                </Item.Item>
               )
             }
           )}
-        </cv-section>
+        </Section.Section>
       )}
 
       {volunteer && volunteer.length > 0 && (
-        <cv-section class="volunteer">
-          <cv-section-title>
-            <h2>Volunteering</h2>
-          </cv-section-title>
+        <Section.Section className={styles.volunteer}>
+          <Section.Title>Volunteering</Section.Title>
           {volunteer.map(({ organization, position, startDate, endDate, summary }) => (
-            <cv-subsection key={organization}>
-              <p slot="title">{getDates({ startDate, endDate })}</p>
-              <p>
+            <Item.Item key={organization}>
+              <Item.Title>{getDates({ startDate, endDate })}</Item.Title>
+              <Item.Content>
                 {position}, {organization}
                 <br />
                 {summary}
-              </p>
-            </cv-subsection>
+              </Item.Content>
+            </Item.Item>
           ))}
-        </cv-section>
+        </Section.Section>
       )}
 
       {education && education.length > 0 && (
-        <cv-section class="education">
-          <cv-section-title>
-            <h2>Education</h2>
-          </cv-section-title>
+        <Section.Section className={styles.education}>
+          <Section.Title>Education</Section.Title>
           {education.map(({ studyType, area, institution, startDate, endDate }) => (
-            <cv-subsection key={institution}>
-              <p slot="title">{getDates({ startDate, endDate })}</p>
-              <p>
+            <Item.Item key={institution}>
+              <Item.Title>{getDates({ startDate, endDate })}</Item.Title>
+              <Item.Content>
                 {studyType} ({area}), {institution}
-              </p>
-            </cv-subsection>
+              </Item.Content>
+            </Item.Item>
           ))}
-        </cv-section>
+        </Section.Section>
       )}
 
       {interests && interests.length > 0 && (
-        <cv-section class="interests">
-          <cv-section-title>
-            <h2>Interests</h2>
-          </cv-section-title>
+        <Section.Section className={styles.interests}>
+          <Section.Title>Interests</Section.Title>
           {interests.map(({ name, keywords }) => (
-            <cv-subsection key={name}>
-              <h3 slot="title">{name}</h3>
-              <p>{keywords?.join(', ')}</p>
-            </cv-subsection>
+            <Item.Item key={name}>
+              <Item.Title>{name}</Item.Title>
+              {keywords &&
+                keywords.length > 0 &&
+                keywords.map(keyword => <Item.Content key={keyword}>{keyword}</Item.Content>)}
+            </Item.Item>
           ))}
-        </cv-section>
+        </Section.Section>
       )}
     </div>
   )

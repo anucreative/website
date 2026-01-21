@@ -40,7 +40,6 @@ This project follows a "release early, release often" philosophy:
 Build a working CV page at `/cv` with hardcoded data. Data types and structure defined upfront for future API integration.
 
 - [x] **2.1 Create Shared Packages**
-  - [x] `packages/shared/` - Routes, themes, constants (already started)
   - [x] `packages/data-types/` - TypeScript interfaces for CV data (shape matches future API)
   - [x] Create `src/data-types.ts` with CV data interface
   - [x] Create sample JSON for development
@@ -101,10 +100,10 @@ Get the app live on Render with automatic deployments.
 
 Create a unified design system package with Lit web components and design tokens via Style Dictionary.
 
-- [x] **4.1 Create `packages/components/` - Lit Components + Design Tokens**
+- [x] **4.1 Create `packages/ui/` - Lit Components + Design Tokens**
   - [x] Initialize package with `package.json`
   - [x] Set up TypeScript configuration
-  - [x] Create `src/components/` directory (CVHeader, CVSection, CVSectionTitle, CVSubsection)
+  - [x] Create `src/components/` directory (Header, Section, CVSectionTitle, Item)
   - [x] Create `src/tokens/` directory with theme JSON files (`default.json`, `alan.json`)
   - [x] Define design tokens (colors, typography, spacing, layout)
   - [x] Generate CSS files via Style Dictionary in build process
@@ -113,7 +112,7 @@ Create a unified design system package with Lit web components and design tokens
 - [x] **4.2 Set up Storybook for Component Testing**
   - [x] Install Storybook 10.1.4 with web-components-vite framework
   - [x] Configure `.storybook/main.ts` and `.storybook/preview.ts`
-  - [x] Create story files for CVHeader, CVCard, CVSection
+  - [x] Create story files for Header, CVCard, Section
   - [x] Add stories for both default and alan themes
   - [x] Enable accessibility and docs addons
 
@@ -306,7 +305,6 @@ yarn type-check
 
 - [Turborepo Docs](https://turbo.build/repo/docs)
 - [TanStack Start](https://tanstack.com/start/latest)
-- [Lit Web Components](https://lit.dev)
 - [MSW Documentation](https://mswjs.io)
 - [Style Dictionary](https://amzn.github.io/style-dictionary/)
 - [Prisma Documentation](https://www.prisma.io/docs)
@@ -367,9 +365,8 @@ git push origin main
 
 ## Notes
 
-- **Single source of truth for routes:** `packages/shared/routes.ts`
 - **Data types defined upfront:** Interfaces match future API shape (Prisma models)
 - **MSW from the start:** Decouples frontend from backend from day one
-- **CSS variables for theming:** All themes defined in `packages/components/`
+- **CSS variables for theming:** All themes defined in `packages/ui/`
 - **Iterative releases:** Each phase delivers a working product
 - **Type safety throughout:** TypeScript from Prisma models → Frontend types

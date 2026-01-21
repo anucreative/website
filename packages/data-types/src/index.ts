@@ -39,6 +39,7 @@ export interface Basics {
   url?: string
   summary?: string
   future?: string
+  nationality?: string[]
   location?: Location
   profiles?: Profile[]
 }

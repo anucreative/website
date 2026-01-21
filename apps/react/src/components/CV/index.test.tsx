@@ -1,5 +1,4 @@
 import { describe, test, expect, vi } from 'vitest'
-import '@testing-library/jest-dom'
 import { render, screen } from '@testing-library/react'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import sampleResume from '@website/data-types/cv.json'
@@ -7,7 +6,7 @@ import type { Resume } from '@website/data-types'
 import { CV } from '.'
 
 // Mock web components
-vi.mock('@website/components', () => ({}))
+vi.mock('@website/ui', () => ({}))
 
 describe('CV Page Rendering', () => {
   const resume: Resume = sampleResume
@@ -23,9 +22,15 @@ describe('CV Page Rendering', () => {
     // Check that the component renders without errors
     expect(screen.getByText(resume.basics.name)).toBeInTheDocument()
 
-    resume.basics.label && expect(screen.getByText(resume.basics.label)).toBeInTheDocument()
-    resume.basics.email && expect(screen.getByText(resume.basics.email)).toBeInTheDocument()
-    resume.basics.phone && expect(screen.getByText(resume.basics.phone)).toBeInTheDocument()
+    if (resume.basics.label) {
+      expect(screen.getByText(resume.basics.label)).toBeInTheDocument()
+    }
+    if (resume.basics.email) {
+      expect(screen.getByText(resume.basics.email)).toBeInTheDocument()
+    }
+    if (resume.basics.phone) {
+      expect(screen.getByText(resume.basics.phone)).toBeInTheDocument()
+    }
 
     const workName = resume.work?.[0]?.name
     if (workName) {

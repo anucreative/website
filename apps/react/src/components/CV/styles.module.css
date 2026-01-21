@@ -1,0 +1,47 @@
+/* Container */
+.container {
+  max-width: var(--layout-max-width);
+  margin: 0 auto;
+  padding: var(--spacing-xl);
+}
+
+/* Overview */
+.overview {
+  .fluency {
+    color: var(--color-secondary);
+    margin-left: var(--spacing-xs);
+  }
+}
+
+/* Experience */
+.position {
+  font-size: var(--typography-font-size-md);
+}
+
+.company {
+  font-weight: 500;
+  color: var(--color-accent);
+  margin-bottom: var(--spacing-xs);
+}
+
+.highlights {
+  list-style-position: outside;
+  margin-left: var(--spacing-md);
+}
+
+.hasPosition {
+  margin-bottom: var(--spacing-lg);
+}
+
+/* Languages */
+.fluency {
+  color: var(--color-secondary);
+  margin-left: var(--spacing-xs);
+
+  &:not(:last-child):after {
+    content: '•';
+    color: var(--color-secondary);
+    display: inline-block;
+    margin: 0 var(--spacing-xs);
+  }
+}

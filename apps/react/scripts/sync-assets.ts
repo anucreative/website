@@ -7,7 +7,7 @@ import { fileURLToPath } from 'url'
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
 
-const COMPONENTS_ROOT = path.resolve(__dirname, '../../../packages/components')
+const COMPONENTS_ROOT = path.resolve(__dirname, '../../../packages/ui')
 const APP_PUBLIC = path.resolve(__dirname, '../public/assets')
 
 fs.rmSync(APP_PUBLIC, { recursive: true, force: true })

@@ -1,10 +1,9 @@
 import { describe, test, expect, vi, beforeEach } from 'vitest'
-import '@testing-library/jest-dom'
 import { act, render, screen } from '@testing-library/react'
 import type { Resume } from '@website/data-types'
 
 // Mock web components
-vi.mock('@website/components', () => ({}))
+vi.mock('@website/ui', () => ({}))
 
 // Mock the CV component to simplify testing
 vi.mock('../../components/CV', () => ({
@@ -49,8 +48,8 @@ describe('/cv/$company route components', () => {
     test('should render CV component with resume data', async () => {
       const router = setUpRouter({ path: '/cv', fetcher: fetchResume })
 
-      act(() => {
-        router.navigate({ to: '/cv' })
+      await act(async () => {
+        await router.navigate({ to: '/cv' })
       })
 
       render(<RouterProvider router={router} />)

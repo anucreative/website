@@ -9,6 +9,7 @@ export function formatDate(dateString: string): string {
 
   try {
     return dateFormatter.format(new Date(dateString))
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
   } catch (error) {
     return dateString
   }

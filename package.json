@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Monorepo for anucreative website with React, Vue, and backend services",
   "private": true,
+  "type": "module",
   "license": "MIT",
   "workspaces": [
     "apps/*",
@@ -10,9 +11,9 @@
     "services/*"
   ],
   "scripts": {
-    "watch": "turbo watch dev",
-    "storybook": "turbo watch storybook --filter=@website/components",
-    "dev": "turbo run dev --parallel",
+    "watch": "turbo watch lint & turbo watch type-check & turbo watch build",
+    "storybook": "turbo run storybook --filter=@website/react",
+    "dev": "turbo run dev",
     "build": "turbo run build",
     "start": "cd apps/react && yarn start",
     "lint": "turbo run lint",
@@ -23,25 +24,28 @@
     "format:check": "prettier --check \"**/*.{ts,tsx,vue,js,jsx,json,md}\"",
     "clean": "turbo run clean && rm -rf .turbo",
     "install-deps": "yarn install",
-    "precommit": "yarn lint && yarn type-check"
+    "precommit": "yarn lint && yarn type-check && yarn knip",
+    "knip": "knip"
   },
   "engines": {
     "node": ">=24.0.0",
     "yarn": "4.9.4"
   },
-  "dependencies": {
-    "es-toolkit": "^1.42.0"
-  },
   "devDependencies": {
-    "@eslint/js": "^9.39.1",
     "@types/node": "^24.10.1",
+    "@vitejs/plugin-react": "^5.1.1",
+    "@vitest/coverage-v8": "^4.0.17",
+    "@vitest/ui": "^4.0.15",
     "eslint": "^9.39.1",
+    "knip": "^5.82.1",
     "msw": "^2.12.3",
     "prettier": "^3.7.3",
     "turbo": "^2.6.1",
     "typescript": "^5.9.3",
     "typescript-eslint": "^8.48.0",
-    "vitest": "^4.0.14"
+    "vite": "^7.2.6",
+    "vite-tsconfig-paths": "^5.1.4",
+    "vitest": "^4.0.15"
   },
   "packageManager": "yarn@4.12.0"
 }

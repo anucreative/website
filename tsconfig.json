@@ -25,7 +25,7 @@
     /* Path mapping */
     "baseUrl": ".",
     "paths": {
-      "@website/*": ["packages/*"]
+      "@website/*": ["apps/*", "packages/*"]
     }
   },
   "include": ["**/*.ts", "**/*.tsx"],

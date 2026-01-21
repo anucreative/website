@@ -6,5 +6,5 @@ import sampleResume from '@website/data-types/cv.json'
  * In production, this would call a real API endpoint
  */
 export const fetchResume = async (): Promise<Resume> => {
-  return sampleResume as Resume
+  return Promise.resolve(sampleResume as Resume)
 }

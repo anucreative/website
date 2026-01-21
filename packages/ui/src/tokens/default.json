@@ -76,10 +76,10 @@
     },
     "lineHeight": {
       "md": {
-        "value": "1.5"
+        "value": "2"
       },
       "lg": {
-        "value": "1.7"
+        "value": "2.25"
       }
     }
   },

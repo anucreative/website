@@ -1,6 +1,6 @@
-import type { Preview } from '@storybook/web-components-vite'
-import '../../tokens/dist/default.css'
-import '../src/global.css'
+import type { Preview } from '@storybook/react-vite'
+import '../public/assets/global.css'
+import '../public/assets/default.css'
 
 const preview: Preview = {
   parameters: {

@@ -58,7 +58,7 @@ src/
 ## Integration Points
 
 - **Data:** Fetches from `@website/data-types` sample via MSW
-- **Shared:** Uses routes, themes, constants from `@website/shared`
+- **Shared:** Uses themes, constants from `@website/shared`
 - **MSW:** Intercepts `/api/resume` requests in development
 - **Theme:** CSS variables support (Phase 5 will add theme switcher)
 

@@ -1,0 +1,50 @@
+.splash {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  min-height: 100vh;
+  min-width: 100vw;
+  padding: var(--spacing-2xl) var(--spacing-sm);
+  background: var(--color-accent) url('/kitchen.webp');
+  background-size: cover;
+  background-position: center;
+  color: var(--color-light);
+  letter-spacing: 0.2rem;
+  text-align: center;
+}
+
+.button {
+  padding: var(--spacing-sm) var(--spacing-2xl);
+  margin-top: var(--spacing-2xl);
+  background-color: var(--color-accent);
+  color: var(--color-light);
+  border-radius: var(--border-radius-md);
+  border-bottom: 0 none;
+  border: 3px solid var(--color-accent);
+  text-transform: uppercase;
+  transition: var(--transition);
+  display: flex;
+  gap: var(--spacing-sm);
+  align-items: center;
+  justify-content: center;
+
+  &:hover {
+    background-color: transparent;
+    border: 3px solid var(--color-accent);
+  }
+}
+
+/* SVG animation */
+.logoWrapper {
+  width: 100%;
+  max-width: 230px;
+  margin-bottom: var(--spacing-lg);
+}
+
+.anucreative {
+  stroke-dasharray: 800;
+  stroke-dashoffset: 800;
+  animation: drawPath 4s ease-out infinite;
+  mix-blend-mode: overlay;
+}

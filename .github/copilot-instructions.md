@@ -6,7 +6,7 @@ This is a **Turborepo monorepo** using Yarn Workspaces with:
 
 - **`apps/react`** – TanStack Start SSR React app for CV portfolio
 - **`packages/config`** – API endpoints, app configuration (CACHE, etc.)
-- **`packages/components`** – Design system: Lit web components + design tokens
+- **`packages/ui`** – Design system: Lit web components + design tokens
 - **`packages/tokens`** – Design tokens (JSON) and build artifacts
 - **`packages/msw`** – Mock Service Worker handlers for testing
 - **`packages/data-types`** – Shared TypeScript types and data (cv.json resume)
@@ -15,7 +15,7 @@ This is a **Turborepo monorepo** using Yarn Workspaces with:
 **Key principle:** Single source of truth for brands, API config, tokens, and types. Apps consume via `@website/*` path aliases.
 
 - **Configuration:** `@website/config` (API_ENDPOINTS, CACHE, APP constants)
-- **Design system:** `@website/components` (Lit components + tokens + BRANDS)
+- **Design system:** `@website/ui` (Lit components + tokens + BRANDS)
 - **Data:** `@website/data-types` (CV resume, types)
 
 ## Development Workflow
@@ -80,7 +80,7 @@ Exports configuration via structured exports:
 
 3. **`./`** (index) – Re-exports all from api and app
 
-**Import pattern:** Apps should use `import { API_ENDPOINTS } from '@website/config'` and `import { BRANDS, Brand } from '@website/components/constants'` (path aliases defined in root `tsconfig.json`).
+**Import pattern:** Apps should use `import { API_ENDPOINTS } from '@website/config'` and `import { BRANDS, Brand } from '@website/ui/constants'` (path aliases defined in root `tsconfig.json`).
 
 ### Routing Architecture
 
@@ -94,13 +94,13 @@ Routes are **file-based** using TanStack Router:
 
 ### Token System (Design Tokens)
 
-Themes use **Style Dictionary** to generate CSS from JSON. Token definitions and build config live in `packages/components/`:
+Themes use **Style Dictionary** to generate CSS from JSON. Token definitions and build config live in `packages/ui/`:
 
-1. **Token definitions** – Colors, typography, spacing in [packages/components/src/tokens/\*.json](packages/components/src/tokens/)
+1. **Token definitions** – Colors, typography, spacing in [packages/ui/src/tokens/\*.json](packages/ui/src/tokens/)
    - `default.json` – Default theme
    - `alan.json` – ALAN brand theme
    - `bsport.json` – BSPORT brand theme
-2. **Build process** – [packages/components/scripts/build.ts](packages/components/scripts/build.ts) runs Style Dictionary for each brand, generating CSS files in `dist/`
+2. **Build process** – [packages/ui/scripts/build.ts](packages/ui/scripts/build.ts) runs Style Dictionary for each brand, generating CSS files in `dist/`
 3. **Build output** – CSS files are copied to `packages/tokens/dist/` for build artifacts
 4. **Usage in root layout** – [\_\_root.tsx](apps/react/src/routes/__root.tsx) imports generated CSS and injects dynamically based on route param:
    ```tsx
@@ -138,7 +138,7 @@ Real CV data lives in [packages/data-types/cv.json](packages/data-types/cv.json)
 
 **Phase 4: Component Library** ✓ Complete
 
-- Created `packages/components/` with Lit web components + design tokens
+- Created `packages/ui/` with Lit web components + design tokens
 
 **Phase 6-11:** See README.md for future phases
 
@@ -146,15 +146,15 @@ Real CV data lives in [packages/data-types/cv.json](packages/data-types/cv.json)
 
 ### Adding a New Brand Theme
 
-1. Create [packages/components/src/tokens/new-brand.json](packages/components/src/tokens/) with token structure (copy from default.json)
-2. Update [packages/components/src/constants.ts](packages/components/src/constants.ts) – add brand to `BRANDS` array
+1. Create [packages/ui/src/tokens/new-brand.json](packages/ui/src/tokens/) with token structure (copy from default.json)
+2. Update [packages/ui/src/constants.ts](packages/ui/src/constants.ts) – add brand to `BRANDS` array
 3. Run `yarn build` in components package to generate `dist/new-brand.css`
 4. Update [\_\_root.tsx](apps/react/src/routes/__root.tsx) to import and conditionally inject new theme CSS
 5. Test via route `/cv/new-brand` to confirm theme applies
 
 ### Adding a New Token Type
 
-1. Add property to all theme JSON files in [packages/components/src/tokens/](packages/components/src/tokens/)
+1. Add property to all theme JSON files in [packages/ui/src/tokens/](packages/ui/src/tokens/)
 2. Run `yarn build` in components package to regenerate CSS
 3. Use in components via CSS custom properties: `color: var(--new-token-name)`
 
