@@ -1,18 +1,6 @@
 /* CSS Variables from theme system (injected at runtime) */
 /* See packages/shared/src/themes/ for theme definitions */
 
-@keyframes drawPath {
-  0% {
-    stroke-dashoffset: 1600;
-  }
-  50% {
-    stroke-dashoffset: 800;
-  }
-  100% {
-    stroke-dashoffset: 0;
-  }
-}
-
 /* Reset */
 *,
 *::before,
@@ -52,23 +40,6 @@ h2 {
 }
 
 /* Links */
-/* a {
-  color: var(--color-primary);
-  text-decoration: none;
-  transition: var(--transition);
-  font-weight: var(--typography-font-weight-semibold);
-  display: inline-block;
-  position: relative;
-
-  &:not(:has(img)) {
-    border-bottom: 3px solid var(--color-link);
-  }
-}
-
-a:hover {
-  border-bottom-color: transparent;
-} */
-
 a {
   font-weight: var(--typography-font-weight-semibold);
   display: inline-block;

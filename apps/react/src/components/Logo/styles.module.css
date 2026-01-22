@@ -1,0 +1,19 @@
+/* SVG animation */
+@keyframes drawPath {
+  0% {
+    stroke-dashoffset: 1600;
+  }
+  50% {
+    stroke-dashoffset: 800;
+  }
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+
+.anucreative {
+  stroke-dasharray: 800;
+  stroke-dashoffset: 800;
+  animation: drawPath 4s ease-out infinite;
+  mix-blend-mode: overlay;
+}

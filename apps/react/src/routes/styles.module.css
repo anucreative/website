@@ -35,16 +35,8 @@
   }
 }
 
-/* SVG animation */
 .logoWrapper {
   width: 100%;
   max-width: 230px;
   margin-bottom: var(--spacing-lg);
-}
-
-.anucreative {
-  stroke-dasharray: 800;
-  stroke-dashoffset: 800;
-  animation: drawPath 4s ease-out infinite;
-  mix-blend-mode: overlay;
 }
