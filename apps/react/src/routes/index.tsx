@@ -13,11 +13,14 @@ export function Home() {
       <div className={styles.logoWrapper}>
         <Logo />
       </div>
-      <h1>anu creative</h1>
-      <p>design and development • web and mobile</p>
-      <a href="/cv" className={styles.button}>
-        View CV <img src={favicon} alt="Photo of Robert Douglas" width={25} height={25} />
-      </a>
+      <div className={styles.content}>
+        <h1>anu creative</h1>
+        <p>design and development</p>
+        <p>web and mobile</p>
+        <a href="https://linkedin.com/in/anucreative" className={styles.avatar} target="_blank">
+          <img src={favicon} alt="Photo of Robert Douglas" width={40} height={40} />
+        </a>
+      </div>
     </div>
   )
 }
