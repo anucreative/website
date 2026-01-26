@@ -1,0 +1,36 @@
+/**
+ * Do not edit directly, this file was auto-generated.
+ */
+
+:root {
+  --color-primary: #1a1a1a;
+  --color-secondary: #737373;
+  --color-accent: #fa5022;
+  --color-text: #000000;
+  --color-light: #f5f5f5;
+  --color-background: #fff3ea;
+  --color-link: #fa5022;
+  --typography-font-family: DM Serif Text, 'Roboto Serif', 'Noto serif', serif;
+  --typography-font-size-xs: 12px;
+  --typography-font-size-sm: 14px;
+  --typography-font-size-md: 16px;
+  --typography-font-size-lg: 20px;
+  --typography-font-size-xl: 28px;
+  --typography-font-size-2xl: 40px;
+  --typography-font-weight-normal: 400;
+  --typography-font-weight-semibold: 400;
+  --typography-font-weight-bold: 500;
+  --typography-line-height-md: 2;
+  --typography-line-height-lg: 2.25;
+  --spacing-xs: 4px;
+  --spacing-sm: 8px;
+  --spacing-md: 16px;
+  --spacing-lg: 24px;
+  --spacing-xl: 32px;
+  --spacing-2xl: 48px;
+  --border-radius-sm: 4px;
+  --border-radius-md: 8px;
+  --border-radius-lg: 16px;
+  --layout-max-width: 1000px;
+  --layout-column-width: 150px;
+}

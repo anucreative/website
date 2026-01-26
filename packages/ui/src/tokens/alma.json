@@ -1,0 +1,40 @@
+{
+  "color": {
+    "primary": {
+      "value": "#1a1a1a",
+      "type": "color"
+    },
+    "secondary": {
+      "value": "#737373",
+      "type": "color"
+    },
+    "accent": {
+      "value": "#fa5022",
+      "type": "color"
+    },
+    "background": {
+      "value": "#FFF3EA",
+      "type": "color"
+    },
+    "link": {
+      "value": "#fa5022",
+      "type": "color"
+    }
+  },
+  "typography": {
+    "fontFamily": {
+      "value": "DM Serif Text, 'Roboto Serif', 'Noto serif', serif",
+      "type": "fontFamily"
+    },
+    "fontWeight": {
+      "semibold": {
+        "value": "400",
+        "type": "fontWeight"
+      },
+      "bold": {
+        "value": "500",
+        "type": "fontWeight"
+      }
+    }
+  }
+}
