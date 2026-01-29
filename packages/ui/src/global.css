@@ -49,16 +49,14 @@ a {
 }
 
 a::after {
-  &:not(:has(img)) {
-    content: '';
-    display: block;
-    width: 100%;
-    height: 3px;
-    position: absolute;
-    bottom: 3px;
-    background: var(--color-link);
-    transition: var(--transition);
-  }
+  content: '';
+  display: block;
+  width: 100%;
+  height: 3px;
+  position: absolute;
+  bottom: 3px;
+  background: var(--color-link);
+  transition: var(--transition);
 }
 
 a:hover::after {

@@ -2,9 +2,6 @@
  * Brand constants and types
  */
 
-export const BRANDS = ['default', 'alan', 'bsport', 'refurbed', 'peec', 'alma'] as const
-export type Brand = (typeof BRANDS)[number]
-
 const FONTS_BY_BRAND = {
   default: 'Lato',
   alan: 'Alan+Sans',
@@ -12,6 +9,11 @@ const FONTS_BY_BRAND = {
   refurbed: 'Readex+Pro',
   peec: 'Geist',
   alma: 'DM+Serif+Text',
+  cobbleweb: 'Outfit',
 } as const
+
+export const BRANDS = Object.keys(FONTS_BY_BRAND)
+export type Brand = keyof typeof FONTS_BY_BRAND
+
 export const FONTS = Object.values(FONTS_BY_BRAND)
 export type Font = (typeof FONTS_BY_BRAND)[Brand]
