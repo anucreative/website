@@ -25,16 +25,6 @@
     "fontFamily": {
       "value": "DM Serif Text, 'Roboto Serif', 'Noto serif', serif",
       "type": "fontFamily"
-    },
-    "fontWeight": {
-      "semibold": {
-        "value": "400",
-        "type": "fontWeight"
-      },
-      "bold": {
-        "value": "500",
-        "type": "fontWeight"
-      }
     }
   }
 }

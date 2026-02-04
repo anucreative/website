@@ -21,16 +21,6 @@
     "fontFamily": {
       "value": "Outfit, Roboto, 'Helvetica Neue', Arial, sans-serif",
       "type": "fontFamily"
-    },
-    "fontWeight": {
-      "semibold": {
-        "value": "400",
-        "type": "fontWeight"
-      },
-      "bold": {
-        "value": "500",
-        "type": "fontWeight"
-      }
     }
   }
 }

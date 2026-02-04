@@ -11,6 +11,7 @@ const FONTS_BY_BRAND = {
   alma: 'DM+Serif+Text',
   cobbleweb: 'Outfit',
   restream: 'Montserrat',
+  wooclap: 'Nunito',
 } as const
 
 export const BRANDS = Object.keys(FONTS_BY_BRAND)

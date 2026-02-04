@@ -3,22 +3,22 @@
  */
 
 :root {
-  --color-primary: #1a1a1a;
-  --color-secondary: #737373;
-  --color-accent: #fa5022;
+  --color-primary: #1d254f;
+  --color-secondary: #656686;
+  --color-accent: #005eff;
   --color-text: #000000;
   --color-light: #f5f5f5;
-  --color-background: #fff3ea;
-  --color-link: #fa5022;
-  --typography-font-family: DM Serif Text, 'Roboto Serif', 'Noto serif', serif;
+  --color-background: #ffffff;
+  --color-link: #005eff;
+  --typography-font-family: Nunito, Roboto, 'Helvetica Neue', Arial, sans-serif;
   --typography-font-size-xs: 12px;
   --typography-font-size-sm: 14px;
-  --typography-font-size-md: 16px;
+  --typography-font-size-md: 18px;
   --typography-font-size-lg: 20px;
   --typography-font-size-xl: 28px;
   --typography-font-size-2xl: 40px;
-  --typography-font-weight-normal: 400;
-  --typography-font-weight-semibold: 600;
+  --typography-font-weight-normal: 500;
+  --typography-font-weight-semibold: 700;
   --typography-font-weight-bold: 900;
   --typography-line-height-md: 2;
   --typography-line-height-lg: 2.25;

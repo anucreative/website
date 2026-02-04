@@ -1,42 +1,49 @@
 {
   "color": {
     "primary": {
-      "value": "#FFFFFF",
+      "value": "#1d254f",
       "type": "color"
     },
     "secondary": {
-      "value": "#acadb4",
+      "value": "#656686",
       "type": "color"
     },
     "accent": {
-      "value": "#4253e7",
+      "value": "#005eff",
       "type": "color"
     },
     "background": {
-      "value": "#000000",
+      "value": "#FFFFFF",
       "type": "color"
     },
     "link": {
-      "value": "#4253e7",
+      "value": "#005eff",
       "type": "color"
     }
   },
   "typography": {
     "fontFamily": {
-      "value": "Montserrat, Roboto, 'Helvetica Neue', Arial, sans-serif",
-      "type": "fontFamily"
+      "value": "Nunito, Roboto, 'Helvetica Neue', Arial, sans-serif",
+      "type": "fontFamily",
+      "style": "static"
+    },
+    "fontSize": {
+      "md": {
+        "value": "18px",
+        "type": "dimension"
+      }
     },
     "fontWeight": {
       "normal": {
-        "value": "400",
-        "type": "fontWeight"
-      },
-      "semibold": {
         "value": "500",
         "type": "fontWeight"
       },
-      "bold": {
+      "semibold": {
         "value": "700",
+        "type": "fontWeight"
+      },
+      "bold": {
+        "value": "900",
         "type": "fontWeight"
       }
     }

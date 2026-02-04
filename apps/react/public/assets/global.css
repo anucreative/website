@@ -18,6 +18,7 @@
 html,
 body {
   font-family: var(--typography-font-family);
+  font-size: var(--typography-font-size-md);
   color: var(--color-primary);
   background-color: var(--color-background);
   line-height: var(--typography-line-height-md);
