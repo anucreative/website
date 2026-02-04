@@ -1,0 +1,40 @@
+{
+  "color": {
+    "primary": {
+      "value": "#FFFFFF",
+      "type": "color"
+    },
+    "secondary": {
+      "value": "#acadb4",
+      "type": "color"
+    },
+    "accent": {
+      "value": "#4253e7",
+      "type": "color"
+    },
+    "background": {
+      "value": "#000000",
+      "type": "color"
+    },
+    "link": {
+      "value": "#4253e7",
+      "type": "color"
+    }
+  },
+  "typography": {
+    "fontFamily": {
+      "value": "Outfit, Roboto, 'Helvetica Neue', Arial, sans-serif",
+      "type": "fontFamily"
+    },
+    "fontWeight": {
+      "semibold": {
+        "value": "400",
+        "type": "fontWeight"
+      },
+      "bold": {
+        "value": "500",
+        "type": "fontWeight"
+      }
+    }
+  }
+}

@@ -10,6 +10,7 @@ const FONTS_BY_BRAND = {
   peec: 'Geist',
   alma: 'DM+Serif+Text',
   cobbleweb: 'Outfit',
+  restream: 'Montserrat',
 } as const
 
 export const BRANDS = Object.keys(FONTS_BY_BRAND)
